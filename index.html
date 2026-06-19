@@ -1,0 +1,2983 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jayson / Pham The Quan - My Portfolio</title>
+<meta name="description" content="A couture portfolio collection for Jayson / Pham The Quan across finance, venture operations, program execution, and AI automation." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=Noto+Serif:wght@400;500&family=Great+Vibes&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --black: #000;
+    --white: #fff;
+    --parchment: #f4ecdc;
+    --ink-78: rgba(0, 0, 0, 0.78);
+    --ink-72: rgba(0, 0, 0, 0.72);
+    --ink-65: rgba(0, 0, 0, 0.65);
+    --ink-55: rgba(0, 0, 0, 0.55);
+    --ink-40: rgba(0, 0, 0, 0.40);
+    --ink-15: rgba(0, 0, 0, 0.15);
+    --rule: rgba(0, 0, 0, 0.12);
+    --font-serif: "Instrument Serif", Georgia, serif;
+    --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    --font-script: "Great Vibes", cursive;
+    --max: 1480px;
+  }
+
+  html {
+    margin: 0;
+    background: var(--black);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--black);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button, input { font: inherit; }
+  button { cursor: pointer; }
+  img, video { display: block; max-width: 100%; }
+
+  .stage {
+    position: relative;
+    width: 100%;
+    height: 600vh;
+    background: var(--black);
+  }
+
+  .hero {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(0,0,0,0.05), rgba(0,0,0,0.62) 82%),
+      linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.08) 36%, rgba(0,0,0,0.48));
+  }
+
+  .hero-chrome {
+    position: absolute;
+    z-index: 80;
+    will-change: opacity;
+  }
+
+  .portfolio-logo {
+    top: 120px;
+    left: 96px;
+    color: var(--black);
+    line-height: 0.95;
+    user-select: none;
+  }
+
+  .portfolio-logo .name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.06em;
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 5vw, 68px);
+  }
+
+  .portfolio-logo .italic { font-style: italic; }
+  .portfolio-logo .sub {
+    display: block;
+    margin-top: 4px;
+    font-size: clamp(24px, 3.6vw, 48px);
+    font-weight: 400;
+  }
+
+  .site-header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  .brand-mark,
+  .header-cta {
+    pointer-events: auto;
+  }
+
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--black);
+  }
+
+  .brand-mark svg {
+    width: 54px;
+    height: 40px;
+  }
+
+  .brand-mark span {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+  }
+
+  .header-cta,
+  .pill-button,
+  .round-button {
+    border: 0;
+    background: var(--black);
+    color: var(--white);
+    transition: background 180ms ease, transform 180ms ease;
+  }
+
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 999px;
+    padding: 8px 8px 8px 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .header-cta .narrow { display: none; }
+
+  .header-cta .cap,
+  .round-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .header-cta:hover,
+  .pill-button:hover,
+  .round-button:hover {
+    background: rgba(0,0,0,0.88);
+  }
+
+  .header-cta:focus-visible,
+  .pill-button:focus-visible,
+  .round-button:focus-visible,
+  .filter-button:focus-visible,
+  .project-action:focus-visible,
+  .ghost-link:focus-visible,
+  input:focus-visible {
+    outline: 2px solid var(--black);
+    outline-offset: 4px;
+  }
+
+  .ghost-link:focus-visible {
+    outline-color: var(--white);
+  }
+
+  .scroll-hint {
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    color: var(--white);
+    pointer-events: none;
+  }
+
+  .scroll-box {
+    width: 20px;
+    height: 34px;
+    overflow: hidden;
+  }
+
+  @keyframes scrollArrow {
+    0% { transform: translateY(-6px); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: translateY(10px); opacity: 0; }
+  }
+
+  .scroll-arrow { animation: scrollArrow 1.6s ease-in-out infinite; }
+
+  .reveal-layer {
+    position: absolute;
+    z-index: 20;
+    width: 150vw;
+    height: 150vh;
+    left: -25vw;
+    top: -25vh;
+    overflow: hidden;
+    transform: rotate(-15deg);
+    clip-path: ellipse(0% 0% at 50% 50%);
+    will-change: clip-path;
+  }
+
+  .reveal-surface {
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+  }
+
+  .reveal-inner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    left: 25vw;
+    top: 25vh;
+    transform: rotate(15deg);
+    display: grid;
+    place-items: center;
+  }
+
+  .orbit-wrap {
+    position: relative;
+    width: min(90vw, 1200px);
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .orbit-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    transform-origin: center center;
+    will-change: transform, width, height;
+    pointer-events: auto;
+    user-select: none;
+  }
+
+  .orbit-item-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .orbit-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: transform 300ms ease;
+  }
+
+  .orbit-item:hover img { transform: scale(1.12); }
+
+  .orbit-label {
+    position: absolute;
+    left: 115%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(360px, 38vw);
+    color: var(--black);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .orbit-label strong {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    line-height: 1.04;
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+
+  .orbit-label span {
+    display: block;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1.55;
+    color: var(--ink-72);
+  }
+
+  .hero-overlays {
+    position: absolute;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    color: var(--black);
+  }
+
+  .overlay-copy {
+    opacity: 0;
+    will-change: transform, opacity, filter;
+  }
+
+  .center-brand {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .center-brand .line {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-serif);
+    font-size: clamp(46px, 5vw, 64px);
+    line-height: 1;
+  }
+
+  .center-brand em { font-style: italic; }
+  .center-brand .sub {
+    margin-top: -2px;
+    display: block;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1;
+  }
+
+  .top-right-info {
+    position: absolute;
+    top: 128px;
+    right: max(7vw, 132px);
+    text-align: left;
+  }
+
+  .bottom-left-info {
+    position: absolute;
+    left: 64px;
+    bottom: 64px;
+  }
+
+  .bottom-right-cta {
+    position: absolute;
+    right: 10vw;
+    bottom: 64px;
+    width: 280px;
+    pointer-events: auto;
+  }
+
+  .num {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .label {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.35;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .cta-copy {
+    margin: 0 0 22px;
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.35;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .cta-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .pill-button {
+    min-height: 46px;
+    border-radius: 999px;
+    padding: 0 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .round-button {
+    width: 46px;
+    height: 46px;
+    margin-left: -8px;
+    background: var(--black);
+  }
+
+  .content {
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .stay {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .stay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent 0 42%, rgba(255,255,255,0.82) 54%, rgba(255,255,255,0.98) 66%, #fff 100%);
+  }
+
+  .stay-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .section-inner {
+    position: relative;
+    width: min(var(--max), calc(100% - 64px));
+    margin: 0 auto;
+  }
+
+  .stay-inner {
+    min-height: 100vh;
+    z-index: 1;
+    padding: 66px 0 82px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .stay-heading {
+    width: min(620px, 47vw);
+  }
+
+  .display-title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(58px, 7vw, 108px);
+    line-height: 0.92;
+    color: var(--black);
+    text-wrap: balance;
+  }
+
+  .display-title em { font-style: italic; }
+
+  .display-sub {
+    display: block;
+    margin-top: 10px;
+    font-size: clamp(30px, 3.2vw, 48px);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .section-kicker {
+    margin: 0 0 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-55);
+  }
+
+  .lead {
+    margin: 0;
+    max-width: 690px;
+    font-size: clamp(18px, 1.55vw, 24px);
+    line-height: 1.42;
+    color: var(--ink-78);
+    text-wrap: pretty;
+  }
+
+  .bio-copy {
+    width: min(620px, 47vw);
+    display: grid;
+    gap: 18px;
+    align-content: start;
+    padding-top: 28px;
+  }
+
+  .bio-copy p {
+    margin: 0;
+    max-width: 590px;
+    font-size: 13px;
+    line-height: 1.56;
+    color: var(--ink-72);
+  }
+  .bio-text p {
+    margin-bottom: 17px;
+  }
+  .bio-text p:last-child {
+    margin-bottom: 0;
+  }
+  .bio-text p:first-child {
+    font-size: 14px;
+    color: var(--ink-78);
+  }
+
+  .contact-form {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 12px;
+    align-items: end;
+    max-width: 650px;
+    border-bottom: 1px solid var(--ink-40);
+    padding-bottom: 12px;
+  }
+
+  .contact-form input {
+    width: 100%;
+    min-height: 46px;
+    border: 0;
+    background: transparent;
+    color: var(--black);
+    outline: 0;
+    font-size: 15px;
+  }
+
+  .text-button {
+    border: 0;
+    background: transparent;
+    color: var(--black);
+    min-height: 46px;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .form-note {
+    min-height: 20px;
+    margin: 0;
+    font-size: 12px;
+    color: var(--ink-55);
+  }
+
+  .metrics {
+    padding: 26px 0 88px;
+  }
+
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+
+  .metric {
+    min-height: 170px;
+    padding: 24px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.76);
+    backdrop-filter: blur(8px);
+  }
+
+  .metric b {
+    display: block;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(34px, 4vw, 58px);
+    line-height: 0.96;
+  }
+
+  .metric span {
+    display: block;
+    margin-top: 18px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--ink-65);
+  }
+
+  /* ── Career roadmap / mindmap ─────────────────────────── */
+  .journey {
+    padding: 104px 0 118px;
+    overflow: hidden;
+    background: var(--parchment);
+  }
+
+  .journey-head {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(340px, 1.18fr);
+    gap: clamp(40px, 7vw, 112px);
+    align-items: end;
+    margin-bottom: 72px;
+  }
+
+  .journey-head p {
+    margin: 0;
+    max-width: 720px;
+    color: var(--ink-72);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .journey-map {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px clamp(30px, 5vw, 72px);
+    min-width: 0;
+    padding: 0;
+  }
+
+  .journey-map::before {
+    display: none;
+  }
+
+  .journey-scroll {
+    overflow: visible;
+    padding: 8px 0 12px;
+  }
+
+  .journey-node {
+    position: relative;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .journey-node::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border: 3px solid var(--parchment);
+    border-radius: 50%;
+    background: var(--black);
+    box-shadow: 0 0 0 1px var(--black);
+    z-index: 2;
+  }
+
+  .journey-node::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 1px;
+    background: var(--ink-40);
+  }
+
+  .journey-card {
+    width: 100%;
+    min-height: 210px;
+    border-top: 0;
+    padding: 22px 6px 0 0;
+  }
+
+  .journey-year {
+    display: block;
+    margin-bottom: 10px;
+    font-family: var(--font-serif);
+    font-size: clamp(34px, 3.4vw, 52px);
+    font-weight: 400;
+    line-height: 0.9;
+  }
+
+  .journey-card h3 {
+    margin: 0 0 9px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .journey-card p {
+    margin: 0;
+    max-width: 34ch;
+    color: var(--ink-65);
+    font-size: 12.5px;
+    line-height: 1.62;
+  }
+
+  .journey-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-55);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .work {
+    padding: 88px 0 108px;
+    background: var(--white);
+  }
+
+  .work-head {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(340px, 1.18fr);
+    gap: clamp(40px, 7vw, 112px);
+    align-items: end;
+    margin-bottom: 42px;
+  }
+
+  .section-title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(54px, 8vw, 112px);
+    font-weight: 400;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .work-head p {
+    margin: 0;
+    max-width: 760px;
+    color: var(--ink-72);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 28px;
+  }
+
+  .filter-button {
+    min-height: 42px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--black);
+    padding: 0 15px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  .filter-button:hover,
+  .filter-button.active {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+  }
+
+  /* ── Project Grid ─────────────────────────────────────── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    padding: 8px 0;
+  }
+
+  /* ── Project Card ─────────────────────────────────────── */
+  .project-card {
+    position: relative;
+    min-height: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background: #0c0c0e;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow:
+      0 4px 24px rgba(0,0,0,0.18),
+      0 1px 0 rgba(255,255,255,0.06) inset;
+    transition:
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 300ms ease;
+    will-change: transform;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow:
+      0 24px 56px rgba(0,0,0,0.32),
+      0 1px 0 rgba(255,255,255,0.12) inset;
+    border-color: rgba(255,255,255,0.16);
+  }
+
+  .project-card:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.5);
+    outline-offset: 3px;
+  }
+
+  /* Animated gradient shader per-card */
+  .project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.72;
+    transition: opacity 420ms ease;
+    background: var(--card-shader);
+  }
+
+  .project-card:hover::before { opacity: 0.88; }
+
+  /* Category shaders */
+  .project-card[data-category="financial"]  { --card-shader: linear-gradient(148deg, #1a1200 0%, #2d1f00 35%, #0c0a00 100%); --card-accent: #f5b942; --card-glow: rgba(245,185,66,0.25); }
+  .project-card[data-category="venture"]    { --card-shader: linear-gradient(148deg, #040d1e 0%, #0a1535 35%, #020509 100%); --card-accent: #5b9cf6; --card-glow: rgba(91,156,246,0.25); }
+  .project-card[data-category="ai"]         { --card-shader: linear-gradient(148deg, #001a12 0%, #003322 35%, #000d09 100%); --card-accent: #34d399; --card-glow: rgba(52,211,153,0.25); }
+  .project-card[data-category="leadership"] { --card-shader: linear-gradient(148deg, #1a0600 0%, #2d0f00 35%, #0c0200 100%); --card-accent: #fb923c; --card-glow: rgba(251,146,60,0.25); }
+  .project-card[data-category="current"]    { --card-shader: linear-gradient(148deg, #00131a 0%, #002030 35%, #000709 100%); --card-accent: #22d3ee; --card-glow: rgba(34,211,238,0.25); }
+  .project-card[data-category="creative"]   { --card-shader: linear-gradient(148deg, #160012 0%, #2a0020 35%, #080006 100%); --card-accent: #e879f9; --card-glow: rgba(232,121,249,0.25); }
+
+  /* Glow blob on hover */
+  .project-card::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--card-glow, rgba(255,255,255,0.12)) 0%, transparent 70%);
+    bottom: -60px;
+    right: -60px;
+    pointer-events: none;
+    z-index: 1;
+    transition: transform 420ms cubic-bezier(0.22,1,0.36,1), opacity 420ms ease;
+    opacity: 0.6;
+  }
+
+  .project-card:hover::after {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+
+  /* Noise texture overlay for shader depth */
+  .card-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+  }
+
+  /* Grid lines shader */
+  .card-grid-shader {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(0deg,  rgba(255,255,255,0.025) 0 1px, transparent 1px 40px);
+  }
+
+  .card-accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--card-accent, #fff), transparent);
+    opacity: 0.7;
+    border-radius: 20px 20px 0 0;
+    z-index: 3;
+    transition: opacity 300ms ease;
+  }
+
+  .project-card:hover .card-accent-bar { opacity: 1; }
+
+  .project-body {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    padding: 22px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    padding: 0 9px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--card-accent, rgba(255,255,255,0.55));
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(4px);
+  }
+
+  .project-card h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 400;
+    line-height: 1.18;
+    color: rgba(255,255,255,0.92);
+    text-wrap: balance;
+  }
+
+  .project-role {
+    margin: 0;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    line-height: 1.45;
+  }
+
+  .project-summary {
+    margin: 0;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .card-footer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .card-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    padding: 7px 15px;
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.72);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+    transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  }
+
+  .card-open-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.28);
+    color: #fff;
+  }
+
+  .card-open-btn svg {
+    transition: transform 250ms ease;
+  }
+
+  .project-card:hover .card-open-btn svg {
+    transform: translateX(3px);
+  }
+
+  .card-tools-preview {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .tool-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--card-accent, rgba(255,255,255,0.3));
+    opacity: 0.45;
+  }
+
+  /* ── PROJECT POPUP MODAL ──────────────────────────────── */
+  .project-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: rgba(0,0,0,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    pointer-events: none;
+    transition: background 350ms ease;
+  }
+
+  .project-modal-backdrop.open {
+    background: rgba(0,0,0,0.82);
+    pointer-events: auto;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .project-modal {
+    position: relative;
+    width: min(860px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 24px;
+    background: var(--modal-shader, linear-gradient(148deg, #0c0c0e, #111));
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow:
+      0 40px 100px rgba(0,0,0,0.7),
+      0 1px 0 rgba(255,255,255,0.08) inset;
+    transform: translateY(40px) scale(0.96);
+    opacity: 0;
+    transition:
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 350ms ease;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+  }
+
+  .project-modal-backdrop.open .project-modal {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .modal-shader {
+    display: none;
+  }
+
+  .modal-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+  }
+
+  .modal-accent-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--modal-accent, #fff), transparent 70%);
+    border-radius: 24px 24px 0 0;
+    z-index: 2;
+  }
+
+  .modal-glow {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--modal-glow, rgba(255,255,255,0.06)) 0%, transparent 65%);
+    top: -80px;
+    right: -80px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .modal-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 32px 36px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    gap: 20px;
+  }
+
+  .modal-header-text { flex: 1; }
+
+  .modal-category-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    border: 1px solid var(--modal-accent, rgba(255,255,255,0.2));
+    border-radius: 999px;
+    padding: 0 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--modal-accent, rgba(255,255,255,0.6));
+    background: rgba(255,255,255,0.04);
+    margin-bottom: 14px;
+  }
+
+  .modal-title {
+    margin: 0 0 8px;
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: rgba(255,255,255,0.95);
+    text-wrap: balance;
+  }
+
+  .modal-role-period {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .modal-close {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.6);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-close:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  /* Image strip in modal */
+  .modal-images {
+    padding: 24px 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .modal-images-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+    margin-bottom: 14px;
+  }
+
+  .modal-image-strip {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .modal-image-strip::-webkit-scrollbar { display: none; }
+
+  .modal-img-card {
+    flex-shrink: 0;
+    width: 180px;
+    height: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--card-shader, #111);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 38px;
+    color: var(--modal-accent, rgba(255,255,255,0.15));
+    font-style: italic;
+    opacity: 0.55;
+    cursor: pointer;
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+
+  .modal-img-card:hover {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  .modal-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* Body sections */
+  .modal-body {
+    padding: 28px 36px;
+    display: grid;
+    gap: 28px;
+  }
+
+  .modal-section-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+    margin-bottom: 10px;
+  }
+
+  .modal-summary {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .modal-highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+
+  .modal-highlights li {
+    display: flex;
+    gap: 12px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .modal-highlights li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--modal-accent, rgba(255,255,255,0.4));
+    margin-top: 8px;
+  }
+
+  .modal-details {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 24px;
+    counter-reset: detail;
+  }
+
+  .modal-details li {
+    position: relative;
+    min-height: 78px;
+    border-top: 1px solid rgba(255,255,255,0.09);
+    padding: 13px 0 13px 34px;
+    color: rgba(255,255,255,0.58);
+    font-size: 12.5px;
+    line-height: 1.58;
+    counter-increment: detail;
+  }
+
+  .modal-details li::before {
+    content: counter(detail, decimal-leading-zero);
+    position: absolute;
+    top: 14px;
+    left: 0;
+    color: var(--modal-accent, rgba(255,255,255,0.45));
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1;
+  }
+
+  .modal-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .modal-tool-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    padding: 0 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(4px);
+    transition: background 180ms, color 180ms, border-color 180ms;
+  }
+
+  .modal-tool-chip:hover {
+    background: rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .modal-footer {
+    padding: 20px 36px 32px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .modal-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    border-radius: 999px;
+    padding: 0 22px;
+    background: var(--modal-accent, rgba(255,255,255,0.85));
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .modal-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+  .modal-cta.disabled { opacity: 0.3; pointer-events: none; }
+
+  .modal-cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    border-radius: 999px;
+    padding: 0 22px;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+    transition: background 180ms, border-color 180ms, color 180ms;
+  }
+
+  .modal-cta-ghost:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+  }
+
+  @media (max-width: 1100px) {
+    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .modal-header, .modal-images, .modal-body, .modal-footer { padding-left: 28px; padding-right: 28px; }
+  }
+
+  @media (max-width: 720px) {
+    .project-grid { grid-template-columns: 1fr; gap: 18px; }
+    .project-card { min-height: 380px; }
+    .modal-header, .modal-images, .modal-body, .modal-footer { padding-left: 20px; padding-right: 20px; }
+    .modal-title { font-size: 20px; }
+    .project-modal-backdrop { padding: 12px; }
+    .project-modal { border-radius: 18px; }
+  }
+
+  .skills {
+    padding: 20px 0 110px;
+    background: var(--white);
+  }
+
+  .capability-board {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(34px, 6vw, 96px);
+    border-top: 1px solid var(--rule);
+    padding-top: 44px;
+  }
+
+  .capability-copy p {
+    margin: 0;
+    max-width: 540px;
+    color: var(--ink-72);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  .skill-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: start;
+  }
+
+  .skill-cloud span {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0 13px;
+    font-size: 12px;
+    color: var(--ink-72);
+    background: rgba(255,255,255,0.72);
+  }
+
+  /* ── References ───────────────────────────────────────── */
+  .references {
+    padding: 96px 0 112px;
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+  }
+
+  .references-head {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(340px, 1.18fr);
+    gap: clamp(40px, 7vw, 112px);
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .references-head p {
+    margin: 0;
+    max-width: 720px;
+    color: var(--ink-72);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .reference-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--ink-40);
+  }
+
+  .reference-item {
+    min-height: 250px;
+    padding: 28px 34px 30px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .reference-item:nth-child(odd) {
+    padding-right: 44px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .reference-item:nth-child(even) {
+    padding-left: 44px;
+  }
+
+  .reference-type {
+    display: block;
+    margin-bottom: 34px;
+    color: var(--ink-55);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .reference-item h3 {
+    margin: 0 0 7px;
+    font-family: "Noto Serif", Georgia, "Times New Roman", serif;
+    font-size: clamp(30px, 3vw, 46px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    font-kerning: normal;
+    font-feature-settings: "kern" 1;
+  }
+
+  .reference-role {
+    margin: 0 0 22px;
+    color: var(--ink-72);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.55;
+  }
+
+  .reference-relationship {
+    margin: 0;
+    max-width: 560px;
+    color: var(--ink-65);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .reference-privacy {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: center;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .reference-privacy p {
+    margin: 0;
+    max-width: 760px;
+    color: var(--ink-55);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .reference-request {
+    flex-shrink: 0;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--black);
+    border-radius: 999px;
+    padding: 0 17px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .reference-request:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .contact-strip {
+    padding: 84px 0;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 44px;
+    align-items: end;
+  }
+
+  .contact-strip .section-kicker,
+  .contact-strip .lead {
+    color: rgba(255,255,255,0.70);
+  }
+
+  .contact-strip h2 {
+    margin: 0 0 22px;
+    font-family: var(--font-serif);
+    font-size: clamp(54px, 7.8vw, 112px);
+    font-weight: 400;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .ghost-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.24);
+    border-radius: 999px;
+    padding: 0 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    transition: background 180ms ease, border-color 180ms ease;
+  }
+
+  .ghost-link:hover {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.45);
+  }
+
+  .footer {
+    background: var(--parchment);
+    color: var(--black);
+    overflow: hidden;
+  }
+
+  .footer-inner {
+    width: min(var(--max), calc(100% - 64px));
+    margin: 0 auto;
+    padding: 48px 0;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+
+  .footer h3 {
+    margin: 0 0 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: var(--ink-55);
+  }
+
+  .footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+
+  .footer a,
+  .footer p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(0,0,0,0.85);
+  }
+
+  .footer a:hover { text-decoration: underline; }
+
+  .footer-bottom {
+    border-top: 1px solid var(--ink-15);
+    padding-top: 32px;
+    display: flex;
+    gap: 22px;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--ink-55);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(20px);
+    transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+
+  .reveal-up.in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  @media (max-width: 1100px) {
+    .metric-grid { grid-template-columns: repeat(3, 1fr); }
+    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .journey-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .work-head,
+    .journey-head,
+    .references-head,
+    .capability-board,
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-links { justify-content: flex-start; }
+  }
+
+  @media (max-width: 900px) {
+    .site-header { padding: 18px 24px; }
+    .portfolio-logo {
+      top: 104px;
+      left: 32px;
+    }
+    .top-right-info {
+      top: 120px;
+      right: 6vw;
+    }
+    .bottom-left-info {
+      left: 32px;
+      bottom: 44px;
+    }
+    .bottom-right-cta {
+      right: 32px;
+      bottom: 44px;
+      width: min(260px, calc(100vw - 64px));
+    }
+    .orbit-label {
+      width: min(300px, 52vw);
+      left: 96%;
+    }
+    .stay-inner {
+      padding: 58px 0 68px;
+      align-items: flex-end;
+    }
+    .stay-heading,
+    .bio-copy {
+      width: min(600px, 58vw);
+    }
+    .section-inner,
+    .footer-inner {
+      width: min(var(--max), calc(100% - 48px));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .brand-mark span { display: none; }
+    .header-cta { padding-left: 15px; letter-spacing: 0.16em; }
+    .header-cta .wide { display: none; }
+    .header-cta .narrow { display: inline; }
+    .portfolio-logo {
+      top: 92px;
+      left: 24px;
+    }
+    .portfolio-logo .name { font-size: 42px; }
+    .portfolio-logo .sub { font-size: 31px; }
+    .center-brand { top: 45%; }
+    .top-right-info {
+      top: auto;
+      right: 24px;
+      bottom: 188px;
+    }
+    .bottom-right-cta {
+      right: 24px;
+      bottom: 32px;
+      width: calc(100vw - 48px);
+    }
+    .bottom-left-info { display: none; }
+    .cta-copy {
+      max-width: 250px;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+    .pill-button {
+      min-height: 44px;
+      padding: 0 20px;
+      font-size: 11px;
+    }
+    .round-button {
+      width: 44px;
+      height: 44px;
+    }
+    .orbit-wrap { width: 112vw; }
+    .orbit-label {
+      left: 80%;
+      width: 210px;
+    }
+    .orbit-label strong { font-size: 26px; }
+    .orbit-label span { display: none; }
+    .metric-grid,
+    .project-grid,
+    .reference-grid,
+    .footer-grid { grid-template-columns: 1fr; }
+    .metric { min-height: 138px; }
+    .project-card { min-height: auto; }
+    .journey { padding: 78px 0 86px; }
+    .journey-head { margin-bottom: 42px; }
+    .journey-map {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 34px;
+      padding: 0;
+    }
+    .journey-scroll { overflow: visible; padding-bottom: 0; }
+    .journey-node,
+    .journey-node:nth-child(odd),
+    .journey-node:nth-child(even) {
+      min-height: 0;
+      display: block;
+      padding: 0;
+    }
+    .journey-node::before {
+      top: -6px;
+      left: 0;
+    }
+    .journey-node::after { display: block; }
+    .journey-card { min-height: 0; padding: 22px 0 0; border-top: 0; }
+    .journey-year { font-size: 42px; }
+    .modal-details { grid-template-columns: 1fr; }
+    .reference-item,
+    .reference-item:nth-child(odd),
+    .reference-item:nth-child(even) {
+      min-height: 0;
+      padding: 26px 0 30px;
+      border-right: 0;
+    }
+    .reference-privacy {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .contact-form {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+    .text-button {
+      justify-self: start;
+      min-height: 38px;
+    }
+    .stay {
+      min-height: auto;
+      background: #fff;
+    }
+    .stay::after {
+      background: linear-gradient(180deg, rgba(255,255,255,0.97) 0 66%, rgba(255,255,255,0.82) 82%, rgba(255,255,255,0.56) 100%);
+    }
+    .stay-bg {
+      object-position: 36% bottom;
+      opacity: 0.52;
+    }
+    .stay-inner {
+      min-height: auto;
+      align-items: stretch;
+      padding: 58px 0 84px;
+    }
+    .stay-heading,
+    .bio-copy {
+      width: 100%;
+      max-width: 620px;
+    }
+    .display-title {
+      max-width: 7ch;
+      font-size: clamp(54px, 17vw, 78px);
+    }
+    .display-sub {
+      font-size: clamp(28px, 9vw, 40px);
+    }
+    .bio-copy {
+      padding-top: 24px;
+    }
+    .footer-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <section class="stage" id="top" aria-label="Cinematic portfolio introduction">
+    <div class="hero">
+      <video class="hero-video" autoplay loop muted playsinline poster="mqj8q8gq-Elements_moving_naturally__grass__202606181454.mp4.mp4">
+        <source src="mqj8q8gq-Elements_moving_naturally__grass__202606181454.mp4.mp4" type="video/mp4" />
+      </video>
+
+      <header class="site-header hero-chrome" aria-label="Primary">
+        <a class="brand-mark" href="#top" aria-label="Jayson portfolio home">
+          <svg viewBox="0 0 84 60" fill="none" aria-hidden="true">
+            <g fill="currentColor">
+              <path d="M42 22 C30 22 19 16 4 12 C9 26 18 33 30 33 L42 33 Z" />
+              <path d="M42 22 C54 22 65 16 80 12 C75 26 66 33 54 33 L42 33 Z" />
+              <path d="M33 25 C36 29 39 31 42 31 C45 31 48 29 51 25 L42 21 Z" opacity="0.68" />
+            </g>
+            <text x="42" y="53" text-anchor="middle" font-family="Instrument Serif, serif" font-size="18" font-style="italic" fill="currentColor">JP</text>
+          </svg>
+          <span>Jayson</span>
+        </a>
+        <a class="header-cta" href="#work">
+          <span class="wide">View the collection</span><span class="narrow">Work</span>
+          <span class="cap" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </span>
+        </a>
+      </header>
+
+      <div class="portfolio-logo hero-chrome" aria-hidden="true">
+        <div class="name"><span>Pham The Quan</span><span class="italic">(Jayson)</span></div>
+        <span class="sub">Portfolio</span>
+      </div>
+
+      <div class="scroll-hint hero-chrome" aria-hidden="true">
+        <div class="scroll-box">
+          <svg class="scroll-arrow" width="20" height="34" viewBox="0 0 20 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 4 V28 M3 21 L10 28 L17 21" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="reveal-layer" id="reveal-layer" aria-hidden="true">
+        <div class="reveal-surface"></div>
+        <div class="reveal-inner">
+          <div class="orbit-wrap" id="orbit-wrap"></div>
+        </div>
+      </div>
+
+      <div class="hero-overlays">
+        <div class="center-brand overlay-copy">
+          <div class="line"><span>My</span><em>Portfolio</em></div>
+          <span class="sub">Jayson / Pham The Quan</span>
+        </div>
+
+        <div class="top-right-info overlay-copy">
+          <span class="num">2K26</span>
+          <span class="label">Finance<br />Venture<br />AI</span>
+        </div>
+
+        <div class="bottom-left-info overlay-copy">
+          <span class="num">0651</span>
+          <span class="label">Curated<br />Work Index</span>
+        </div>
+
+        <div class="bottom-right-cta">
+          <p class="cta-copy overlay-copy">A couture record of analysis, operations, automation, and practical execution.</p>
+          <div class="cta-row overlay-copy">
+            <a class="pill-button" href="#work">View work</a>
+            <a class="round-button" href="#work" aria-label="Jump to work">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="content">
+    <section class="stay" id="about" aria-labelledby="about-title">
+      <img
+        class="stay-bg"
+        src="mqj82vf1-ChatGPT-Image-Jun-18_-2026_-03_12_00-PM.png"
+        alt=""
+        aria-hidden="true"
+      />
+      <div class="section-inner stay-inner">
+        <div class="stay-heading reveal-up">
+          <p class="section-kicker">Portfolio maison</p>
+          <h1 class="display-title" id="about-title">Stay <em>in</em><span class="display-sub">the work</span></h1>
+        </div>
+
+        <div class="bio-copy reveal-up" style="--delay: 160ms">
+          <div class="bio-text">
+          <p>Pham The Quan, known as Jayson, a Finance student at UEH building a multidisciplinary profile across financial analysis, business and data analysis, venture/program operations, and AI-enabled workflow systems.</p>
+          <p>My work spans financial modeling, DCF valuation, WACC, Monte Carlo simulation, ESG research, portfolio management, BLOCK71 Vietnam program operations, Expara venture assignments, event boards, training playbooks, and local agentic operating systems. Across these experiences, I focus on turning complex and scattered information into clear, structured, and usable outputs that help teams make better decisions and execute more efficiently.</p>
+          <p>What makes me stand out is the combination of analytical thinking and hands-on execution. I can work with numbers, structure business information, build reports, coordinate programs, support multi-stakeholder operations, and design AI-powered workflows that reduce repetitive work. My strength is not only analyzing problems, but also organizing them into practical systems, dashboards, plans, and outputs that teams can actually use.</p>
+          <p>I am currently shaping my direction as a Business and Data Analyst, venture/program operator, and AI workspace builder, someone who connects finance, data, strategy, execution, and AI-enabled productivity to create practical value in fast-moving business environments.</p>
+          </div>
+          <form class="contact-form" id="mini-contact" novalidate>
+            <input id="interest-email" name="email" type="email" placeholder="your@email.com" aria-label="Your email" />
+            <button class="text-button" type="submit">Send note</button>
+            <button class="text-button" id="copy-email" type="button">Copy email</button>
+          </form>
+          <p class="form-note" id="form-note">Public contact: ptquan.work@gmail.com</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Portfolio snapshot">
+      <div class="section-inner">
+        <div class="metric-grid reveal-up">
+          <div class="metric"><b>2026</b><span>Final-year Finance student at UEH; CFA Level I-II-III preparation pathway at SAPP.</span></div>
+          <div class="metric"><b>4.23%</b><span>Return in two weeks on a VND 1B mock portfolio in quantitative finance work.</span></div>
+          <div class="metric"><b>3,168</b><span>Listed companies across 20 Asian countries in the ESG research dataset.</span></div>
+          <div class="metric"><b>6 mo.</b><span>Venture Analyst internship with BLOCK71 Vietnam, NUS Enterprise, Program Team.</span></div>
+          <div class="metric"><b>34</b><span>Volunteer deployment plan for NUS BLOCK71 UniVentures Gala Dinner operations.</span></div>
+          <div class="metric"><b>120,724</b><span>Volunteer scale in Clean Up Vietnam campaign context.</span></div>
+          <div class="metric"><b>1,200</b><span>Attendee concert contribution; sold out under one minute.</span></div>
+          <div class="metric"><b>2</b><span>Consolidated Expara venture projects: Assessment Hub and Project Alpha Execution Hub.</span></div>
+          <div class="metric"><b>7.0</b><span>IELTS band, including 8.0 Speaking and 7.0 Listening.</span></div>
+          <div class="metric"><b>AI</b><span>Codex, Obsidian, OpenRouter, MCP, Make, n8n, Hermes Agent, Cursor, VS Code.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey" id="journey" aria-labelledby="journey-title">
+      <div class="section-inner">
+        <div class="journey-head reveal-up">
+          <div>
+            <p class="section-kicker">Career constellation</p>
+            <h2 class="section-title" id="journey-title">The path behind the work</h2>
+          </div>
+          <p>A roadmap of how finance study, live-event leadership, venture operations, business analysis, and AI systems began to connect into one working profile. The 2029 point is a personal learning target, not a completed designation.</p>
+        </div>
+
+        <div class="journey-scroll reveal-up" style="--delay: 140ms" aria-label="Career roadmap from 2022 to 2029">
+          <div class="journey-map">
+            <article class="journey-node">
+              <div class="journey-card">
+                <span class="journey-year">2022</span>
+                <h3>Finance foundation</h3>
+                <p>Began the Finance degree at UEH, building the academic base for valuation, reporting, risk, and data analysis.</p>
+              </div>
+            </article>
+            <article class="journey-node">
+              <div class="journey-card">
+                <span class="journey-year">2023</span>
+                <h3>Leadership through live work</h3>
+                <p>Moved into UEHG Guitar Club leadership, musician coordination, technical planning, and event execution.</p>
+              </div>
+            </article>
+            <article class="journey-node">
+              <div class="journey-card">
+                <span class="journey-year">2024</span>
+                <h3>Models meet operations</h3>
+                <p>Led finance projects while supporting music shows, charity programs, technical scripts, and large-scale campaign work.</p>
+              </div>
+            </article>
+            <article class="journey-node">
+              <div class="journey-card">
+                <span class="journey-year">2025</span>
+                <h3>Venture ecosystem entry</h3>
+                <p>Started the BLOCK71 Vietnam Venture Analyst internship in November, shifting into startup programs and ecosystem operations.</p>
+              </div>
+            </article>
+            <article class="journey-node">
+              <div class="journey-card">
+                <span class="journey-year">2026</span>
+                <h3>Cross-functional execution</h3>
+                <p>Combined BLOCK71, Vietcap, Expara, QuickFish, Steersman, AI training, event boards, dashboards, and agent-workspace projects.</p>
+              </div>
+            </article>
+            <article class="journey-node">
+              <div class="journey-card">
+                <span class="journey-year">2029</span>
+                <h3>Finance × technology target</h3>
+                <p>Develop a finance-and-technology profile that combines AI, software engineering skills, financial analysis, and continued progress through the CFA preparation pathway.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="journey-legend reveal-up" style="--delay: 220ms" aria-label="Roadmap themes">
+          <span>Finance & data</span>
+          <span>Leadership & events</span>
+          <span>Venture & programs</span>
+          <span>AI & automation</span>
+          <span>Business execution</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="section-inner">
+        <div class="work-head reveal-up">
+          <div>
+            <p class="section-kicker">Selected dossier</p>
+            <h2 class="section-title" id="work-title">The portfolio collection</h2>
+          </div>
+          <p>Filtered project cards pull from the content dossier and keep images as couture placeholders until real assets are supplied. Access links are enabled only where the source file provides them.</p>
+        </div>
+
+        <div class="filter-bar reveal-up" role="list" aria-label="Project filters" style="--delay: 120ms">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="financial">Financial</button>
+          <button class="filter-button" type="button" data-filter="venture">Venture</button>
+          <button class="filter-button" type="button" data-filter="ai">AI systems</button>
+          <button class="filter-button" type="button" data-filter="leadership">Leadership</button>
+          <button class="filter-button" type="button" data-filter="current">Current</button>
+          <button class="filter-button" type="button" data-filter="creative">Creative</button>
+        </div>
+
+        <div class="project-grid reveal-up" id="project-grid" style="--delay: 180ms" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+      <div class="section-inner capability-board reveal-up">
+        <div class="capability-copy">
+          <p class="section-kicker">Capability layer</p>
+          <h2 class="section-title" id="skills-title">Analysis, operations, automation.</h2>
+          <p>Professional strengths combine financial modeling, data analysis, venture screening, program operations, stakeholder coordination, event documentation, dashboarding, and AI-assisted system building.</p>
+        </div>
+        <div class="skill-cloud" aria-label="Skill tags">
+          <span>DCF valuation</span><span>WACC</span><span>Monte Carlo simulation</span><span>Portfolio optimization</span><span>ESG data processing</span><span>Power BI</span><span>Stata</span><span>Excel Solver</span><span>Venture screening</span><span>Program operations</span><span>Event boards</span><span>Stakeholder coordination</span><span>AI workspace design</span><span>Obsidian vaults</span><span>MCP workflows</span><span>Make / n8n</span><span>Frontend prototyping</span><span>Markdown reporting</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="references" id="references" aria-labelledby="references-title">
+      <div class="section-inner">
+        <div class="references-head reveal-up">
+          <div>
+            <p class="section-kicker">Professional references</p>
+            <h2 class="section-title" id="references-title">People who have seen the work.</h2>
+          </div>
+          <p>References from venture/program operations and technical workflow validation. Personal phone numbers and private email addresses are intentionally withheld from the public portfolio and can be shared with recruiters on request.</p>
+        </div>
+
+        <div class="reference-grid reveal-up" style="--delay: 140ms">
+          <article class="reference-item">
+            <span class="reference-type">Professional · NUS Enterprise / BLOCK71</span>
+            <h3>Mr. Edward Lim</h3>
+            <p class="reference-role">Country Director (Vietnam) · NUS Enterprise / BLOCK71, National University of Singapore</p>
+            <p class="reference-relationship">Professional reference connected to BLOCK71 Vietnam, NUS Enterprise, and UniVentures program operations.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-type">Professional · AI workflow validation</span>
+            <h3>Nguyễn Phước Anh Tuấn</h3>
+            <p class="reference-role">Mobile Engineer · MoMo</p>
+            <p class="reference-relationship">Supported review, training, and validation for AI, automation, website, dashboard, and product-building skills.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-type">Professional · AI workflow validation</span>
+            <h3>Trần Đình Nhật Trí</h3>
+            <p class="reference-role">Software Engineer · Axon</p>
+            <p class="reference-relationship">Supported review, training, and validation for AI, automation, website, dashboard, and product-building skills.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-type">Professional · Software engineering</span>
+            <h3>Nguyễn Trần Việt Anh</h3>
+            <p class="reference-role">Software Engineer · Axon</p>
+            <p class="reference-relationship">Supported review, training, and validation for AI, automation, website, dashboard, and product-building skills.</p>
+          </article>
+        </div>
+
+        <div class="reference-privacy reveal-up" style="--delay: 220ms">
+          <p>Reference contact details are maintained in the private recruiter/CV version of the portfolio. Please include your name, company, and role context when requesting them.</p>
+          <a class="reference-request" href="mailto:ptquan.work@gmail.com?subject=Reference%20contact%20request">Request contact details</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-strip" id="contact" aria-labelledby="contact-title">
+      <div class="section-inner contact-grid reveal-up">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2 id="contact-title">For roles that need structured thinking and visible execution.</h2>
+          <p class="lead">Let's connect if you need someone who can combine financial thinking, structured analysis, program execution, AI-enabled workflow building, and a proactive learning mindset.</p>
+        </div>
+        <div class="contact-links" aria-label="Contact links">
+          <a class="ghost-link" href="mailto:ptquan.work@gmail.com">Email</a>
+          <a class="ghost-link" href="tel:0906853825">Phone</a>
+          <a class="ghost-link" href="https://www.linkedin.com/in/ptquan2004/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="ghost-link" href="https://www.instagram.com/jayson_pham_/" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PROJECT MODAL -->
+  <div class="project-modal-backdrop" id="project-modal-backdrop" role="dialog" aria-modal="true" aria-label="Project details" aria-hidden="true">
+    <div class="project-modal" id="project-modal">
+      <div class="modal-shader" id="modal-shader"></div>
+      <div class="modal-noise"></div>
+      <div class="modal-accent-bar" id="modal-accent-bar"></div>
+      <div class="modal-glow" id="modal-glow"></div>
+      <div class="modal-inner" id="modal-inner">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" aria-label="Footer">
+    <div class="footer-inner">
+      <div class="footer-grid reveal-up">
+        <div>
+          <h3>Discover</h3>
+          <ul>
+            <li><a href="#about">About / resume</a></li>
+            <li><a href="#journey">Career roadmap</a></li>
+            <li><a href="#work">Financial projects</a></li>
+            <li><a href="#work">Leading projects</a></li>
+            <li><a href="#skills">Other skills</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Studio</h3>
+          <ul>
+            <li><a href="#work">Venture operations</a></li>
+            <li><a href="#work">AI systems</a></li>
+            <li><a href="#work">Portfolio prototypes</a></li>
+            <li><a href="#references">References</a></li>
+            <li><a href="#contact">Recruiter contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:ptquan.work@gmail.com">ptquan.work@gmail.com</a></li>
+            <li><a href="tel:0906853825">0906853825</a></li>
+            <li><a href="https://www.facebook.com/jayson.pham.568" target="_blank" rel="noreferrer">Facebook</a></li>
+            <li><a href="https://www.linkedin.com/in/ptquan2004/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Newsletter</h3>
+          <p>Portfolio updates, project releases, and new AI workflow artifacts when they are ready.</p>
+        </div>
+      </div>
+      <div class="footer-bottom reveal-up" style="--delay: 180ms">
+        <div>© 2026 Jayson / Pham The Quan</div>
+        <div>Instagram · LinkedIn · Facebook</div>
+        <div>EN · VN</div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(() => {
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const track = (p, stops, values) => {
+    if (p <= stops[0]) return values[0];
+    for (let i = 1; i < stops.length; i += 1) {
+      if (p <= stops[i]) {
+        const t = (p - stops[i - 1]) / (stops[i] - stops[i - 1]);
+        return values[i - 1] + (values[i] - values[i - 1]) * t;
+      }
+    }
+    return values[values.length - 1];
+  };
+
+  const stage = document.querySelector(".stage");
+  const revealLayer = document.getElementById("reveal-layer");
+  const orbitWrap = document.getElementById("orbit-wrap");
+  const heroChrome = Array.from(document.querySelectorAll(".hero-chrome"));
+  const overlayCopies = Array.from(document.querySelectorAll(".overlay-copy"));
+  const centerBrand = document.querySelector(".center-brand");
+
+  const orbitImages = [
+    {
+      src: "mqj39u3l-Financial-Analysis.png",
+      title: "Financial Analysis",
+      desc: "Capital budgeting, DCF valuation, WACC, Monte Carlo simulation, portfolio optimization, and investment advisory work."
+    },
+    {
+      src: "mqj3a8xp-Venture-Operation.png",
+      title: "Venture Operations",
+      desc: "BLOCK71 Vietnam / NUS Enterprise program operations, UniVentures, Demo Day support, and ecosystem coordination."
+    },
+    {
+      src: "mqj3alli-AI-workspace.png",
+      title: "AI Workspace",
+      desc: "Agent workspaces, Obsidian intelligence systems, markdown reporting, automation workflows, and local agentic OS prototypes."
+    },
+    {
+      src: "mqj3b5wx-Program-Execution.png",
+      title: "Program Execution",
+      desc: "Event boards, volunteer deployment plans, protocol support, technical scripts, and recruiter-readable operations documentation."
+    },
+    {
+      src: "mqj3997s-Research-Signal.png",
+      title: "Research Signals",
+      desc: "ESG datasets, econometrics, startup screening, market thesis writing, and decision-support summaries."
+    },
+    {
+      src: "mqj3iktf-Creative-System.png",
+      title: "Creative Systems",
+      desc: "Sound operation, photography, portfolio building, event storytelling, and disciplined visual presentation."
+    }
+  ];
+
+  const orbitItems = orbitImages.map((entry, index) => {
+    const item = document.createElement("div");
+    item.className = "orbit-item";
+    item.innerHTML = `
+      <div class="orbit-item-inner">
+        <img src="${entry.src}" alt="" draggable="false" />
+        <div class="orbit-label">
+          <strong>${entry.title}</strong>
+          <span>${entry.desc}</span>
+        </div>
+      </div>
+    `;
+    item.dataset.index = String(index);
+    orbitWrap.appendChild(item);
+    return item;
+  });
+
+  let progress = 0;
+  let prevScrollProgress = 0;
+  let lastTime = performance.now();
+  let latestP = 0;
+
+  function getScrollProgress() {
+    const rect = stage.getBoundingClientRect();
+    const denom = Math.max(1, rect.height - window.innerHeight);
+    return clamp(-rect.top / denom, 0, 1);
+  }
+
+  function targetScale(rawPosition, focusPoint = 50) {
+    let dist = Math.abs(rawPosition - focusPoint);
+    if (dist > 50) dist = 100 - dist;
+    if (dist < 20) {
+      const ratio = dist / 20;
+      const cosCurve = (Math.cos(ratio * Math.PI) + 1) / 2;
+      return 0.4 + cosCurve * 0.6;
+    }
+    return 0.4;
+  }
+
+  function paintHero(time) {
+    const p = getScrollProgress();
+    latestP = p;
+    const dt = Math.max(0, time - lastTime);
+    lastTime = time;
+
+    const chromeOpacity = track(p, [0, 0.03, 0.08], [1, 1, 0]);
+    heroChrome.forEach((node) => { node.style.opacity = chromeOpacity.toFixed(3); });
+
+    const radius = track(p, [0, 0.08, 1], [0, 55, 55]);
+    revealLayer.style.clipPath = `ellipse(${radius}% ${radius}% at 50% 50%)`;
+
+    const textOpacity = track(p, [0.03, 0.08, 0.15, 0.22, 0.90, 0.98, 1], [0, 1, 1, 0, 0, 1, 1]);
+    const blur = track(p, [0.03, 0.08, 0.15, 0.22, 0.90, 0.98, 1], [15, 0, 0, 15, 15, 0, 0]);
+    const y = track(p, [0.03, 0.08, 0.15, 0.22, 0.90, 0.98, 1], [20, 0, 0, 20, 20, 0, 0]);
+    overlayCopies.forEach((node) => {
+      node.style.opacity = textOpacity.toFixed(3);
+      node.style.filter = `blur(${blur}px)`;
+      if (node !== centerBrand) node.style.transform = `translateY(${y}px)`;
+    });
+
+    const itemSize = track(p, [0.15, 0.25, 0.85, 0.95, 1], [80, 360, 360, 80, 80]);
+    const rx = track(p, [0.15, 0.25, 0.85, 0.95, 1], [330, 650, 650, 330, 330]);
+    const ry = track(p, [0.15, 0.25, 0.85, 0.95, 1], [140, 650, 650, 140, 140]);
+    const rotation = track(p, [0.15, 0.25, 0.85, 0.95, 1], [-15, 0, 0, -15, -15]);
+    const translateX = track(p, [0.15, 0.25, 0.85, 0.95, 1], [0, -850, -850, 0, 0]);
+    const focusStrength = track(p, [0.15, 0.25, 0.85, 0.95, 1], [0, 1, 1, 0, 0]);
+
+    const scrollDelta = p - prevScrollProgress;
+    prevScrollProgress = p;
+    if (p > 0.15 && p < 0.85) progress += scrollDelta * 200;
+    else progress += (dt / 1000) * 2.5;
+
+    const rect = orbitWrap.getBoundingClientRect();
+    const scale = rect.width / 800;
+    const center = rect.width / 2;
+    const size = itemSize * scale;
+    const scaledRx = rx * scale;
+    const scaledRy = ry * scale;
+    const tx = translateX * scale;
+    const theta = rotation * Math.PI / 180;
+    const cosTheta = Math.cos(theta);
+    const sinTheta = Math.sin(theta);
+
+    orbitItems.forEach((item, index) => {
+      const raw = ((progress + (index / orbitItems.length) * 100) % 100 + 100) % 100;
+      const angle = Math.PI + (raw / 100) * Math.PI * 2;
+      const ex = Math.cos(angle) * scaledRx;
+      const ey = Math.sin(angle) * scaledRy;
+      const rotatedX = ex * cosTheta - ey * sinTheta;
+      const rotatedY = ex * sinTheta + ey * cosTheta;
+      const focusScale = targetScale(raw);
+      const finalScale = 1 - focusStrength * (1 - focusScale);
+      const x = center + rotatedX + tx;
+      const yPos = center + rotatedY;
+      item.style.width = `${size}px`;
+      item.style.height = `${size}px`;
+      item.style.zIndex = String(Math.round(finalScale * 100));
+      item.style.transform = `translate(${x}px, ${yPos}px) translate(-50%, -50%) scale(${finalScale})`;
+      const label = item.querySelector(".orbit-label");
+      if (label) label.style.opacity = String(focusStrength * clamp((focusScale - 0.74) / 0.26, 0, 1));
+    });
+
+    requestAnimationFrame(paintHero);
+  }
+
+  requestAnimationFrame(paintHero);
+
+  const projects = [
+    {
+      category: "financial",
+      title: "Capital Budgeting & Risk Analysis - REE Corporation",
+      role: "Team Leader of a 5-member team",
+      period: "2024 - 2025",
+      summary: "Led a capital budgeting case for REE, building forecasts, WACC, NPV, IRR, PI, and Monte Carlo risk analysis.",
+      highlights: ["Organized project inputs and assumptions.", "Built yearly cash flow forecasts and investment feasibility outputs.", "Used scenario analysis and Crystal Ball simulation for risk sensitivity."],
+      details: [
+        "Reviewed and organized project information so the team worked from consistent operational and market assumptions.",
+        "Calculated initial project costs, yearly cash flows, tax impacts, and the weighted average cost of capital.",
+        "Evaluated feasibility through NPV, IRR, and profitability index outputs rather than relying on one decision metric.",
+        "Used scenario analysis and Crystal Ball Monte Carlo simulation to test uncertainty and sensitivity.",
+        "Consolidated the five-member team's work into one report and presented actionable recommendations to faculty."
+      ],
+      tools: ["Excel", "WACC", "NPV / IRR / PI", "Crystal Ball"],
+      access: "https://drive.google.com/drive/folders/1313zQLWABcJkDvRpL6VzKDRZNNzkJybw",
+      label: "Access file"
+    },
+    {
+      category: "financial",
+      title: "Corporate Valuation - Mobile World Group (MWG)",
+      role: "Team Leader of a 5-member team",
+      period: "2024 - 2025",
+      summary: "Conducted intrinsic valuation for MWG using DCF, WACC calculation, sensitivity analysis, and financial forecasting.",
+      highlights: ["Designed and consolidated the valuation report.", "Forecasted revenue, margins, ROE, and ROA from historical data and industry context.", "Prepared investment insights with sensitivity analysis."],
+      details: [
+        "Collected and verified financial and market data before building the valuation model.",
+        "Forecasted revenue, profit margins, ROE, and ROA using historical performance and industry context.",
+        "Applied discounted cash flow valuation while considering macroeconomic, microeconomic, and management strategy factors.",
+        "Calculated WACC and tested the model through sensitivity and scenario analysis.",
+        "Coordinated timelines, aligned member outputs, and prepared the final valuation report with investment insights."
+      ],
+      tools: ["DCF", "Financial modeling", "WACC", "Excel"],
+      access: "https://drive.google.com/drive/folders/1f2LT3baia5qiIATgmhQ71-53E6VI-9Dr?usp=drive_link",
+      label: "Open report"
+    },
+    {
+      category: "financial",
+      title: "Quantitative Finance & Portfolio Management",
+      role: "Team Leader of a 10-member team",
+      period: "2024 - 2025",
+      summary: "Built a VND 1B mock portfolio and delivered a 4.23% return in two weeks through portfolio management work.",
+      highlights: ["Managed team workflow across a larger financial project group.", "Applied portfolio selection and investment reasoning.", "Preserved performance outcome from the source dossier."],
+      details: [
+        "Led a ten-member team through security selection, allocation logic, and portfolio monitoring.",
+        "Applied Modern Portfolio Theory and Excel Solver to compare risk-return combinations.",
+        "Used market and company analysis to translate research into portfolio decisions.",
+        "Tracked a VND 1B mock portfolio and recorded a 4.23% return over two weeks.",
+        "Combined model outputs with practical investment reasoning and team review before presenting results."
+      ],
+      tools: ["Excel Solver", "Portfolio management", "Market analysis"],
+      access: "https://drive.google.com/drive/folders/1RQvAIqC7mZV9ISsxz_6EHaKeKAyOcacn",
+      label: "Access file"
+    },
+    {
+      category: "financial",
+      title: "ESG & Financial Performance Study",
+      role: "Research Contributor",
+      period: "UEH Young Researchers Award",
+      summary: "Worked with an ESG dataset of 3,168 listed companies across 20 Asian countries to study financial performance relationships.",
+      highlights: ["Processed ESG and listed-company data.", "Supported research framing and analysis.", "Preserved the Young Researcher context without overstating credential status."],
+      details: [
+        "Worked with a research dataset covering 3,168 listed companies across 20 Asian countries.",
+        "Supported data cleaning, variable structuring, and the framing of ESG and financial-performance relationships.",
+        "Used Stata-oriented research workflows to prepare and examine listed-company information.",
+        "Contributed to literature review, methodology discussion, and interpretation of analytical outputs.",
+        "Presented the work as a research contribution within the UEH Young Researchers context, not as a separate professional credential."
+      ],
+      tools: ["ESG data", "Research", "Stata", "Reporting"],
+      access: "https://drive.google.com/drive/folders/1rQdUXyRywAiMsJnEgCcWrTudTWYCCp5u?usp=drive_link",
+      label: "Access file"
+    },
+    {
+      category: "venture",
+      title: "BLOCK71 Vietnam - Venture Analyst Intern",
+      role: "Venture Analyst Intern / Program Operations Support",
+      period: "Nov 2025 - Jun 2026",
+      summary: "Supported BLOCK71 Vietnam under NUS Enterprise across UniVentures, Demo Day, Gala operations, meetings, documentation, and AI training assets.",
+      highlights: ["Worked with startup ecosystem stakeholders and program documentation.", "Supported event boards, networking sessions, and review/application materials.", "Built exposure across venture analysis and program operations."],
+      details: [
+        "Supported UniVentures, Demo Day, ELab collaboration, networking sessions, meetings, and program-related classes.",
+        "Built and maintained trackers for tasks, volunteers, vendors, MCs, performers, and internal team master sheets.",
+        "Prepared runsheets, award-flow logic, seating and guest-flow materials, slides, LED scripts, recap assets, and 3D maps.",
+        "Supported VIP and protocol logistics including schedules, fast-track arrangements, transfers, parking, and passport files.",
+        "Researched markets, venues, partners, transportation, services, and company backgrounds for team decisions.",
+        "Proposed operating improvements such as a yearly roadmap, master timeline, task breakdown structure, and RACI matrix."
+      ],
+      tools: ["Program ops", "Venture support", "Documentation", "Stakeholder coordination"],
+      access: "",
+      label: "To be added"
+    },
+    {
+      category: "venture",
+      title: "NUS BLOCK71 UniVentures Gala Dinner",
+      role: "Venture Analyst Intern / Program Operations Support",
+      period: "Pullman Saigon Centre",
+      summary: "Supported UniVentures Gala operations including a 34-volunteer deployment plan and a 3D venue layout for Pullman Saigon Centre.",
+      highlights: ["Prepared operations planning and role deployment logic.", "Mapped event flow and stakeholder needs.", "Linked the 3D venue layout for event planning context."],
+      details: [
+        "Supported the full operating program from morning load-in and technical setup through networking dinner, teardown, and post-mortem notes.",
+        "Built a 34-volunteer deployment plan across registration, VIP support, elevators, reception, backstage, room, and booth support.",
+        "Created a 3D venue layout to visualize the Pullman Saigon Centre setup, movement paths, and operational zones.",
+        "Contributed to registration guidance, seating review, award sequence, Top 10 stage flow, and presenter coordination.",
+        "Tracked vendors, performers, MCs, volunteers, and internal tasks across the event preparation cycle.",
+        "Supported a stakeholder environment spanning government, universities, investors, corporates, media, founders, and community partners."
+      ],
+      tools: ["Operations plan", "3D layout", "Volunteer deployment"],
+      access: "https://share.archisketch.com/ZtEjFiKC205E05992E1496D",
+      label: "View layout"
+    },
+    {
+      category: "ai",
+      title: "Expara Program & Investment Analyst Assessment Hub",
+      role: "Program & Investment Analyst Candidate",
+      period: "May 2026",
+      summary: "Consolidated Expara assessment work into an execution hub covering investment screening, market thesis, and venture services program design.",
+      highlights: ["Grouped Kamereo, B2B AgriFood-Tech, and WorkForce 2.0 details under one hub.", "Used 4Ts and Hamilton Helmer's 7 Powers for Kamereo screening.", "Produced diligence questions and proceed-to-due-diligence reasoning."],
+      details: [
+        "Consolidated four assessment dimensions: startup evaluation, Southeast Asia market thesis, venture-services program design, and analyst operating style.",
+        "Screened Kamereo through Team, TAM, Tech, and Traction, then added Hamilton Helmer's 7 Powers to examine defensibility.",
+        "Developed a B2B AgriFood-Tech and climate-resiliency thesis around traceability, Scope 3 data, embedded finance, and fragmented supply chains.",
+        "Designed WorkForce 2.0 as a 100-day human-in-the-loop automation lab for live corporate pilots.",
+        "Translated written analysis into a reviewable website hub and dashboard-style experience.",
+        "Kept the recommendation evidence-led by pairing a proceed-to-due-diligence view with explicit diligence questions and risk checks."
+      ],
+      tools: ["Venture screening", "Market thesis", "Program design", "AI-assisted build"],
+      access: "https://expara.vercel.app/",
+      label: "View hub"
+    },
+    {
+      category: "ai",
+      title: "Project Alpha Execution Hub - Founder Signal Engine",
+      role: "Program Architect / Venture Analyst Candidate",
+      period: "May 2026",
+      summary: "Designed a 6-week Expara program architecture for founder selection, evidence gates, investor readiness, and corporate validation.",
+      highlights: ["Covered founder value proposition and cold-start plan.", "Built KPI logic, event execution dashboard, and partnership tracking.", "Linked the final submission from the source registry."],
+      details: [
+        "Designed a six-week architecture that moves founders from sourcing and selection into matching, evidence sprints, proof packs, and a private investor/corporate room.",
+        "Defined the founder value proposition and a practical cold-start plan for the first operating cycle.",
+        "Set KPI logic for qualified leads, selected founders, buyer-problem matching, proof-gate passage, and follow-up activity.",
+        "Mapped sourcing channels across alumni, universities, ecosystem organizations, partner funds, LinkedIn, and founder communities.",
+        "Created risk controls for weak founder quality, slow corporate response, corporate-heavy bias, and performative exclusivity.",
+        "Built an execution hub covering program guidelines, schedule, event operations, marketing, partnership tracking, and dashboard views."
+      ],
+      tools: ["Program architecture", "KPI logic", "Dashboard design"],
+      access: "https://expara-project-alpha-hub.vercel.app/",
+      label: "View prototype"
+    },
+    {
+      category: "ai",
+      title: "BLOCK71 Vietnam Event Board",
+      role: "Event Board Builder / AI-Assisted Website Builder",
+      period: "29 May 2026",
+      summary: "Built an event board for the Vietnam-Singapore innovation cooperation announcement connected to NUS Enterprise / BLOCK71 Vietnam.",
+      highlights: ["Structured event information for a public-facing board.", "Used AI-assisted website building workflows.", "Supported stakeholder communication around an innovation cooperation announcement."],
+      details: [
+        "Structured the date, partner organizations, cooperation narrative, and high-level event context into a scannable public-facing board.",
+        "Presented the NUS Enterprise / BLOCK71 Vietnam connection with NATEC, PTIT, and Van Lang University clearly.",
+        "Converted source information into an event communication asset using an AI-assisted front-end workflow.",
+        "Balanced public-sector, university, and startup-ecosystem information without inventing claims beyond the supplied source."
+      ],
+      tools: ["HTML", "AI-assisted build", "Event documentation"],
+      access: "https://vercel-event-board.vercel.app/",
+      label: "View board"
+    },
+    {
+      category: "ai",
+      title: "JayVault - Obsidian Research & Trend Intelligence",
+      role: "Knowledge System Builder / AI Workflow Designer",
+      period: "AI & venture project",
+      summary: "Designed an Obsidian-based knowledge capture and intelligence system for web clipping, trend monitoring, and reusable markdown reporting.",
+      highlights: ["Converted scattered inputs into searchable knowledge workflows.", "Supported article, YouTube, PDF, and markdown ingestion.", "Built a second-brain operating pattern for research."],
+      details: [
+        "Designed a capture flow for articles, YouTube videos, and PDF files into an Obsidian-based markdown knowledge base.",
+        "Structured summaries, key ideas, trend notes, and daily reports for faster review.",
+        "Connected the vault concept to a visual web interface for more accessible scanning.",
+        "Created a reusable second-brain pattern rather than a one-off collection of notes.",
+        "Positioned the system as a personal research database for continuous learning and trend monitoring."
+      ],
+      tools: ["Obsidian", "Markdown", "AI summarization"],
+      access: "https://jayvault.vercel.app/",
+      label: "View system"
+    },
+    {
+      category: "ai",
+      title: "AI Agent Office Space / Multi-Agent Workspace",
+      role: "AI Workspace Designer / Agent System Builder",
+      period: "Prototype",
+      summary: "Built an agent office space prototype for role-based AI workflows, reusable prompts, operating rooms, and task handoff systems.",
+      highlights: ["Explored agent workspace design as a product concept.", "Connected role-based behavior with project file structures.", "Used front-end prototyping to make workflow architecture visible."],
+      details: [
+        "Used a visual office-space metaphor to make multiple AI-agent roles easier to understand and operate.",
+        "Structured agents around explicit role, personality, working method, context, and output-format instructions.",
+        "Applied skill.md-style behavior design to make prompts and working patterns more reusable.",
+        "Connected the concept with VS Code and Codex-oriented development and task-handoff workflows."
+      ],
+      tools: ["AI agents", "Prototype", "Workflow design"],
+      access: "https://webview-flax-three.vercel.app/",
+      label: "View prototype"
+    },
+    {
+      category: "ai",
+      title: "AI Workshop Design & Training for BLOCK71 Vietnam",
+      role: "Workshop Creator / AI Training Designer",
+      period: "BLOCK71 Vietnam team",
+      summary: "Created AI training materials for BLOCK71 Vietnam including video and poster assets for practical AI workflow adoption.",
+      highlights: ["Translated AI tooling into team-ready learning assets.", "Prepared workshop structure and supporting media.", "Focused on applied productivity, not abstract tool demos."],
+      details: [
+        "Designed the workshop around practical adoption for program, community, and business teams.",
+        "Covered workflow foundations including frontend, backend, GitHub, files, prompts, handoffs, and verification habits.",
+        "Introduced agent types, role and context design, knowledge connections, optimization, and reusable workflow patterns.",
+        "Connected AI usage to research, content, operations, events, reporting, dashboards, and knowledge management.",
+        "Produced supporting training assets including a video and poster for the BLOCK71 Vietnam team."
+      ],
+      tools: ["AI training", "Workshop design", "Content systems"],
+      access: "https://drive.google.com/file/d/1b8OslxmPY71Xo2HjZdlouUzbihluFlmQ/view?usp=drive_link",
+      label: "Watch video"
+    },
+    {
+      category: "leadership",
+      title: "Clean Up Vietnam Campaign - Xanh Viet Nam",
+      role: "Event Team Member / Event Planner / On-site Sound Technician",
+      period: "Large-scale campaign",
+      summary: "Contributed to campaign operations in a national context: 63 provinces, 472 campaign sites, 120,724 volunteers, and 170 tons of waste collected.",
+      highlights: ["Supported event planning and on-site sound operations.", "Campaign context includes 25,014 garbage bags, 835 recyclable bags, and 9,900 trees planted.", "Demonstrated execution in high-scale volunteer coordination."],
+      details: [
+        "Supported onsite workflow planning, checklists, mapping, scripts, and technical operations within a nationwide environmental campaign.",
+        "Worked in a campaign context spanning 63 provinces, 472 sites, and 120,724 volunteers.",
+        "Contributed as an event team member, planner, and onsite sound technician.",
+        "Helped translate large-scale volunteer activity into coordinated event and technical execution.",
+        "Preserved the reported campaign outcomes of 170 tons of waste, 25,014 garbage bags, 835 recyclable bags, and 9,900 trees planted."
+      ],
+      tools: ["Event planning", "Sound operation", "Volunteer campaign"],
+      access: "",
+      label: "To be added"
+    },
+    {
+      category: "leadership",
+      title: "Music Show - Noi Bat Dau: Vong",
+      role: "Technical & Operation Team Member",
+      period: "04/2024 - 06/2024",
+      summary: "Supported a 1,200-attendee concert contribution that sold out under one minute, combining event operations and technical execution.",
+      highlights: ["Coordinated technical and operations tasks.", "Aligned music, show flow, and backstage requirements.", "Preserved the concrete audience and sell-out outcome from the source dossier."],
+      details: [
+        "Supported technical scripting, rehearsal supervision, performance flow, and live operation for the show.",
+        "Coordinated stage, musician, backstage, and technical requirements across the preparation period.",
+        "Helped manage transitions and respond to live execution issues during the event.",
+        "Worked within a 1,200-attendee concert context that sold out in under one minute.",
+        "Combined music-production understanding with structured operations and technical discipline."
+      ],
+      tools: ["Event ops", "Technical script", "Music production"],
+      access: "https://www.youtube.com/watch?v=RhGhEHwr7qI",
+      label: "Watch video"
+    },
+    {
+      category: "current",
+      title: "QuickFish - Frontend & Agent OS Prompt Engineering Support",
+      role: "Supporter for Frontend & Agent OS Prompt Engineering",
+      period: "May 2026 - Present",
+      summary: "Startup support experience connecting frontend execution with AI-agent workflow and prompt-system design.",
+      highlights: ["Supports AI-assisted product building and frontend workflows.", "Connects product implementation with structured agent behavior.", "Listed in the source dossier as current startup work."],
+      details: [
+        "Translated product ideas into interface notes, user-flow logic, and frontend support tasks.",
+        "Structured Agent OS prompts around role instructions, user intent, output format, review checklists, and handoff notes.",
+        "Bridged frontend and product thinking with career-guidance journeys and AI workflow design.",
+        "Kept public claims limited to the confirmed support role without inventing product milestones or results."
+      ],
+      tools: ["Frontend", "Agent OS", "Prompt engineering"],
+      access: "https://quickfish.org/en",
+      label: "Visit site"
+    },
+    {
+      category: "current",
+      title: "Steersman Brewery - Marketing Campaign & Business Analysis",
+      role: "Marketing Campaign Support / Business Analysis Support",
+      period: "May 2026 - Present",
+      summary: "Supports marketing campaign and business analysis process optimization for Steersman Brewery.",
+      highlights: ["Applies business analysis to campaign workflows.", "Connects marketing activity with operational structure.", "Uses the official Instagram reference from the source registry."],
+      details: [
+        "Clarified campaign tasks, content needs, follow-up items, and execution flow for practical marketing support.",
+        "Reviewed operating gaps, documentation needs, and process-improvement opportunities through a business-analysis lens.",
+        "Mapped workflow steps into clearer task lists and follow-up checklists.",
+        "Applied program and event operations habits to a real company context while keeping outcomes limited to confirmed information."
+      ],
+      tools: ["Business analysis", "Campaign support", "Process optimization"],
+      access: "https://www.instagram.com/steersmanbrewery/",
+      label: "Open reference"
+    },
+    {
+      category: "creative",
+      title: "Photography - People & Landscapes",
+      role: "Photographer",
+      period: "Creative practice",
+      summary: "Focuses on portraits, landscapes, nighttime compositions, low-light environments, and authentic event documentation.",
+      highlights: ["Experiments with exposure, contrast, color tone, and atmosphere.", "Documents events, street scenes, and candid portraits.", "Links to the Instagram reference provided in the content file."],
+      details: [
+        "Specializes in portrait and landscape photography with a particular interest in nighttime and low-light environments.",
+        "Uses framing, exposure, contrast, and color tone to communicate atmosphere and mood.",
+        "Documents events, street scenes, candid portraits, and ambient cityscapes.",
+        "Combines technical control with an observational, story-led approach to visual documentation."
+      ],
+      tools: ["Photography", "Low-light", "Visual storytelling"],
+      access: "https://www.instagram.com/jayson_pham_/",
+      label: "View Instagram"
+    }
+  ];
+
+  const projectGrid = document.getElementById("project-grid");
+  const filters = Array.from(document.querySelectorAll(".filter-button"));
+
+  // Category accent colors mapped for modal
+  const categoryAccent = {
+    financial:  { accent: "#f5b942", glow: "rgba(245,185,66,0.22)",  shader: "linear-gradient(148deg, #1a1200, #2d1f00 40%, #0c0a00)" },
+    venture:    { accent: "#5b9cf6", glow: "rgba(91,156,246,0.22)",  shader: "linear-gradient(148deg, #040d1e, #0a1535 40%, #020509)" },
+    ai:         { accent: "#34d399", glow: "rgba(52,211,153,0.22)",  shader: "linear-gradient(148deg, #001a12, #003322 40%, #000d09)" },
+    leadership: { accent: "#fb923c", glow: "rgba(251,146,60,0.22)",  shader: "linear-gradient(148deg, #1a0600, #2d0f00 40%, #0c0200)" },
+    current:    { accent: "#22d3ee", glow: "rgba(34,211,238,0.22)",  shader: "linear-gradient(148deg, #00131a, #002030 40%, #000709)" },
+    creative:   { accent: "#e879f9", glow: "rgba(232,121,249,0.22)", shader: "linear-gradient(148deg, #160012, #2a0020 40%, #080006)" }
+  };
+
+  // Pull orbit images to use in modal gallery
+  const categoryImages = {
+    financial:  [orbitImages[0].src],
+    venture:    [orbitImages[1].src],
+    ai:         [orbitImages[2].src],
+    leadership: [orbitImages[3].src],
+    current:    [orbitImages[4].src],
+    creative:   [orbitImages[5].src]
+  };
+
+  let currentFilter = "all";
+
+  function renderProjects(filter = "all") {
+    currentFilter = filter;
+    const visible = filter === "all" ? projects : projects.filter((p) => p.category === filter);
+    projectGrid.innerHTML = visible.map((project, index) => {
+      const toolDots = project.tools.slice(0, 3).map(() => `<span class="tool-dot"></span>`).join("");
+      return `
+        <article class="project-card" data-category="${project.category}" data-index="${index}" tabindex="0" role="button" aria-label="Open ${project.title} details">
+          <div class="card-accent-bar"></div>
+          <div class="card-noise"></div>
+          <div class="card-grid-shader"></div>
+          <div class="project-body" style="padding-top:32px">
+            <div class="project-meta">
+              <span class="tag">${project.category}</span>
+              <span class="tag">${project.period}</span>
+            </div>
+            <h3>${project.title}</h3>
+            <p class="project-role">${project.role}</p>
+            <p class="project-summary">${project.summary}</p>
+          </div>
+          <div class="card-footer">
+            <button class="card-open-btn" type="button">
+              Details
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <div class="card-tools-preview" aria-hidden="true">${toolDots}</div>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    // Re-bind stagger animation for cards
+    projectGrid.querySelectorAll(".project-card").forEach((card, i) => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(30px)";
+      card.style.transition = `opacity 500ms ease ${i * 60}ms, transform 500ms cubic-bezier(0.22,1,0.36,1) ${i * 60}ms`;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }));
+    });
+  }
+
+  renderProjects();
+
+  filters.forEach((button) => {
+    button.addEventListener("click", () => {
+      filters.forEach((node) => node.classList.remove("active"));
+      button.classList.add("active");
+      renderProjects(button.dataset.filter);
+    });
+  });
+
+  // ── Modal logic ──────────────────────────────────────────
+  const modalBackdrop  = document.getElementById("project-modal-backdrop");
+  const modalShader    = document.getElementById("modal-shader");
+  const modalAccentBar = document.getElementById("modal-accent-bar");
+  const modalGlow      = document.getElementById("modal-glow");
+  const modalInner     = document.getElementById("modal-inner");
+  let modalOpen = false;
+
+  function openModal(project, indexInList) {
+    const cat = categoryAccent[project.category] || { accent: "#fff", glow: "rgba(255,255,255,0.1)", shader: "linear-gradient(148deg,#0c0c0e,#111)" };
+    const imgs = categoryImages[project.category] || [];
+
+    // Apply shader / glow
+    modalShader.style.background = cat.shader;
+    modalAccentBar.style.background = `linear-gradient(90deg, ${cat.accent}, transparent 70%)`;
+    modalGlow.style.background = `radial-gradient(circle, ${cat.glow} 0%, transparent 65%)`;
+
+    // Build image strip
+    const imageHtml = imgs.length
+      ? imgs.map((src, i) => `
+          <div class="modal-img-card" style="--card-shader:${cat.shader}">
+            <img src="${src}" alt="${project.category} project visual ${i+1}" loading="lazy" />
+          </div>
+        `).join("")
+      : `<div class="modal-img-card" style="--card-shader:${cat.shader};--modal-accent:${cat.accent}">${String(indexInList+1).padStart(2,"0")}</div>`;
+
+    // Access button
+    const accessBtn = project.access
+      ? `<a class="modal-cta" href="${project.access}" target="_blank" rel="noreferrer" style="background:${cat.accent};color:#000">
+           ${project.label}
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+         </a>`
+      : `<button class="modal-cta disabled" disabled>${project.label}</button>`;
+
+    modalInner.innerHTML = `
+      <div class="modal-header">
+        <div class="modal-header-text">
+          <div class="modal-category-tag" style="color:${cat.accent};border-color:${cat.accent}40">${project.category}</div>
+          <h2 class="modal-title">${project.title}</h2>
+          <p class="modal-role-period">${project.role} · ${project.period}</p>
+        </div>
+        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-images">
+        <div class="modal-images-label">Project visuals</div>
+        <div class="modal-image-strip">${imageHtml}</div>
+      </div>
+
+      <div class="modal-body">
+        <div>
+          <div class="modal-section-label">Summary</div>
+          <p class="modal-summary">${project.summary}</p>
+        </div>
+        <div>
+          <div class="modal-section-label">Key highlights</div>
+          <ul class="modal-highlights" style="--modal-accent:${cat.accent}">
+            ${project.highlights.map((h) => `<li>${h}</li>`).join("")}
+          </ul>
+        </div>
+        <div>
+          <div class="modal-section-label">Detailed scope</div>
+          <ol class="modal-details" style="--modal-accent:${cat.accent}">
+            ${(project.details || []).map((detail) => `<li>${detail}</li>`).join("")}
+          </ol>
+        </div>
+        <div>
+          <div class="modal-section-label">Tools & methods</div>
+          <div class="modal-tools">
+            ${project.tools.map((t) => `<span class="modal-tool-chip">${t}</span>`).join("")}
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        ${accessBtn}
+        <button class="modal-cta-ghost" id="modal-close-footer">Close</button>
+      </div>
+    `;
+
+    // Set CSS vars on modal for nested styling
+    const modal = document.getElementById("project-modal");
+    modal.style.setProperty("--modal-accent", cat.accent);
+    modal.style.setProperty("--modal-glow", cat.glow);
+    modal.style.setProperty("--modal-shader", cat.shader);
+
+    modalBackdrop.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => {
+      modalBackdrop.classList.add("open");
+      modalOpen = true;
+    });
+
+    // Close buttons
+    document.getElementById("modal-close-btn").addEventListener("click", closeModal);
+    document.getElementById("modal-close-footer").addEventListener("click", closeModal);
+  }
+
+  function closeModal() {
+    modalBackdrop.classList.remove("open");
+    modalOpen = false;
+    setTimeout(() => {
+      modalBackdrop.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }, 420);
+  }
+
+  modalBackdrop.addEventListener("click", (e) => {
+    if (e.target === modalBackdrop) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalOpen) closeModal();
+  });
+
+  // Open modal on card click
+  projectGrid.addEventListener("click", (e) => {
+    const card = e.target.closest(".project-card");
+    if (!card) return;
+    const dataIndex = parseInt(card.dataset.index);
+    const filter = currentFilter;
+    const visible = filter === "all" ? projects : projects.filter((p) => p.category === filter);
+    const project = visible[dataIndex];
+    if (project) openModal(project, dataIndex);
+  });
+
+  projectGrid.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      const card = e.target.closest(".project-card");
+      if (card) { e.preventDefault(); card.click(); }
+    }
+  });
+
+  const revealNodes = Array.from(document.querySelectorAll(".reveal-up"));
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.24 });
+  revealNodes.forEach((node) => revealObserver.observe(node));
+
+  const form = document.getElementById("mini-contact");
+  const emailInput = document.getElementById("interest-email");
+  const note = document.getElementById("form-note");
+  const copyEmail = document.getElementById("copy-email");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email || !email.includes("@")) {
+      note.textContent = "Enter an email or use the copy button to reach ptquan.work@gmail.com.";
+      return;
+    }
+    const subject = encodeURIComponent("Portfolio contact");
+    const body = encodeURIComponent(`Hi Jayson,\n\nI would like to connect. My email is ${email}.\n`);
+    window.location.href = `mailto:ptquan.work@gmail.com?subject=${subject}&body=${body}`;
+  });
+
+  copyEmail.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("ptquan.work@gmail.com");
+      note.textContent = "Email copied: ptquan.work@gmail.com";
+    } catch (error) {
+      note.textContent = "Email: ptquan.work@gmail.com";
+    }
+  });
+})();
+</script>
+</body>
+</html>
