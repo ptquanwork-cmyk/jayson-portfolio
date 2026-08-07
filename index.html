@@ -54,6 +54,40 @@
 
   body.is-loading { overflow: hidden; }
 
+  .modal-press {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+  }
+  .modal-press li { margin: 0; }
+  .modal-press a {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.74);
+    transition: color .2s ease;
+  }
+  .modal-press a:hover { color: #fff; }
+  .modal-press .press-src {
+    flex: 0 0 auto;
+    min-width: 108px;
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--modal-accent, #fff);
+    opacity: .85;
+  }
+  @media (max-width: 620px) {
+    .modal-press a { flex-direction: column; gap: 3px; }
+    .modal-press .press-src { min-width: 0; }
+  }
+
   .project-metric {
     margin: 0 0 10px;
     display: flex;
@@ -2779,7 +2813,7 @@
       title: "BLOCK71 Vietnam - Venture Analyst Intern",
       role: "Venture Analyst Intern, Program Team",
       period: "Nov 2025 - Jun 2026",
-      summary: "Eight months inside NUS Enterprise's Vietnam incubator, working the program, tech-asset and research side of UniVentures, Demo Day, IC Day and the Gala Dinner.",
+      summary: "Eight months inside NUS Enterprise's Vietnam incubator, on a programme that drew 1,400+ applications and awarded S$320,000 across ten university start-ups. I worked the program, tech-asset, data and research lanes.",
       highlights: ["Owned the UniVentures recap video asset through to delivery.", "Built the tracking layer for volunteers, vendors, MCs, performers and team tasks.", "Ran the research that fed venue, partner, market and company decisions."],
       details: [
         "Action - worked the program, technical-asset, data and research lanes of an eight-month internship: runsheets, award-flow logic, seating and guest-flow logic, LED scripts, briefing slides, and 3D venue and site maps for IC Day, Demo Day and the Gala.",
@@ -2788,11 +2822,19 @@
         "Action - ran the desk research behind team decisions on markets, venues, partners, restaurants, transportation and company backgrounds, and prepared VIP and protocol packs including schedules, fast-track arrangements, transfers, parking and passport files.",
         "Consequence - turned scattered requests into structured documents other people could execute from, and proposed a yearly roadmap, master timeline with task breakdown, and a RACI matrix as process improvements for the team.",
         "Context - the internship sat in the support and consulted tier of the program RACI, alongside senior staff who held accountability. The value delivered was execution speed and documentation quality, not workstream ownership.",
+        "Programme scale (public record) - UniVentures drew more than 1,400 applications nationwide, shortlisted 30 teams for final pitching and awarded 10 winners S$32,000 each, a S$320,000 (US$250,000) prize pool, plus three-month incubation at BLOCK71 Vietnam with the top two advancing to BLOCK71 Singapore.",
         "Timebound - Nov 2025 to Jun 2026, across IC Day, Demo Day, the UniVentures Gala Dinner, ELab Demo Day, networking sessions and program classes."
       ],
       tools: ["Program ops", "Research", "Data & tracking", "3D layout"],
-      access: "",
-      label: "To be added"
+      press: [
+        { s: "NUS News", t: "Singapore and Vietnam to boost cross-border start-up innovation pipeline through BLOCK71's UniVentures", u: "https://news.nus.edu.sg/singapore-and-vietnam-to-boost-cross-border-start-up-innovation-pipeline-through-block71s-univentures/" },
+        { s: "VietnamPlus", t: "Top 10 university start-ups in Vietnam secure innovation backing", u: "https://en.vietnamplus.vn/top-10-university-start-ups-in-vietnam-secure-innovation-backing-post336962.vnp" },
+        { s: "Viet Nam News", t: "Top 10 university start-ups in Viet Nam secure innovation backing", u: "https://vietnamnews.vn/society/1764872/top-10-university-start-ups-in-viet-nam-secure-innovation-backing.html" },
+        { s: "Tembusu Partners", t: "Mrs Lim Hwee Hua on government and investors in scaling sustainable innovation at the UniVentures Gala Dinner", u: "https://tembusupartners.com/strengthening-singapore-vietnam-innovation-ties-mrs-lim-hwee-hua-at-the-univentures-gala-dinner-in-ho-chi-minh-city/" },
+        { s: "BLOCK71", t: "UniVentures programme page", u: "https://block71.co/univentures/" }
+      ],
+      access: "https://news.nus.edu.sg/singapore-and-vietnam-to-boost-cross-border-start-up-innovation-pipeline-through-block71s-univentures/",
+      label: "Read NUS coverage"
     },
     {
       category: "venture",
@@ -2809,9 +2851,18 @@
         "Action - contributed to award-flow logic and the Top 10 on-stage sequence, registration and guest-flow guidelines, seating review, and the tracking sheets for vendors, MCs, performers and volunteers.",
         "Consequence - 200 guests seated against a 226-invitation tracked list, roughly 90 named Tier 1-2 VIPs each matched to a liaison officer, run against a 51-cue run sheet on a VND 673.6M budget including contingency.",
         "Context - the guest list spanned National Research Foundation Singapore, Temasek, Becamex, Singapore Press Holdings, VinaCapital, Golden Gate Ventures, Nvidia, MoMo, RMIT and the Singapore Consulate-General, with Mr. Heng Swee Keat as Guest of Honour.",
+        "Public record - the gala was the awards night for UniVentures, a BLOCK71 Vietnam accelerator run with Temasek Foundation that drew over 1,400 applications and shortlisted 30 teams. Ten winners took the Golden Gate Ventures UniVentures Prize at S$32,000 each. Winning teams came out of HCMUT, UEH, University of Da Nang and HCMC University of Medicine and Pharmacy, among them BioWraps, Trazen, Welgun BMS, EggVision, MediPath and Selformy.",
+        "Public record - the panel, \'Catalysing sustainable innovation: the next frontier for Vietnam-Singapore partnership\', was moderated by The Business Times with Mrs Lim Hwee Hua, Co-Chairwoman of Tembusu Partners and former Singapore Minister in the Prime Minister\'s Office, on the panel.",
         "Timebound - one event day, 29 Jan 2026, 08:00 load-in to 22:00 close, against a planning timeline that locked final headcount at D-3."
       ],
       tools: ["Event operations", "3D layout", "VIP protocol", "Tracking sheets"],
+      press: [
+        { s: "NUS News", t: "Singapore and Vietnam to boost cross-border start-up innovation pipeline through BLOCK71's UniVentures", u: "https://news.nus.edu.sg/singapore-and-vietnam-to-boost-cross-border-start-up-innovation-pipeline-through-block71s-univentures/" },
+        { s: "VietnamPlus", t: "Top 10 university start-ups in Vietnam secure innovation backing", u: "https://en.vietnamplus.vn/top-10-university-start-ups-in-vietnam-secure-innovation-backing-post336962.vnp" },
+        { s: "Viet Nam News", t: "Top 10 university start-ups in Viet Nam secure innovation backing", u: "https://vietnamnews.vn/society/1764872/top-10-university-start-ups-in-viet-nam-secure-innovation-backing.html" },
+        { s: "Tembusu Partners", t: "Mrs Lim Hwee Hua on government and investors in scaling sustainable innovation at the UniVentures Gala Dinner", u: "https://tembusupartners.com/strengthening-singapore-vietnam-innovation-ties-mrs-lim-hwee-hua-at-the-univentures-gala-dinner-in-ho-chi-minh-city/" },
+        { s: "BLOCK71", t: "UniVentures programme page", u: "https://block71.co/univentures/" }
+      ],
       access: "https://share.archisketch.com/ZtEjFiKC205E05992E1496D",
       label: "View 3D layout"
     },
@@ -2980,6 +3031,10 @@
         "Timebound - roughly two days per deliverable in May 2026. The application was not successful; the work is published here because the reasoning stands on its own."
       ],
       tools: ["Venture screening", "7 Powers", "Market thesis", "AI-assisted build"],
+      press: [
+        { s: "Submission", t: "Full Expara assessment submission (PDF)", u: "https://drive.google.com/file/d/1DZ6GMykYHioY90R7lRHbOKiJ7bpPBuie/view?usp=drivesdk" },
+        { s: "Live hub", t: "Expara Assessment Hub", u: "https://expara.vercel.app/" }
+      ],
       access: "https://expara.vercel.app/",
       label: "Open hub"
     },
@@ -3001,6 +3056,10 @@
         "Timebound - roughly two days of build in May 2026, as part of the same unsuccessful Expara application."
       ],
       tools: ["Program architecture", "KPI design", "Dashboard build"],
+      press: [
+        { s: "Source doc", t: "Project Alpha - Strategic Architecture (PDF)", u: "https://drive.google.com/file/d/1sgh0-SVjqrvXQh9eblt7IuLuHVkNmSLc/view?usp=drivesdk" },
+        { s: "Live hub", t: "Project Alpha Execution Hub", u: "https://expara-project-alpha-hub.vercel.app/" }
+      ],
       access: "https://expara-project-alpha-hub.vercel.app/",
       label: "Open hub"
     },
@@ -3090,9 +3149,17 @@
         "Action - structured date, partner organisations, cooperation narrative and event context into a single scannable public-facing board.",
         "Action - presented the NUS Enterprise and BLOCK71 Vietnam cooperation agreements with NATEC under the Ministry of Science and Technology, the Posts and Telecommunications Institute of Technology, and Van Lang University.",
         "Action - moved from source information to a deployed site through an AI-assisted front-end workflow.",
+        "Public record - the Vietnam-Singapore Tech Connect Forum on 29 May 2026 drew more than 400 delegates from government agencies, research institutes, universities, businesses and investment funds of both countries, held during the working visit of General Secretary and State President To Lam and co-organised by Vietnam\'s Ministry of Foreign Affairs and Ministry of Science and Technology with Singapore\'s Ministry of Foreign Affairs.",
+        "Public record - within the forum, NATEC and the Posts and Telecommunications Institute of Technology signed memoranda of understanding with the National University of Singapore, and Van Lang University agreed a programme with NUS to develop Vietnam\'s innovation and entrepreneurship ecosystem.",
         "Context - built around the 29 May 2026 forum and presented as a communication asset I built, without claiming official adoption."
       ],
       tools: ["HTML", "AI-assisted build", "Event communication"],
+      press: [
+        { s: "PTIT", t: "PTIT promotes international cooperation at the Vietnam-Singapore Tech Connect Forum", u: "https://english.ptit.edu.vn/ptit-promotes-international-cooperation-at-the-vietnam-singapore-tech-connect-forum/" },
+        { s: "MIC Vietnam", t: "Viet Nam - Singapore Tech Connect Forum", u: "https://beta-en.mic.gov.vn/viet-nam-singapore-tech-connect-forum-197260529214641295.htm" },
+        { s: "VJST", t: "Vietnam and Singapore promote technology cooperation in the spirit of Tech Connect", u: "https://vjst.vn/vietnam-and-singapore-promote-technology-cooperation-in-the-spirit-of-tech-connect-86800.html" },
+        { s: "vietnam.vn", t: "Vietnam-Singapore Technology Connection Forum", u: "https://www.vietnam.vn/en/dien-dan-ket-noi-cong-nghe-viet-nam-singapore" }
+      ],
       access: "https://vercel-event-board.vercel.app/",
       label: "Open board"
     },
@@ -3102,8 +3169,8 @@
       metricLabel: "campaign sites - campaign scale",
       title: "Clean Up Vietnam Campaign - Xanh Viet Nam",
       role: "Event Planner / HQ Operations Support / On-site Sound Technician",
-      period: "Xanh Viet Nam Headquarters",
-      summary: "National environmental campaign across 63 provinces and 472 sites with 120,724 volunteers. I worked headquarters-side on the planning artifacts and ran live sound at the main event.",
+      period: "Clean Up Vietnam 6 - 2 Jun 2024",
+      summary: "The edition that set a Vietnam record: 63 provinces, 472 sites, 120,724 volunteers in a single day. I worked headquarters-side on the planning artifacts and ran live sound at the main event.",
       highlights: ["Built deployment maps, equipment checklists and run-downs used across sites.", "Operated live sound at the main event.", "Campaign totals below are organisation-wide, not personal output."],
       details: [
         "Scope note - the figures below are campaign-wide results delivered by Xanh Viet Nam as an organisation. My contribution was headquarters-side planning support plus live technical operation, working within the HQ event team rather than owning the national rollout.",
@@ -3111,11 +3178,45 @@
         "Action - supported progress monitoring across the participating sites and coordinated inter-department tasks so regional teams stayed synchronised.",
         "Action - operated the sound system and handled live technical operation as on-site sound engineer during the main event.",
         "Consequence - the artifacts produced were the reusable kind: one deployment map and one checklist template travel to every site, which is where a small HQ team gets leverage over a national footprint.",
-        "Campaign scale - 63 provinces, 472 sites, 120,724 volunteers, 170 tons of waste collected, 25,014 garbage bags, 835 recyclable bags and 9,900 trees planted, delivered by an organisation of more than 50,000 volunteers."
+        "Campaign scale - 63 provinces, 472 sites, 120,724 volunteers, 170 tons of waste collected, 25,014 garbage bags, 835 recyclable bags and 9,900 trees planted, on 2 June 2024.",
+        "Public record - Clean Up Vietnam 6 was certified as a Vietnam record, reported as the first campaign anywhere to run a single-day nationwide clean-up at this scale across every province. The step up from the previous edition is the number worth reading: Clean Up Vietnam 5 ran 204 sites with 42,000 volunteers, so edition 6 scaled 2.3x on sites and 2.9x on volunteers year on year - which is the operational problem the HQ planning artifacts existed to solve.",
+        "Note on figures - press reporting varies between the detailed operational count of 120,724 volunteers at 472 sites and a headline figure of over 200,000 participants including islands and overseas chapters. The detailed count is used here because it is the one that reconciles with the site-level tracking."
       ],
       tools: ["Event planning", "Deployment mapping", "Live sound", "Coordination"],
-      access: "",
-      label: "To be added"
+      press: [
+        { s: "Kinh te Moi truong", t: "Thu gom duoc 170 tan rac trong chien dich Clean Up Viet Nam lan 6 (full site-level figures)", u: "https://kinhtemoitruong.vn/thu-gom-duoc-170-tan-rac-trong-chien-dich-clean-up-viet-nam-lan-6-to-chuc-dong-loat-tren-ca-nuoc-88816.html" },
+        { s: "VOV Giao Thong", t: "Xac lap ky luc nhat rac toan quoc Clean Up Viet Nam lan 6", u: "https://vovgiaothong.vn/newsaudio/xac-lap-ky-luc-nhat-rac-toan-quoc-clean-up-viet-nam-lan-6-d39228.html" },
+        { s: "VTV", t: "Chien dich nhat rac toan quoc Clean Up Viet Nam lan 6 sap dien ra", u: "https://vtv.vn/doi-song/chien-dich-nhat-rac-toan-quoc-clean-up-viet-nam-lan-6-sap-dien-ra-20240523220031297.htm" },
+        { s: "Human Act Prize", t: "Clean Up Viet Nam - programme profile", u: "https://humanactprize.org/clean-up-viet-nam-199240930174010799.htm" },
+        { s: "Facebook", t: "Xanh Viet Nam official page", u: "https://www.facebook.com/xanhvietnam.org" }
+      ],
+      access: "https://kinhtemoitruong.vn/thu-gom-duoc-170-tan-rac-trong-chien-dich-clean-up-viet-nam-lan-6-to-chuc-dong-loat-tren-ca-nuoc-88816.html",
+      label: "Read coverage"
+    },
+    {
+      category: "leadership",
+      metric: "1,000+",
+      metricLabel: "attendees across club events",
+      title: "UEHG Guitar Club - Deputy, Specialist Department",
+      role: "Deputy of the Specialist Department / Head of Instrument Team",
+      period: "06/2023 - 06/2024",
+      summary: "A year running the specialist side of UEH's guitar club - musicians, rehearsals, technical setup and cost planning for live shows and fundraising events drawing over 1,000 attendees.",
+      highlights: ["Led the instrument team across the club's live programme.", "Owned rehearsal scheduling, technical setup and staffing plans.", "Delivered events within budget and on schedule."],
+      details: [
+        "Action - coordinated musicians, ran rehearsal scheduling and oversaw technical setup for the club's live performances across a one-year term as Deputy of the Specialist Department and Head of the Instrument Team.",
+        "Action - prepared cost estimates, schedules and staffing plans for club events, and supervised internal operations and team bonding activity.",
+        "Consequence - the club's music shows and fundraising events drew over 1,000 attendees across the term, delivered within budget and on schedule.",
+        "Context - UEHG is the guitar club of the University of Economics Ho Chi Minh City, running since 2011 with a five-department management board and a public following of over 28,000. The Specialist Department is the musical and technical arm.",
+        "Timebound - June 2023 to June 2024."
+      ],
+      tools: ["Team leadership", "Technical setup", "Budgeting", "Rehearsal planning"],
+      press: [
+        { s: "Facebook", t: "CLB Guitar Dai Hoc Kinh Te TP.HCM (UEHG) - official page", u: "https://www.facebook.com/uehgclub/" },
+        { s: "UEH Youth", t: "Gioi thieu CLB UEHG - official university club profile", u: "https://youth.ueh.edu.vn/clb-doi-nhom/gioi-thieu-clb-uehg/" },
+        { s: "YouTube", t: "CLB Guitar (UEHG) - club introduction", u: "https://www.youtube.com/watch?v=j7uXhtuIDyM" }
+      ],
+      access: "https://www.facebook.com/uehgclub/",
+      label: "Open UEHG page"
     },
     {
       category: "leadership",
@@ -3135,6 +3236,10 @@
         "Timebound - Apr 2024 to Jun 2024, from planning through live delivery."
       ],
       tools: ["Technical scripting", "Live operations", "Rehearsal supervision"],
+      press: [
+        { s: "YouTube", t: "Noi Bat Dau: Vong - full show recording", u: "https://www.youtube.com/watch?v=RhGhEHwr7qI" },
+        { s: "Facebook", t: "CLB Guitar UEH (UEHG) official page - show archive", u: "https://www.facebook.com/uehgclub/" }
+      ],
       access: "https://www.youtube.com/watch?v=RhGhEHwr7qI",
       label: "Watch show"
     },
@@ -3341,6 +3446,13 @@
             ${project.tools.map((t) => `<span class="modal-tool-chip">${t}</span>`).join("")}
           </div>
         </div>
+        ${(project.press || []).length ? `
+        <div>
+          <div class="modal-section-label">Press &amp; public record</div>
+          <ul class="modal-press" style="--modal-accent:${cat.accent}">
+            ${project.press.map((p) => `<li><a href="${p.u}" target="_blank" rel="noreferrer"><span class="press-src">${p.s}</span>${p.t}</a></li>`).join("")}
+          </ul>
+        </div>` : ""}
       </div>
 
       <div class="modal-footer">
