@@ -52,6 +52,56 @@
   button { cursor: pointer; }
   img, video { display: block; max-width: 100%; }
 
+  body.is-loading { overflow: hidden; }
+
+  .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    gap: 26px;
+    padding: 24px;
+    background: var(--black);
+    color: var(--white);
+    transition: opacity .7s ease, visibility .7s ease;
+  }
+  .preloader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+  .preloader-mark {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 6vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .preloader-mark em { font-style: italic; opacity: .6; }
+  .preloader-track {
+    width: min(260px, 60vw);
+    height: 1px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .preloader-bar {
+    display: block;
+    height: 100%;
+    background: var(--white);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .45s ease;
+  }
+  .preloader-sub {
+    font-size: 10px;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: .5;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .preloader, .preloader-bar { transition: none; }
+  }
+
   .stage {
     position: relative;
     width: 100%;
@@ -606,6 +656,7 @@
   }
 
   .metric {
+    position: relative;
     min-height: 170px;
     padding: 24px;
     border-right: 1px solid var(--rule);
@@ -615,6 +666,38 @@
     justify-content: space-between;
     background: rgba(255,255,255,0.76);
     backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(12px);
+    transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease, background 300ms ease;
+    transition-delay: var(--stagger, 0ms);
+  }
+
+  .metric.in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .metric:hover {
+    background: rgba(0,0,0,0.025);
+  }
+
+  .metric::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    background: var(--black);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 400ms cubic-bezier(0.22,1,0.36,1);
+  }
+
+  .metric:hover::before {
+    transform: scaleX(1);
   }
 
   .metric b {
@@ -678,6 +761,17 @@
     position: relative;
     min-height: 0;
     padding: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+    transition-delay: var(--node-delay, 0ms);
+  }
+
+  .journey-node.in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
   }
 
   .journey-node::before {
@@ -692,6 +786,19 @@
     background: var(--black);
     box-shadow: 0 0 0 1px var(--black);
     z-index: 2;
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  .journey-node.in::before {
+    animation: dotPulse 0.6s ease forwards;
+    animation-delay: var(--node-delay, 0ms);
+  }
+
+  @keyframes dotPulse {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.4); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
   }
 
   .journey-node::after {
@@ -703,6 +810,14 @@
     width: auto;
     height: 1px;
     background: var(--ink-40);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    transition-delay: calc(var(--node-delay, 0ms) + 200ms);
+  }
+
+  .journey-node.in::after {
+    transform: scaleX(1);
   }
 
   .journey-card {
@@ -719,6 +834,12 @@
     font-size: clamp(34px, 3.4vw, 52px);
     font-weight: 400;
     line-height: 0.9;
+    transition: color 300ms ease, letter-spacing 300ms ease;
+  }
+
+  .journey-node:hover .journey-year {
+    color: var(--ink-78);
+    letter-spacing: 0.04em;
   }
 
   .journey-card h3 {
@@ -813,9 +934,23 @@
   /* ── Project Grid ─────────────────────────────────────── */
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(240px, auto);
     gap: 28px;
     padding: 8px 0;
+  }
+
+  .project-card { grid-column: span 2; }
+  .project-card[data-grid-size="featured"] { grid-column: span 4; grid-row: span 2; min-height: 560px; }
+  .project-card[data-grid-size="tall"]     { grid-column: span 2; grid-row: span 2; }
+  .project-card[data-grid-size="wide"]     { grid-column: span 3; }
+
+  .project-card[data-grid-size="featured"] h3 {
+    font-size: clamp(22px, 2.4vw, 32px);
+  }
+  .project-card[data-grid-size="featured"] .project-summary {
+    font-size: 15px;
+    color: rgba(255,255,255,0.62);
   }
 
   /* ── Project Card ─────────────────────────────────────── */
@@ -873,24 +1008,26 @@
   .project-card[data-category="current"]    { --card-shader: linear-gradient(148deg, #00131a 0%, #002030 35%, #000709 100%); --card-accent: #22d3ee; --card-glow: rgba(34,211,238,0.25); }
   .project-card[data-category="creative"]   { --card-shader: linear-gradient(148deg, #160012 0%, #2a0020 35%, #080006 100%); --card-accent: #e879f9; --card-glow: rgba(232,121,249,0.25); }
 
-  /* Glow blob on hover */
+  /* Glow blob follows cursor */
+  .project-card { --mouse-x: 50%; --mouse-y: 50%; }
   .project-card::after {
     content: "";
     position: absolute;
-    width: 220px;
-    height: 220px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
-    background: radial-gradient(circle, var(--card-glow, rgba(255,255,255,0.12)) 0%, transparent 70%);
-    bottom: -60px;
-    right: -60px;
+    background: radial-gradient(circle at center, var(--card-glow, rgba(255,255,255,0.12)) 0%, transparent 70%);
+    left: var(--mouse-x);
+    top: var(--mouse-y);
+    transform: translate(-50%, -50%) scale(0.8);
     pointer-events: none;
     z-index: 1;
     transition: transform 420ms cubic-bezier(0.22,1,0.36,1), opacity 420ms ease;
-    opacity: 0.6;
+    opacity: 0;
   }
 
   .project-card:hover::after {
-    transform: scale(1.4);
+    transform: translate(-50%, -50%) scale(1.2);
     opacity: 1;
   }
 
@@ -1422,13 +1559,22 @@
   }
 
   @media (max-width: 1100px) {
-    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .project-grid { grid-template-columns: repeat(4, 1fr); }
+    .project-card { grid-column: span 2; }
+    .project-card[data-grid-size="featured"] { grid-column: span 4; grid-row: span 2; }
+    .project-card[data-grid-size="tall"] { grid-column: span 2; grid-row: span 2; }
+    .project-card[data-grid-size="wide"] { grid-column: span 2; }
     .modal-header, .modal-images, .modal-body, .modal-footer { padding-left: 28px; padding-right: 28px; }
   }
 
   @media (max-width: 720px) {
     .project-grid { grid-template-columns: 1fr; gap: 18px; }
-    .project-card { min-height: 380px; }
+    .project-card,
+    .project-card[data-grid-size="featured"],
+    .project-card[data-grid-size="tall"],
+    .project-card[data-grid-size="wide"] { grid-column: span 1; grid-row: span 1; min-height: 380px; }
+    .project-card[data-grid-size="featured"] h3 { font-size: clamp(18px, 1.8vw, 24px); }
+    .project-card[data-grid-size="featured"] .project-summary { font-size: 13px; }
     .modal-header, .modal-images, .modal-body, .modal-footer { padding-left: 20px; padding-right: 20px; }
     .modal-title { font-size: 20px; }
     .project-modal-backdrop { padding: 12px; }
@@ -1464,6 +1610,7 @@
   }
 
   .skill-cloud span {
+    position: relative;
     min-height: 38px;
     display: inline-flex;
     align-items: center;
@@ -1473,6 +1620,38 @@
     font-size: 12px;
     color: var(--ink-72);
     background: rgba(255,255,255,0.72);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(16px) scale(0.92);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+    transition-delay: var(--tag-delay, 0ms);
+  }
+
+  .skill-cloud.in span {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .skill-cloud span:hover {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .skill-cloud span::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: translateX(-100%);
+    transition: transform 500ms ease;
+    pointer-events: none;
+  }
+
+  .skill-cloud span:hover::before {
+    transform: translateX(100%);
   }
 
   /* ── References ───────────────────────────────────────── */
@@ -1505,9 +1684,45 @@
   }
 
   .reference-item {
+    position: relative;
     min-height: 250px;
     padding: 28px 34px 30px 0;
     border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(8px);
+    transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease, background 300ms ease;
+    transition-delay: var(--ref-delay, 0ms);
+  }
+
+  .reference-item.in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .reference-item:hover {
+    background: rgba(0,0,0,0.015);
+  }
+
+  .reference-item::after {
+    content: attr(data-initial);
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-family: var(--font-serif);
+    font-size: 120px;
+    font-style: italic;
+    line-height: 1;
+    color: rgba(0,0,0,0.04);
+    pointer-events: none;
+    transition: color 400ms ease, transform 400ms ease;
+  }
+
+  .reference-item:hover::after {
+    color: rgba(0,0,0,0.08);
+    transform: scale(1.05) translateY(-4px);
   }
 
   .reference-item:nth-child(odd) {
@@ -1538,6 +1753,16 @@
     letter-spacing: -0.025em;
     font-kerning: normal;
     font-feature-settings: "kern" 1;
+    display: inline;
+    background-image: linear-gradient(var(--black), var(--black));
+    background-size: 0% 1px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    transition: background-size 400ms ease;
+  }
+
+  .reference-item:hover h3 {
+    background-size: 100% 1px;
   }
 
   .reference-role {
@@ -1621,6 +1846,13 @@
     text-wrap: balance;
   }
 
+  .contact-strip h2::after {
+    content: " ~";
+    font-family: var(--font-script);
+    font-size: 0.5em;
+    opacity: 0.35;
+  }
+
   .contact-links {
     display: flex;
     flex-wrap: wrap;
@@ -1629,6 +1861,7 @@
   }
 
   .ghost-link {
+    position: relative;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
@@ -1641,12 +1874,45 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--white);
-    transition: background 180ms ease, border-color 180ms ease;
+    overflow: hidden;
+    transition: background 250ms ease, border-color 250ms ease, transform 250ms ease, letter-spacing 250ms ease;
   }
 
   .ghost-link:hover {
-    background: rgba(255,255,255,0.10);
-    border-color: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.50);
+    transform: translateY(-3px);
+    letter-spacing: 0.24em;
+  }
+
+  .ghost-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    transform: translateX(-100%);
+    transition: transform 500ms ease;
+    pointer-events: none;
+  }
+
+  .ghost-link:hover::before {
+    transform: translateX(100%);
+  }
+
+  .contact-links .ghost-link {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 250ms ease, border-color 250ms ease, letter-spacing 250ms ease;
+    transition-delay: var(--link-delay, 0ms);
+  }
+
+  .contact-links.in .ghost-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .contact-links.in .ghost-link:hover {
+    transform: translateY(-3px);
   }
 
   .footer {
@@ -1695,6 +1961,18 @@
 
   .footer a:hover { text-decoration: underline; }
 
+  .footer-grid > div {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: var(--col-delay, 0ms);
+  }
+
+  .footer-grid.in > div {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .footer-bottom {
     border-top: 1px solid var(--ink-15);
     padding-top: 32px;
@@ -1725,7 +2003,6 @@
 
   @media (max-width: 1100px) {
     .metric-grid { grid-template-columns: repeat(3, 1fr); }
-    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .journey-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .work-head,
     .journey-head,
@@ -1817,11 +2094,9 @@
     .orbit-label strong { font-size: 26px; }
     .orbit-label span { display: none; }
     .metric-grid,
-    .project-grid,
     .reference-grid,
     .footer-grid { grid-template-columns: 1fr; }
     .metric { min-height: 138px; }
-    .project-card { min-height: auto; }
     .journey { padding: 78px 0 86px; }
     .journey-head { margin-bottom: 42px; }
     .journey-map {
@@ -1913,10 +2188,16 @@
   }
 </style>
 </head>
-<body>
+<body class="is-loading">
+  <div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading portfolio">
+    <div class="preloader-mark">Pham The Quan <em>(Jayson)</em></div>
+    <div class="preloader-track"><span class="preloader-bar" id="preloader-bar"></span></div>
+    <div class="preloader-sub">Loading portfolio</div>
+  </div>
+
   <section class="stage" id="top" aria-label="Cinematic portfolio introduction">
     <div class="hero">
-      <video class="hero-video" autoplay loop muted playsinline poster="mqj8q8gq-Elements_moving_naturally__grass__202606181454.mp4.mp4">
+      <video class="hero-video" autoplay loop muted playsinline preload="auto">
         <source src="mqj8q8gq-Elements_moving_naturally__grass__202606181454.mp4.mp4" type="video/mp4" />
       </video>
 
@@ -2022,7 +2303,7 @@
 
     <section class="metrics" aria-label="Portfolio snapshot">
       <div class="section-inner">
-        <div class="metric-grid reveal-up">
+        <div class="metric-grid">
           <div class="metric"><b>2026</b><span>Final-year Finance student at UEH; CFA Level I-II-III preparation pathway at SAPP.</span></div>
           <div class="metric"><b>4.23%</b><span>Return in two weeks on a VND 1B mock portfolio in quantitative finance work.</span></div>
           <div class="metric"><b>3,168</b><span>Listed companies across 20 Asian countries in the ESG research dataset.</span></div>
@@ -2047,7 +2328,7 @@
           <p>A roadmap of how finance study, live-event leadership, venture operations, business analysis, and AI systems began to connect into one working profile. The 2029 point is a personal learning target, not a completed designation.</p>
         </div>
 
-        <div class="journey-scroll reveal-up" style="--delay: 140ms" aria-label="Career roadmap from 2022 to 2029">
+        <div class="journey-scroll" aria-label="Career roadmap from 2022 to 2029">
           <div class="journey-map">
             <article class="journey-node">
               <div class="journey-card">
@@ -2129,8 +2410,8 @@
     </section>
 
     <section class="skills" id="skills" aria-labelledby="skills-title">
-      <div class="section-inner capability-board reveal-up">
-        <div class="capability-copy">
+      <div class="section-inner capability-board">
+        <div class="capability-copy reveal-up">
           <p class="section-kicker">Capability layer</p>
           <h2 class="section-title" id="skills-title">Analysis, operations, automation.</h2>
           <p>Professional strengths combine financial modeling, data analysis, venture screening, program operations, stakeholder coordination, event documentation, dashboarding, and AI-assisted system building.</p>
@@ -2151,26 +2432,26 @@
           <p>References from venture/program operations and technical workflow validation. Personal phone numbers and private email addresses are intentionally withheld from the public portfolio and can be shared with recruiters on request.</p>
         </div>
 
-        <div class="reference-grid reveal-up" style="--delay: 140ms">
-          <article class="reference-item">
+        <div class="reference-grid">
+          <article class="reference-item" data-initial="E">
             <span class="reference-type">Professional · NUS Enterprise / BLOCK71</span>
             <h3>Mr. Edward Lim</h3>
             <p class="reference-role">Country Director (Vietnam) · NUS Enterprise / BLOCK71, National University of Singapore</p>
             <p class="reference-relationship">Professional reference connected to BLOCK71 Vietnam, NUS Enterprise, and UniVentures program operations.</p>
           </article>
-          <article class="reference-item">
+          <article class="reference-item" data-initial="T">
             <span class="reference-type">Professional · AI workflow validation</span>
             <h3>Nguyễn Phước Anh Tuấn</h3>
             <p class="reference-role">Mobile Engineer · MoMo</p>
             <p class="reference-relationship">Supported review, training, and validation for AI, automation, website, dashboard, and product-building skills.</p>
           </article>
-          <article class="reference-item">
+          <article class="reference-item" data-initial="T">
             <span class="reference-type">Professional · AI workflow validation</span>
             <h3>Trần Đình Nhật Trí</h3>
             <p class="reference-role">Software Engineer · Axon</p>
             <p class="reference-relationship">Supported review, training, and validation for AI, automation, website, dashboard, and product-building skills.</p>
           </article>
-          <article class="reference-item">
+          <article class="reference-item" data-initial="V">
             <span class="reference-type">Professional · Software engineering</span>
             <h3>Nguyễn Trần Việt Anh</h3>
             <p class="reference-role">Software Engineer · Axon</p>
@@ -2196,6 +2477,8 @@
           <a class="ghost-link" href="mailto:ptquan.work@gmail.com">Email</a>
           <a class="ghost-link" href="tel:0906853825">Phone</a>
           <a class="ghost-link" href="https://www.linkedin.com/in/ptquan2004/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="ghost-link" href="https://github.com/ptquanwork-cmyk" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="ghost-link" href="https://jayson-portfolio-sigma.vercel.app/" target="_blank" rel="noreferrer">Live site</a>
           <a class="ghost-link" href="https://www.instagram.com/jayson_pham_/" target="_blank" rel="noreferrer">Instagram</a>
         </div>
       </div>
@@ -2217,7 +2500,7 @@
 
   <footer class="footer" aria-label="Footer">
     <div class="footer-inner">
-      <div class="footer-grid reveal-up">
+      <div class="footer-grid">
         <div>
           <h3>Discover</h3>
           <ul>
@@ -2235,7 +2518,8 @@
             <li><a href="#work">AI systems</a></li>
             <li><a href="#work">Portfolio prototypes</a></li>
             <li><a href="#references">References</a></li>
-            <li><a href="#contact">Recruiter contact</a></li>
+            <li><a href="https://github.com/ptquanwork-cmyk/jayson-portfolio" target="_blank" rel="noreferrer">Source code (GitHub)</a></li>
+            <li><a href="https://jayson-portfolio-sigma.vercel.app/" target="_blank" rel="noreferrer">Deployed on Vercel</a></li>
           </ul>
         </div>
         <div>
@@ -2243,8 +2527,9 @@
           <ul>
             <li><a href="mailto:ptquan.work@gmail.com">ptquan.work@gmail.com</a></li>
             <li><a href="tel:0906853825">0906853825</a></li>
-            <li><a href="https://www.facebook.com/jayson.pham.568" target="_blank" rel="noreferrer">Facebook</a></li>
+            <li><a href="https://github.com/ptquanwork-cmyk" target="_blank" rel="noreferrer">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/ptquan2004/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/jayson.pham.568" target="_blank" rel="noreferrer">Facebook</a></li>
           </ul>
         </div>
         <div>
@@ -2420,6 +2705,50 @@
   }
 
   requestAnimationFrame(paintHero);
+
+  // Hold the curtain until the hero video is playable and the orbit art is decoded.
+  // ponytail: 10s hard cap so a slow connection can never trap the visitor.
+  (() => {
+    const curtain = document.getElementById("preloader");
+    if (!curtain) return;
+    const bar = document.getElementById("preloader-bar");
+    const video = document.querySelector(".hero-video");
+    const assets = orbitImages.map((entry) => entry.src);
+    const total = assets.length + 1;
+    let ready = 0;
+    let lifted = false;
+
+    const lift = () => {
+      if (lifted) return;
+      lifted = true;
+      if (bar) bar.style.transform = "scaleX(1)";
+      curtain.classList.add("is-done");
+      document.body.classList.remove("is-loading");
+      window.scrollTo(0, 0);
+      setTimeout(() => curtain.remove(), 900);
+    };
+
+    const step = () => {
+      ready += 1;
+      if (bar) bar.style.transform = `scaleX(${Math.min(1, ready / total)})`;
+      if (ready >= total) lift();
+    };
+
+    assets.forEach((src) => {
+      const img = new Image();
+      img.onload = step;
+      img.onerror = step;
+      img.src = src;
+    });
+
+    if (!video || video.readyState >= 3) step();
+    else {
+      video.addEventListener("canplaythrough", step, { once: true });
+      video.addEventListener("error", step, { once: true });
+    }
+
+    setTimeout(lift, 10000);
+  })();
 
   const projects = [
     {
@@ -2759,8 +3088,13 @@
     const visible = filter === "all" ? projects : projects.filter((p) => p.category === filter);
     projectGrid.innerHTML = visible.map((project, index) => {
       const toolDots = project.tools.slice(0, 3).map(() => `<span class="tool-dot"></span>`).join("");
+      let gridSize = "";
+      if (index === 0) gridSize = 'data-grid-size="featured"';
+      else if (index === 1) gridSize = 'data-grid-size="tall"';
+      else if (index > 1 && (index - 2) % 6 === 3) gridSize = 'data-grid-size="wide"';
+      else if (index > 1 && (index - 2) % 6 === 4) gridSize = 'data-grid-size="wide"';
       return `
-        <article class="project-card" data-category="${project.category}" data-index="${index}" tabindex="0" role="button" aria-label="Open ${project.title} details">
+        <article class="project-card" data-category="${project.category}" data-index="${index}" ${gridSize} tabindex="0" role="button" aria-label="Open ${project.title} details">
           <div class="card-accent-bar"></div>
           <div class="card-noise"></div>
           <div class="card-grid-shader"></div>
@@ -2804,6 +3138,16 @@
       button.classList.add("active");
       renderProjects(button.dataset.filter);
     });
+  });
+
+  projectGrid.addEventListener("mousemove", (e) => {
+    const card = e.target.closest(".project-card");
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+    card.style.setProperty("--mouse-x", x + "%");
+    card.style.setProperty("--mouse-y", y + "%");
   });
 
   // ── Modal logic ──────────────────────────────────────────
@@ -2951,6 +3295,89 @@
     });
   }, { threshold: 0.24 });
   revealNodes.forEach((node) => revealObserver.observe(node));
+
+  function animateCounter(metricEl) {
+    const b = metricEl.querySelector("b");
+    if (!b) return;
+    const target = b.textContent.trim();
+    const numMatch = target.replace(/,/g, "").match(/^([\d.]+)/);
+    if (!numMatch) return;
+    const end = parseFloat(numMatch[1]);
+    const hasComma = target.includes(",");
+    const suffix = target.replace(/^[\d,.]+/, "");
+    const decimalPlaces = target.includes(".") ? (target.split(".")[1] || "").match(/^\d+/)?.[0]?.length || 0 : 0;
+    const duration = 1200;
+    const start = performance.now();
+    b.textContent = "0" + suffix;
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * end;
+      let display;
+      if (decimalPlaces > 0) {
+        display = current.toFixed(decimalPlaces);
+      } else if (hasComma) {
+        display = Math.round(current).toLocaleString();
+      } else {
+        display = String(Math.round(current));
+      }
+      b.textContent = display + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const staggerObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        if (entry.target.classList.contains("metric")) {
+          animateCounter(entry.target);
+        }
+        staggerObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll(".metric").forEach((el, i) => {
+    el.style.setProperty("--stagger", i * 80 + "ms");
+    staggerObserver.observe(el);
+  });
+
+  document.querySelectorAll(".journey-node").forEach((el, i) => {
+    el.style.setProperty("--node-delay", i * 150 + "ms");
+    staggerObserver.observe(el);
+  });
+
+  document.querySelectorAll(".reference-item").forEach((el, i) => {
+    el.style.setProperty("--ref-delay", i * 120 + "ms");
+    staggerObserver.observe(el);
+  });
+
+  const skillCloud = document.querySelector(".skill-cloud");
+  if (skillCloud) {
+    skillCloud.querySelectorAll("span").forEach((el, i) => {
+      el.style.setProperty("--tag-delay", i * 40 + "ms");
+    });
+    staggerObserver.observe(skillCloud);
+  }
+
+  const contactLinks = document.querySelector(".contact-links");
+  if (contactLinks) {
+    contactLinks.querySelectorAll(".ghost-link").forEach((el, i) => {
+      el.style.setProperty("--link-delay", i * 100 + "ms");
+    });
+    staggerObserver.observe(contactLinks);
+  }
+
+  const footerGrid = document.querySelector(".footer-grid");
+  if (footerGrid) {
+    footerGrid.querySelectorAll(":scope > div").forEach((el, i) => {
+      el.style.setProperty("--col-delay", i * 100 + "ms");
+    });
+    staggerObserver.observe(footerGrid);
+  }
 
   const form = document.getElementById("mini-contact");
   const emailInput = document.getElementById("interest-email");
