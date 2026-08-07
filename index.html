@@ -54,6 +54,27 @@
 
   body.is-loading { overflow: hidden; }
 
+  .project-metric {
+    margin: 0 0 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    flex-wrap: wrap;
+  }
+  .project-metric b {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 3.4vw, 44px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .project-metric span {
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-55);
+  }
+
   .preloader {
     position: fixed;
     inset: 0;
@@ -2304,16 +2325,16 @@
     <section class="metrics" aria-label="Portfolio snapshot">
       <div class="section-inner">
         <div class="metric-grid">
-          <div class="metric"><b>2026</b><span>Final-year Finance student at UEH; CFA Level I-II-III preparation pathway at SAPP.</span></div>
-          <div class="metric"><b>4.23%</b><span>Return in two weeks on a VND 1B mock portfolio in quantitative finance work.</span></div>
-          <div class="metric"><b>3,168</b><span>Listed companies across 20 Asian countries in the ESG research dataset.</span></div>
-          <div class="metric"><b>6 mo.</b><span>Venture Analyst internship with BLOCK71 Vietnam, NUS Enterprise, Program Team.</span></div>
-          <div class="metric"><b>34</b><span>Volunteer deployment plan for NUS BLOCK71 UniVentures Gala Dinner operations.</span></div>
-          <div class="metric"><b>120,724</b><span>Volunteer scale in Clean Up Vietnam campaign context.</span></div>
-          <div class="metric"><b>1,200</b><span>Attendee concert contribution; sold out under one minute.</span></div>
-          <div class="metric"><b>2</b><span>Consolidated Expara venture projects: Assessment Hub and Project Alpha Execution Hub.</span></div>
-          <div class="metric"><b>7.0</b><span>IELTS band, including 8.0 Speaking and 7.0 Listening.</span></div>
-          <div class="metric"><b>AI</b><span>Codex, Obsidian, OpenRouter, MCP, Make, n8n, Hermes Agent, Cursor, VS Code.</span></div>
+          <div class="metric"><b>₫102bn</b><span>NPV on the REE Non Nuoc appraisal; IRR 17.74% against a 13.78% WACC. Recommendation: proceed.</span></div>
+          <div class="metric"><b>+26.8%</b><span>Upside on the MWG valuation at a VND 77,038 target price. Call: BUY.</span></div>
+          <div class="metric"><b>4.23%</b><span>Two-week return on a VND 1B mock portfolio during the Vietcap Securities internship.</span></div>
+          <div class="metric"><b>200</b><span>Guests at the NUS BLOCK71 UniVentures Gala Dinner, Pullman Saigon Centre, 29 Jan 2026.</span></div>
+          <div class="metric"><b>3,168</b><span>Listed companies across 20 Asian countries in the ESG dataset. UEH Young Researchers Award, Prize C.</span></div>
+          <div class="metric"><b>8 mo.</b><span>Venture Analyst internship with BLOCK71 Vietnam, NUS Enterprise, Nov 2025 - Jun 2026.</span></div>
+          <div class="metric"><b>85 mo.</b><span>Of monthly data in a solo GARCH study of US tariff shocks on Vietnamese exporters.</span></div>
+          <div class="metric"><b>472</b><span>Clean Up Vietnam campaign sites across 63 provinces - campaign scale, HQ-side contribution.</span></div>
+          <div class="metric"><b>Solo</b><span>Signed Odoo, website and business-analysis engagement delivered end to end for a brewery client.</span></div>
+          <div class="metric"><b>7.0</b><span>IELTS band, including 8.0 Speaking and 7.0 Listening. CFA Level I-III pathway at SAPP.</span></div>
         </div>
       </div>
     </section>
@@ -2752,305 +2773,400 @@
 
   const projects = [
     {
-      category: "financial",
-      title: "Capital Budgeting & Risk Analysis - REE Corporation",
-      role: "Team Leader of a 5-member team",
-      period: "2024 - 2025",
-      summary: "Led a capital budgeting case for REE, building forecasts, WACC, NPV, IRR, PI, and Monte Carlo risk analysis.",
-      highlights: ["Organized project inputs and assumptions.", "Built yearly cash flow forecasts and investment feasibility outputs.", "Used scenario analysis and Crystal Ball simulation for risk sensitivity."],
-      details: [
-        "Reviewed and organized project information so the team worked from consistent operational and market assumptions.",
-        "Calculated initial project costs, yearly cash flows, tax impacts, and the weighted average cost of capital.",
-        "Evaluated feasibility through NPV, IRR, and profitability index outputs rather than relying on one decision metric.",
-        "Used scenario analysis and Crystal Ball Monte Carlo simulation to test uncertainty and sensitivity.",
-        "Consolidated the five-member team's work into one report and presented actionable recommendations to faculty."
-      ],
-      tools: ["Excel", "WACC", "NPV / IRR / PI", "Crystal Ball"],
-      access: "https://drive.google.com/drive/folders/1313zQLWABcJkDvRpL6VzKDRZNNzkJybw",
-      label: "Access file"
-    },
-    {
-      category: "financial",
-      title: "Corporate Valuation - Mobile World Group (MWG)",
-      role: "Team Leader of a 5-member team",
-      period: "2024 - 2025",
-      summary: "Conducted intrinsic valuation for MWG using DCF, WACC calculation, sensitivity analysis, and financial forecasting.",
-      highlights: ["Designed and consolidated the valuation report.", "Forecasted revenue, margins, ROE, and ROA from historical data and industry context.", "Prepared investment insights with sensitivity analysis."],
-      details: [
-        "Collected and verified financial and market data before building the valuation model.",
-        "Forecasted revenue, profit margins, ROE, and ROA using historical performance and industry context.",
-        "Applied discounted cash flow valuation while considering macroeconomic, microeconomic, and management strategy factors.",
-        "Calculated WACC and tested the model through sensitivity and scenario analysis.",
-        "Coordinated timelines, aligned member outputs, and prepared the final valuation report with investment insights."
-      ],
-      tools: ["DCF", "Financial modeling", "WACC", "Excel"],
-      access: "https://drive.google.com/drive/folders/1f2LT3baia5qiIATgmhQ71-53E6VI-9Dr?usp=drive_link",
-      label: "Open report"
-    },
-    {
-      category: "financial",
-      title: "Quantitative Finance & Portfolio Management",
-      role: "Team Leader of a 10-member team",
-      period: "2024 - 2025",
-      summary: "Built a VND 1B mock portfolio and delivered a 4.23% return in two weeks through portfolio management work.",
-      highlights: ["Managed team workflow across a larger financial project group.", "Applied portfolio selection and investment reasoning.", "Preserved performance outcome from the source dossier."],
-      details: [
-        "Led a ten-member team through security selection, allocation logic, and portfolio monitoring.",
-        "Applied Modern Portfolio Theory and Excel Solver to compare risk-return combinations.",
-        "Used market and company analysis to translate research into portfolio decisions.",
-        "Tracked a VND 1B mock portfolio and recorded a 4.23% return over two weeks.",
-        "Combined model outputs with practical investment reasoning and team review before presenting results."
-      ],
-      tools: ["Excel Solver", "Portfolio management", "Market analysis"],
-      access: "https://drive.google.com/drive/folders/1RQvAIqC7mZV9ISsxz_6EHaKeKAyOcacn",
-      label: "Access file"
-    },
-    {
-      category: "financial",
-      title: "ESG & Financial Performance Study",
-      role: "Research Contributor",
-      period: "UEH Young Researchers Award",
-      summary: "Worked with an ESG dataset of 3,168 listed companies across 20 Asian countries to study financial performance relationships.",
-      highlights: ["Processed ESG and listed-company data.", "Supported research framing and analysis.", "Preserved the Young Researcher context without overstating credential status."],
-      details: [
-        "Worked with a research dataset covering 3,168 listed companies across 20 Asian countries.",
-        "Supported data cleaning, variable structuring, and the framing of ESG and financial-performance relationships.",
-        "Used Stata-oriented research workflows to prepare and examine listed-company information.",
-        "Contributed to literature review, methodology discussion, and interpretation of analytical outputs.",
-        "Presented the work as a research contribution within the UEH Young Researchers context, not as a separate professional credential."
-      ],
-      tools: ["ESG data", "Research", "Stata", "Reporting"],
-      access: "https://drive.google.com/drive/folders/1rQdUXyRywAiMsJnEgCcWrTudTWYCCp5u?usp=drive_link",
-      label: "Access file"
-    },
-    {
       category: "venture",
+      metric: "8 mo.",
+      metricLabel: "NUS Enterprise internship",
       title: "BLOCK71 Vietnam - Venture Analyst Intern",
-      role: "Venture Analyst Intern / Program Operations Support",
+      role: "Venture Analyst Intern, Program Team",
       period: "Nov 2025 - Jun 2026",
-      summary: "Supported BLOCK71 Vietnam under NUS Enterprise across UniVentures, Demo Day, Gala operations, meetings, documentation, and AI training assets.",
-      highlights: ["Worked with startup ecosystem stakeholders and program documentation.", "Supported event boards, networking sessions, and review/application materials.", "Built exposure across venture analysis and program operations."],
+      summary: "Eight months inside NUS Enterprise's Vietnam incubator, working the program, tech-asset and research side of UniVentures, Demo Day, IC Day and the Gala Dinner.",
+      highlights: ["Owned the UniVentures recap video asset through to delivery.", "Built the tracking layer for volunteers, vendors, MCs, performers and team tasks.", "Ran the research that fed venue, partner, market and company decisions."],
       details: [
-        "Supported UniVentures, Demo Day, ELab collaboration, networking sessions, meetings, and program-related classes.",
-        "Built and maintained trackers for tasks, volunteers, vendors, MCs, performers, and internal team master sheets.",
-        "Prepared runsheets, award-flow logic, seating and guest-flow materials, slides, LED scripts, recap assets, and 3D maps.",
-        "Supported VIP and protocol logistics including schedules, fast-track arrangements, transfers, parking, and passport files.",
-        "Researched markets, venues, partners, transportation, services, and company backgrounds for team decisions.",
-        "Proposed operating improvements such as a yearly roadmap, master timeline, task breakdown structure, and RACI matrix."
+        "Action - worked the program, technical-asset, data and research lanes of an eight-month internship: runsheets, award-flow logic, seating and guest-flow logic, LED scripts, briefing slides, and 3D venue and site maps for IC Day, Demo Day and the Gala.",
+        "Action - owned the UniVentures recap video asset end to end on the marketing tracker, from brief through edit to delivery ahead of the event deadline.",
+        "Action - built and maintained the tracking layer the team ran on: volunteer, vendor, MC, performer and internal task master sheets.",
+        "Action - ran the desk research behind team decisions on markets, venues, partners, restaurants, transportation and company backgrounds, and prepared VIP and protocol packs including schedules, fast-track arrangements, transfers, parking and passport files.",
+        "Consequence - turned scattered requests into structured documents other people could execute from, and proposed a yearly roadmap, master timeline with task breakdown, and a RACI matrix as process improvements for the team.",
+        "Context - the internship sat in the support and consulted tier of the program RACI, alongside senior staff who held accountability. The value delivered was execution speed and documentation quality, not workstream ownership.",
+        "Timebound - Nov 2025 to Jun 2026, across IC Day, Demo Day, the UniVentures Gala Dinner, ELab Demo Day, networking sessions and program classes."
       ],
-      tools: ["Program ops", "Venture support", "Documentation", "Stakeholder coordination"],
+      tools: ["Program ops", "Research", "Data & tracking", "3D layout"],
       access: "",
       label: "To be added"
     },
     {
       category: "venture",
+      metric: "200",
+      metricLabel: "guests at Pullman Saigon Centre",
       title: "NUS BLOCK71 UniVentures Gala Dinner",
-      role: "Venture Analyst Intern / Program Operations Support",
-      period: "Pullman Saigon Centre",
-      summary: "Supported UniVentures Gala operations including a 34-volunteer deployment plan and a 3D venue layout for Pullman Saigon Centre.",
-      highlights: ["Prepared operations planning and role deployment logic.", "Mapped event flow and stakeholder needs.", "Linked the 3D venue layout for event planning context."],
+      role: "Program Operations Support, Program Team",
+      period: "29 Jan 2026",
+      summary: "A 200-guest senior-level gala with a VND 674M budget, a 51-cue run sheet and roughly 90 named Tier 1-2 VIPs, headlined by Guest of Honour Mr. Heng Swee Keat.",
+      highlights: ["200 confirmed guests, locked to the hotel three days out.", "226 invitations tracked; ~90 named VIPs assigned to liaison officers.", "Built the 3D Pullman venue layout used to reason about setup and flow."],
       details: [
-        "Supported the full operating program from morning load-in and technical setup through networking dinner, teardown, and post-mortem notes.",
-        "Built a 34-volunteer deployment plan across registration, VIP support, elevators, reception, backstage, room, and booth support.",
-        "Created a 3D venue layout to visualize the Pullman Saigon Centre setup, movement paths, and operational zones.",
-        "Contributed to registration guidance, seating review, award sequence, Top 10 stage flow, and presenter coordination.",
-        "Tracked vendors, performers, MCs, volunteers, and internal tasks across the event preparation cycle.",
-        "Supported a stakeholder environment spanning government, universities, investors, corporates, media, founders, and community partners."
+        "Action - built a 3D layout of the Pullman Saigon Centre ballroom so the team could reason about stage position, booth placement, movement paths and load-in before committing to the floor plan.",
+        "Action - supported the operations program end to end: 08:00 load-in, volunteer briefing, translation cabin, technical dry run, rehearsal, registration, VIP arrival, award ceremony, networking dinner, teardown and post-mortem.",
+        "Action - contributed to award-flow logic and the Top 10 on-stage sequence, registration and guest-flow guidelines, seating review, and the tracking sheets for vendors, MCs, performers and volunteers.",
+        "Consequence - 200 guests seated against a 226-invitation tracked list, roughly 90 named Tier 1-2 VIPs each matched to a liaison officer, run against a 51-cue run sheet on a VND 673.6M budget including contingency.",
+        "Context - the guest list spanned National Research Foundation Singapore, Temasek, Becamex, Singapore Press Holdings, VinaCapital, Golden Gate Ventures, Nvidia, MoMo, RMIT and the Singapore Consulate-General, with Mr. Heng Swee Keat as Guest of Honour.",
+        "Timebound - one event day, 29 Jan 2026, 08:00 load-in to 22:00 close, against a planning timeline that locked final headcount at D-3."
       ],
-      tools: ["Operations plan", "3D layout", "Volunteer deployment"],
+      tools: ["Event operations", "3D layout", "VIP protocol", "Tracking sheets"],
       access: "https://share.archisketch.com/ZtEjFiKC205E05992E1496D",
-      label: "View layout"
+      label: "View 3D layout"
+    },
+    {
+      category: "financial",
+      metric: "₫102bn",
+      metricLabel: "NPV - recommendation: proceed",
+      title: "Capital Budgeting & Risk Analysis - REE Corporation",
+      role: "Team Leader, 6-member team",
+      period: "Semester 1, 2025",
+      summary: "Appraised REE's Non Nuoc coastal resort-apartment project in Da Nang and returned a go: NPV VND 102.2bn, IRR 17.74% against a 13.78% WACC.",
+      highlights: ["NPV VND 102.2bn, IRR 17.74%, PI 0.295 - project accepted.", "Rebuilt the sector beta at 1.018 because REE's own beta reflects its energy business.", "Monte Carlo range: VND 48.2bn downside to VND 159.5bn upside."],
+      details: [
+        "Action - appraised a 3.2 ha, 175-unit coastal resort-apartment project at Non Nuoc, Da Nang, developed by REE LAND with VIID and SAIGONRES, modelled across a 2025-2027 build and a 2028-2054 operating life.",
+        "Action - refused REE's own equity beta because the group's risk profile is now dominated by energy, and rebuilt a real-estate sector beta of 1.018 from five listed comparables (VHM, SSH, KDH, NLG, SCR) on monthly returns from Jan 2019 to Jan 2024.",
+        "Action - derived cost of equity of 18.28% via CAPM on a 2.09% risk-free rate, priced debt at the 7% prevailing property lending rate, and ran WACC on both book and market capital structures before selecting the market-value basis.",
+        "Consequence - recommended proceeding: NPV of VND 102.24bn, IRR of 17.74% against a market-value WACC of 13.78%, and PI of 0.295, on total construction cost of VND 234.2bn.",
+        "Consequence - stress-tested with sensitivity analysis, three scenarios and Monte Carlo simulation in Crystal Ball. NPV ranged from VND 48.2bn in the bear case to VND 159.5bn in the bull case, and rental price and WACC were identified as the two variables that decide the project.",
+        "Timebound - semester-long UEH Faculty of Finance case, delivered as one consolidated report and presentation from a six-member team."
+      ],
+      tools: ["Excel", "Crystal Ball", "CAPM / WACC", "Monte Carlo"],
+      access: "https://drive.google.com/drive/folders/1313zQLWABcJkDvRpL6VzKDRZNNzkJybw",
+      label: "Open case file"
+    },
+    {
+      category: "financial",
+      metric: "+26.8%",
+      metricLabel: "upside - BUY call",
+      title: "Corporate Valuation - Mobile World Group (MWG)",
+      role: "Team Leader, 5-member team",
+      period: "Mar 2025",
+      summary: "Valued MWG at a VND 77,038 target price with a BUY recommendation and 26.8% upside, on a DCF built from segment-level revenue forecasts.",
+      highlights: ["Target price VND 77,038 per share; BUY; 26.8% upside.", "Forecast 2025 net revenue of VND 155.2tn, +13.01% YoY.", "Segment CAGRs modelled separately for TGDD/DMX and Bach Hoa Xanh."],
+      details: [
+        "Action - built the valuation bottom-up by retail chain rather than at group level, forecasting Thegioididong and Dien May Xanh at 6.7% and 10% CAGR and Bach Hoa Xanh at 17.11% CAGR over 2025-2030F.",
+        "Action - modelled the newer chains separately - An Khang, AVAKids and EraBlue in Indonesia - as segments crossing into profit from 2025 rather than folding them into a single group growth rate.",
+        "Action - applied DCF incorporating macroeconomic, microeconomic and board-strategy factors, calculated WACC, and ran sensitivity analysis on the assumptions that moved the answer most.",
+        "Consequence - issued a target price of VND 77,038 per share with a BUY recommendation and 26.8% upside against the market price on the 9 Mar 2025 report date.",
+        "Consequence - underpinned by a 2025 net revenue forecast of VND 155.2tn (+13.01% YoY) and Bach Hoa Xanh revenue of VND 48.14tn (+8% YoY) after that chain reached breakeven in late 2023.",
+        "Timebound - equity research report dated 9 Mar 2025, led and consolidated across a five-member team."
+      ],
+      tools: ["DCF", "Financial modeling", "WACC", "Sensitivity analysis"],
+      access: "https://drive.google.com/file/d/1khHyhf09YvX1SyHyWnOJA4ytpEcvIVfQ/view?usp=drive_link",
+      label: "Open report"
+    },
+    {
+      category: "current",
+      metric: "Solo",
+      metricLabel: "signed client engagement",
+      title: "Steersman Brewery - Odoo Workspace, Website & Business Analysis",
+      role: "Freelance Business Systems & Analysis Consultant",
+      period: "Jul 2026 - Jan 2027",
+      summary: "A signed, fixed-price consulting engagement delivered solo: an Odoo business-management workspace, a company website, full source-code handover, and business analysis running to January 2027.",
+      highlights: ["Sole service provider on a signed commercial agreement.", "Odoo across Sales, Purchase, Inventory and Finance with role-based approvals.", "12-month support term; business analysis through 30 Jan 2027."],
+      details: [
+        "Action - authored the service agreement and quotation myself - scope, deliverables, milestones, acceptance criteria, IP and handover terms - then managed the client relationship as sole service provider.",
+        "Action - configured an Odoo business-management workspace across Sales, Purchase, Inventory and Finance dashboards, with payment tracking, order processing, user roles and permissions, approval stages and workflow automations.",
+        "Action - built and deployed a responsive company website with SEO-friendly structure, mobile optimisation and domain connection, then handed over full source code, configuration notes and documentation.",
+        "Consequence - management got faster and leaner: order and approval steps run inside one system instead of scattered records, and the operating data comes out clean enough to actually analyse.",
+        "Consequence - that clean data feeds an ongoing business-health review covering sales trends, gross margin, expenses, cash flow, receivables and payables, inventory movement, order fulfilment and operating bottlenecks, delivered as management reporting with workflow recommendations.",
+        "Timebound - service agreement dated 19 Jul 2026, staged 50/30/20 against signing, UAT delivery and final acceptance, with a 12-month support term from acceptance and business analysis contracted through 30 Jan 2027. Commercial terms withheld by agreement."
+      ],
+      tools: ["Odoo / ERP", "Web development", "Business analysis", "Client delivery"],
+      access: "https://www.steersmanbrewery.com/",
+      label: "Visit client site"
+    },
+    {
+      category: "financial",
+      metric: "4.23%",
+      metricLabel: "two-week mock portfolio return",
+      title: "Vietcap Securities - Investment Consultant Intern",
+      role: "Investment Consultant Intern, Talented Student Program",
+      period: "Mar 2025 - Jul 2025",
+      summary: "Five months on Vietcap's Talented Student Program doing equity research, client simulation and portfolio tracking, returning 4.23% over two weeks on a VND 1B mock portfolio.",
+      highlights: ["4.23% return in two weeks on a VND 1B mock portfolio.", "Equity research combining DCF, ratio work and industry benchmarking.", "Completed Vietcap's in-person and e-learning training track."],
+      details: [
+        "Action - ran equity research using both fundamental and technical methods: DCF, financial ratios, industry benchmarking, and chart patterns and indicators on the DCM platform.",
+        "Action - tracked a VND 1B mock portfolio against a defined strategy and delivered analytical summaries rather than raw positions.",
+        "Action - practised the client-facing side under supervision, including telesales technique, cold-calling scripts and introducing basic investment products.",
+        "Consequence - returned 4.23% over a two-week measurement window on the VND 1B mock portfolio.",
+        "Consequence - completed the professional and soft-skills training required by the program across in-person classes and the e-learning platform, finishing with an internship completion certificate.",
+        "Timebound - Mar 2025 to Jul 2025 on the Talented Student Internship Program."
+      ],
+      tools: ["Equity research", "DCF", "Technical analysis", "Portfolio tracking"],
+      access: "https://drive.google.com/drive/folders/15kEo4O4tNs9JntbFnPrXb3mB1TFY_9ce",
+      label: "Open files"
+    },
+    {
+      category: "financial",
+      metric: "85 mo.",
+      metricLabel: "of data - solo research",
+      title: "Tariffs & Financial Shocks - Advanced Financial Econometrics",
+      role: "Independent Researcher",
+      period: "Submitted 28 Apr 2025",
+      summary: "Solo GARCH study of US tariff shocks on Vietnamese exporters. The finding: tariffs did not move mean returns, but volatility persistence ran near unity - the risk shows up as instability, not price level.",
+      highlights: ["Tariff shocks: no significant effect on mean returns.", "ARCH and GARCH terms highly significant, sum approaching 1.", "Rejected a rival specification at persistence ~1.64 as variance-explosive."],
+      details: [
+        "Action - ran the full research cycle alone - question, literature, data, modelling, diagnostics and write-up - on monthly closing prices from Jan 2017 to Jan 2024 for HOSE and HNX-listed firms across four export sectors: textiles, seafood, footwear and wood.",
+        "Action - built the TariffShock variable from documented US policy events sourced to USTR, WTO and official US filings, starting with Proclamation 9704 in Mar 2018 and including Vietnam's May 2019 addition to the currency-manipulation monitoring list.",
+        "Action - modelled with GARCH(1,1) plus firm-level controls for size, ROA and leverage, supported by Fisher-type ADF stationarity tests, VIF multicollinearity checks and a PMG-ARDL specification.",
+        "Consequence - the headline finding is a negative one that matters: tariff shocks, US export exposure and their interaction had no statistically significant effect on mean stock returns. The effect lives entirely in the variance.",
+        "Consequence - the ARCH and GARCH terms were highly significant with their sum approaching unity, confirming strong volatility persistence and clustering. Tariff policy does not reprice these firms so much as destabilise them, which is the reading a risk manager needs.",
+        "Consequence - selected GARCH(1,1) over rival specifications on log-likelihood, AIC, BIC and stability, explicitly rejecting one alternative whose persistence of about 1.64 implied variance explosion.",
+        "Timebound - final-term research paper submitted 28 Apr 2025, written and formatted to academic standard by a single author."
+      ],
+      tools: ["Stata", "GARCH / ARCH", "PMG-ARDL", "Academic writing"],
+      access: "https://drive.google.com/drive/folders/1lH3Xxx92E3DOGrW4l9YV9YKCcBDwyEOZ",
+      label: "Open research"
+    },
+    {
+      category: "financial",
+      metric: "30",
+      metricLabel: "companies automated in VBA",
+      title: "Quantitative Finance & Portfolio Management",
+      role: "Team Leader, 10-member team",
+      period: "2024 - 2025",
+      summary: "Led the largest team in this portfolio through portfolio construction under Modern Portfolio Theory, and automated the analysis of 30 listed companies in Excel VBA.",
+      highlights: ["Automated financial modelling for 30 listed companies in Excel VBA.", "Built short-sale and no-short-sale efficient frontiers with the Capital Market Line.", "Coordinated a ten-person team into one consolidated output."],
+      details: [
+        "Action - led a ten-member team, the largest group in this portfolio, through model design, division of coverage and consolidation into one deliverable.",
+        "Action - wrote VBA to automate data processing, simulation runs and performance dashboards for 30 listed companies, so the team spent its time analysing rather than re-keying.",
+        "Action - constructed optimal portfolios under Modern Portfolio Theory, building both short-sale and no-short-sale efficient frontiers and integrating them with the Capital Market Line.",
+        "Action - quantified portfolio risk with Monte Carlo simulation in Crystal Ball, modelling return distributions and testing resilience across market conditions.",
+        "Action - built cash flow projections, calculated NPV and derived WACC using Excel Solver to assess project feasibility alongside the portfolio work.",
+        "Note - performance statistics for this academic portfolio sit in the source workbook and are not quoted here. The VND 1B mock portfolio and its 4.23% return belong to the Vietcap internship, not to this project."
+      ],
+      tools: ["Excel VBA", "Excel Solver", "Modern Portfolio Theory", "Crystal Ball"],
+      access: "https://drive.google.com/drive/folders/1RQvAIqC7mZV9ISsxz_6EHaKeKAyOcacn",
+      label: "Open files"
+    },
+    {
+      category: "financial",
+      metric: "3,168",
+      metricLabel: "listed companies - 20 countries",
+      title: "ESG & Financial Performance Study",
+      role: "Research Contributor",
+      period: "UEH Young Researchers Award - Prize C",
+      summary: "Cross-country study of ESG practice against firm performance, built on a dataset of 3,168 listed companies across 20 Asian countries. Awarded Prize C.",
+      highlights: ["Dataset of 3,168 listed companies across 20 Asian markets.", "UEH Young Researchers Award, Prize C.", "Co-developed the research framework and statistical methodology."],
+      details: [
+        "Action - processed and reconciled ESG and financial data for 3,168 listed companies across 20 Asian countries, carrying responsibility for dataset accuracy and consistency at that scale.",
+        "Action - ran the literature review that set the theoretical foundation and located the research gap the paper addresses.",
+        "Action - co-developed the research framework and statistical methodology, then applied econometric technique to the ESG-performance relationship.",
+        "Consequence - interpreted regression output into implications for investors and policymakers, and the paper was awarded Prize C at the UEH Young Researchers Award.",
+        "Context - contributed as one member of a research team; the framework and methodology were developed jointly rather than solo."
+      ],
+      tools: ["ESG data", "Econometrics", "Literature review", "Academic reporting"],
+      access: "https://drive.google.com/drive/folders/1rQdUXyRywAiMsJnEgCcWrTudTWYCCp5u?usp=drive_link",
+      label: "Open research"
     },
     {
       category: "ai",
+      metric: "~2 days",
+      metricLabel: "per assessment deliverable",
       title: "Expara Program & Investment Analyst Assessment Hub",
       role: "Program & Investment Analyst Candidate",
       period: "May 2026",
-      summary: "Consolidated Expara assessment work into an execution hub covering investment screening, market thesis, and venture services program design.",
-      highlights: ["Grouped Kamereo, B2B AgriFood-Tech, and WorkForce 2.0 details under one hub.", "Used 4Ts and Hamilton Helmer's 7 Powers for Kamereo screening.", "Produced diligence questions and proceed-to-due-diligence reasoning."],
+      summary: "A venture analyst assessment answered at roughly two days per deliverable: Kamereo screening, a Southeast Asia market thesis, a venture-services program concept, and a website hub nobody asked for.",
+      highlights: ["Kamereo screened on the 4Ts plus Hamilton Helmer's 7 Powers.", "Proceed-to-diligence call with working-capital risk flagged as the caveat.", "Built the website hub on top of the written brief, unprompted."],
       details: [
-        "Consolidated four assessment dimensions: startup evaluation, Southeast Asia market thesis, venture-services program design, and analyst operating style.",
-        "Screened Kamereo through Team, TAM, Tech, and Traction, then added Hamilton Helmer's 7 Powers to examine defensibility.",
-        "Developed a B2B AgriFood-Tech and climate-resiliency thesis around traceability, Scope 3 data, embedded finance, and fragmented supply chains.",
-        "Designed WorkForce 2.0 as a 100-day human-in-the-loop automation lab for live corporate pilots.",
-        "Translated written analysis into a reviewable website hub and dashboard-style experience.",
-        "Kept the recommendation evidence-led by pairing a proceed-to-due-diligence view with explicit diligence questions and risk checks."
+        "Action - screened Kamereo, a Vietnamese B2B food supply-chain business, against the 4Ts - Team, TAM, Tech, Traction - then layered Hamilton Helmer's 7 Powers to test defensibility through scale economies, switching costs and upstream supply relationships.",
+        "Action - wrote a Southeast Asia investment thesis arguing that the next AgriFood-Tech opportunity is upstream B2B infrastructure: traceability, climate resilience, Scope 3 data and embedded finance for fragmented agricultural supply chains.",
+        "Action - designed WorkForce 2.0, a 100-day human-in-the-loop automation lab that reframes the brief from a traditional accelerator into an outcome-first venture client program with paid pilots and SLA conversion targets.",
+        "Consequence - recommended proceeding to due diligence on Kamereo while naming working capital as the caveat, and attached the founder questions that would settle it: NRR, CAC payback, DSO, burn multiple, city-level gross margin ramp and supplier exclusivity.",
+        "Consequence - built the website hub in addition to the written deliverables, which the brief did not require, to make the analysis reviewable rather than merely readable.",
+        "Timebound - roughly two days per deliverable in May 2026. The application was not successful; the work is published here because the reasoning stands on its own."
       ],
-      tools: ["Venture screening", "Market thesis", "Program design", "AI-assisted build"],
+      tools: ["Venture screening", "7 Powers", "Market thesis", "AI-assisted build"],
       access: "https://expara.vercel.app/",
-      label: "View hub"
+      label: "Open hub"
     },
     {
       category: "ai",
+      metric: "6 weeks",
+      metricLabel: "program architecture",
       title: "Project Alpha Execution Hub - Founder Signal Engine",
       role: "Program Architect / Venture Analyst Candidate",
       period: "May 2026",
-      summary: "Designed a 6-week Expara program architecture for founder selection, evidence gates, investor readiness, and corporate validation.",
-      highlights: ["Covered founder value proposition and cold-start plan.", "Built KPI logic, event execution dashboard, and partnership tracking.", "Linked the final submission from the source registry."],
+      summary: "A six-week venture program designed around evidence gates rather than demo-day theatre, then built out into an execution hub with KPI logic and an operating dashboard.",
+      highlights: ["Thesis: convert founder potential into investor-grade commercial proof.", "KPI targets set before the program, not after.", "Risk controls written for the ways this kind of program usually fails."],
       details: [
-        "Designed a six-week architecture that moves founders from sourcing and selection into matching, evidence sprints, proof packs, and a private investor/corporate room.",
-        "Defined the founder value proposition and a practical cold-start plan for the first operating cycle.",
-        "Set KPI logic for qualified leads, selected founders, buyer-problem matching, proof-gate passage, and follow-up activity.",
-        "Mapped sourcing channels across alumni, universities, ecosystem organizations, partner funds, LinkedIn, and founder communities.",
-        "Created risk controls for weak founder quality, slow corporate response, corporate-heavy bias, and performative exclusivity.",
-        "Built an execution hub covering program guidelines, schedule, event operations, marketing, partnership tracking, and dashboard views."
+        "Action - built the core argument that Project Alpha should not be another public accelerator, and should instead convert founder potential into investor-grade commercial proof.",
+        "Action - designed five strategic pillars - signal selection, problem-led market access, evidence gates, proof pack and a Private Alpha Room - and sequenced them into a six-week operating plan from sourcing through to the final investor and corporate room.",
+        "Action - set KPI targets up front: 80-100 qualified leads, 8-10 selected founders, at least 80% buyer-problem match rate, at least 70% proof-gate pass rate, and at least 40% investor or corporate-initiated follow-up within 14 days.",
+        "Consequence - wrote explicit risk controls for weak founder quality, slow corporate response, corporate-heavy bias and performative exclusivity, which are the four ways programs like this quietly fail.",
+        "Consequence - translated the strategy into an execution hub covering founder value proposition, six-week cold-start plan, KPI logic, event execution dashboard, marketing and program guidelines, and partnership tracking.",
+        "Timebound - roughly two days of build in May 2026, as part of the same unsuccessful Expara application."
       ],
-      tools: ["Program architecture", "KPI logic", "Dashboard design"],
+      tools: ["Program architecture", "KPI design", "Dashboard build"],
       access: "https://expara-project-alpha-hub.vercel.app/",
-      label: "View prototype"
+      label: "Open hub"
     },
     {
       category: "ai",
-      title: "BLOCK71 Vietnam Event Board",
-      role: "Event Board Builder / AI-Assisted Website Builder",
-      period: "29 May 2026",
-      summary: "Built an event board for the Vietnam-Singapore innovation cooperation announcement connected to NUS Enterprise / BLOCK71 Vietnam.",
-      highlights: ["Structured event information for a public-facing board.", "Used AI-assisted website building workflows.", "Supported stakeholder communication around an innovation cooperation announcement."],
+      metric: "Running",
+      metricLabel: "local agentic OS",
+      title: "Local Agentic OS - Hermes Agent, OpenRouter & MCP",
+      role: "Local AI System Builder / Workflow Integrator",
+      period: "Personal build, in use",
+      summary: "A working local agent operating system, not a concept deck: kanban, task loops, boards and agent swarms running against multiple models through OpenRouter and MCP.",
+      highlights: ["Built and running, with the working surfaces demonstrable.", "Kanban, loops, boards and agentic swarm execution.", "Multi-model routing through OpenRouter with MCP app connections."],
       details: [
-        "Structured the date, partner organizations, cooperation narrative, and high-level event context into a scannable public-facing board.",
-        "Presented the NUS Enterprise / BLOCK71 Vietnam connection with NATEC, PTIT, and Van Lang University clearly.",
-        "Converted source information into an event communication asset using an AI-assisted front-end workflow.",
-        "Balanced public-sector, university, and startup-ecosystem information without inventing claims beyond the supplied source."
+        "Action - built a local operating layer on Hermes Agent that manages multiple models, API keys and workflows from one place rather than one chat window per tool.",
+        "Action - routed models through OpenRouter so work can be switched or split across models by task, and connected third-party applications over MCP so agent workflows reach beyond text.",
+        "Consequence - the system runs and the working surfaces can be demonstrated live: kanban task state, execution loops, operating boards, and agentic swarm runs where several agents work one task together.",
+        "Consequence - the practical difference against a plain chatbot is persistence and structure - work has state, tasks survive a session, and multiple agents can be pointed at one problem.",
+        "Context - a personal build rather than a shipped product. Presented as a working system I operate, not as software with external users."
       ],
-      tools: ["HTML", "AI-assisted build", "Event documentation"],
-      access: "https://vercel-event-board.vercel.app/",
-      label: "View board"
+      tools: ["Hermes Agent", "OpenRouter", "MCP", "Agent orchestration"],
+      access: "",
+      label: "Demo on request"
     },
     {
       category: "ai",
+      metric: "50%+",
+      metricLabel: "reading time removed",
       title: "JayVault - Obsidian Research & Trend Intelligence",
       role: "Knowledge System Builder / AI Workflow Designer",
-      period: "AI & venture project",
-      summary: "Designed an Obsidian-based knowledge capture and intelligence system for web clipping, trend monitoring, and reusable markdown reporting.",
-      highlights: ["Converted scattered inputs into searchable knowledge workflows.", "Supported article, YouTube, PDF, and markdown ingestion.", "Built a second-brain operating pattern for research."],
+      period: "Personal build, in daily use",
+      summary: "An Obsidian-backed capture and summarisation system with no practical ceiling on sources, cutting my own reading time by more than half through structured summaries and daily reports.",
+      highlights: ["No practical source limit - storage sits in a local Obsidian vault.", "Cuts reading time by more than half via summaries and daily reports.", "Articles, YouTube and PDFs all normalised into markdown."],
       details: [
-        "Designed a capture flow for articles, YouTube videos, and PDF files into an Obsidian-based markdown knowledge base.",
-        "Structured summaries, key ideas, trend notes, and daily reports for faster review.",
-        "Connected the vault concept to a visual web interface for more accessible scanning.",
-        "Created a reusable second-brain pattern rather than a one-off collection of notes.",
-        "Positioned the system as a personal research database for continuous learning and trend monitoring."
+        "Action - built a capture flow that pulls articles, YouTube videos and PDFs into an Obsidian vault and normalises all of them into markdown, so source format stops mattering.",
+        "Action - layered summarisation on top - key ideas, trend notes and a daily report - so the vault produces a reading queue instead of becoming one.",
+        "Consequence - because storage is a local vault rather than a hosted tool, there is no practical ceiling on how many sources go in.",
+        "Consequence - the measurable effect is more than half my reading time removed: the summaries and daily reports carry enough signal that a full read becomes a choice rather than the default.",
+        "Context - a personal knowledge system I run daily, connected to a web interface for scanning. Presented as working infrastructure for my own research, not as a product with users."
       ],
-      tools: ["Obsidian", "Markdown", "AI summarization"],
+      tools: ["Obsidian", "Markdown", "AI summarisation", "Daily reporting"],
       access: "https://jayvault.vercel.app/",
-      label: "View system"
+      label: "Open JayVault"
     },
     {
       category: "ai",
       title: "AI Agent Office Space / Multi-Agent Workspace",
       role: "AI Workspace Designer / Agent System Builder",
-      period: "Prototype",
-      summary: "Built an agent office space prototype for role-based AI workflows, reusable prompts, operating rooms, and task handoff systems.",
-      highlights: ["Explored agent workspace design as a product concept.", "Connected role-based behavior with project file structures.", "Used front-end prototyping to make workflow architecture visible."],
+      period: "Personal prototype",
+      summary: "A spatial interface for running multiple AI agents, each with its own role, working method and output format, defined through skill.md-style instructions.",
+      highlights: ["Office-space metaphor for multi-agent work.", "Behaviour defined in reusable skill.md-style instructions.", "Built against VS Code and Codex development workflows."],
       details: [
-        "Used a visual office-space metaphor to make multiple AI-agent roles easier to understand and operate.",
-        "Structured agents around explicit role, personality, working method, context, and output-format instructions.",
-        "Applied skill.md-style behavior design to make prompts and working patterns more reusable.",
-        "Connected the concept with VS Code and Codex-oriented development and task-handoff workflows."
+        "Action - used a visual office-space metaphor to make multi-agent work legible: each agent occupies a station with a defined role rather than living in an undifferentiated chat.",
+        "Action - structured each agent around explicit role, personality, working method, context and output format, written as skill.md-style instructions so behaviour is reusable rather than re-prompted each time.",
+        "Action - connected the concept to VS Code and Codex-oriented development and task-handoff workflows.",
+        "Context - a personal prototype exploring agent workspace design. It has no external users and is presented as a design exploration, not a product."
       ],
       tools: ["AI agents", "Prototype", "Workflow design"],
       access: "https://webview-flax-three.vercel.app/",
-      label: "View prototype"
+      label: "Open prototype"
     },
     {
       category: "ai",
       title: "AI Workshop Design & Training for BLOCK71 Vietnam",
       role: "Workshop Creator / AI Training Designer",
       period: "BLOCK71 Vietnam team",
-      summary: "Created AI training materials for BLOCK71 Vietnam including video and poster assets for practical AI workflow adoption.",
-      highlights: ["Translated AI tooling into team-ready learning assets.", "Prepared workshop structure and supporting media.", "Focused on applied productivity, not abstract tool demos."],
+      summary: "AI training built for the BLOCK71 Vietnam team around practical adoption - what to actually do with agents on program work - rather than tool demonstrations.",
+      highlights: ["Structured around adoption, not tool tours.", "Covered verification habits alongside capability.", "Delivered with supporting video and poster assets."],
       details: [
-        "Designed the workshop around practical adoption for program, community, and business teams.",
-        "Covered workflow foundations including frontend, backend, GitHub, files, prompts, handoffs, and verification habits.",
-        "Introduced agent types, role and context design, knowledge connections, optimization, and reusable workflow patterns.",
-        "Connected AI usage to research, content, operations, events, reporting, dashboards, and knowledge management.",
-        "Produced supporting training assets including a video and poster for the BLOCK71 Vietnam team."
+        "Action - designed the workshop around practical AI adoption for program, community and business teams, deliberately avoiding the tool-demo format that leaves attendees impressed and unchanged.",
+        "Action - covered workflow foundations including frontend, backend, GitHub, files, prompts, handoff logic and verification habits, so the team could judge output rather than trust it.",
+        "Action - introduced agent types, chatbot setup, role and context design, knowledge connection, agent optimisation and reusable workflow patterns.",
+        "Action - mapped the material onto real team needs: research, content, operations, event planning, reporting, dashboards, program management and internal knowledge management.",
+        "Consequence - produced the training video and poster assets that accompany the session."
       ],
       tools: ["AI training", "Workshop design", "Content systems"],
       access: "https://drive.google.com/file/d/1b8OslxmPY71Xo2HjZdlouUzbihluFlmQ/view?usp=drive_link",
-      label: "Watch video"
+      label: "Watch training"
+    },
+    {
+      category: "ai",
+      title: "BLOCK71 Vietnam Event Board",
+      role: "Event Board Builder / AI-Assisted Website Builder",
+      period: "29 May 2026",
+      summary: "An event board built around the Vietnam-Singapore Technology Connection Forum and the NUS Enterprise cooperation announcements with NATEC, PTIT and Van Lang University.",
+      highlights: ["Structured high-level public-sector event context into a scannable board.", "Covered the NATEC, PTIT and Van Lang cooperation agreements.", "Built through an AI-assisted front-end workflow."],
+      details: [
+        "Action - structured date, partner organisations, cooperation narrative and event context into a single scannable public-facing board.",
+        "Action - presented the NUS Enterprise and BLOCK71 Vietnam cooperation agreements with NATEC under the Ministry of Science and Technology, the Posts and Telecommunications Institute of Technology, and Van Lang University.",
+        "Action - moved from source information to a deployed site through an AI-assisted front-end workflow.",
+        "Context - built around the 29 May 2026 forum and presented as a communication asset I built, without claiming official adoption."
+      ],
+      tools: ["HTML", "AI-assisted build", "Event communication"],
+      access: "https://vercel-event-board.vercel.app/",
+      label: "Open board"
     },
     {
       category: "leadership",
+      metric: "472",
+      metricLabel: "campaign sites - campaign scale",
       title: "Clean Up Vietnam Campaign - Xanh Viet Nam",
-      role: "Event Team Member / Event Planner / On-site Sound Technician",
-      period: "Large-scale campaign",
-      summary: "Contributed to campaign operations in a national context: 63 provinces, 472 campaign sites, 120,724 volunteers, and 170 tons of waste collected.",
-      highlights: ["Supported event planning and on-site sound operations.", "Campaign context includes 25,014 garbage bags, 835 recyclable bags, and 9,900 trees planted.", "Demonstrated execution in high-scale volunteer coordination."],
+      role: "Event Planner / HQ Operations Support / On-site Sound Technician",
+      period: "Xanh Viet Nam Headquarters",
+      summary: "National environmental campaign across 63 provinces and 472 sites with 120,724 volunteers. I worked headquarters-side on the planning artifacts and ran live sound at the main event.",
+      highlights: ["Built deployment maps, equipment checklists and run-downs used across sites.", "Operated live sound at the main event.", "Campaign totals below are organisation-wide, not personal output."],
       details: [
-        "Supported onsite workflow planning, checklists, mapping, scripts, and technical operations within a nationwide environmental campaign.",
-        "Worked in a campaign context spanning 63 provinces, 472 sites, and 120,724 volunteers.",
-        "Contributed as an event team member, planner, and onsite sound technician.",
-        "Helped translate large-scale volunteer activity into coordinated event and technical execution.",
-        "Preserved the reported campaign outcomes of 170 tons of waste, 25,014 garbage bags, 835 recyclable bags, and 9,900 trees planted."
+        "Scope note - the figures below are campaign-wide results delivered by Xanh Viet Nam as an organisation. My contribution was headquarters-side planning support plus live technical operation, working within the HQ event team rather than owning the national rollout.",
+        "Action - developed the onsite workflow, equipment checklists, deployment maps and event run-down that regional teams executed against, and refined the program script.",
+        "Action - supported progress monitoring across the participating sites and coordinated inter-department tasks so regional teams stayed synchronised.",
+        "Action - operated the sound system and handled live technical operation as on-site sound engineer during the main event.",
+        "Consequence - the artifacts produced were the reusable kind: one deployment map and one checklist template travel to every site, which is where a small HQ team gets leverage over a national footprint.",
+        "Campaign scale - 63 provinces, 472 sites, 120,724 volunteers, 170 tons of waste collected, 25,014 garbage bags, 835 recyclable bags and 9,900 trees planted, delivered by an organisation of more than 50,000 volunteers."
       ],
-      tools: ["Event planning", "Sound operation", "Volunteer campaign"],
+      tools: ["Event planning", "Deployment mapping", "Live sound", "Coordination"],
       access: "",
       label: "To be added"
     },
     {
       category: "leadership",
+      metric: "1,200",
+      metricLabel: "seats - sold out under a minute",
       title: "Music Show - Noi Bat Dau: Vong",
       role: "Technical & Operation Team Member",
       period: "04/2024 - 06/2024",
-      summary: "Supported a 1,200-attendee concert contribution that sold out under one minute, combining event operations and technical execution.",
-      highlights: ["Coordinated technical and operations tasks.", "Aligned music, show flow, and backstage requirements.", "Preserved the concrete audience and sell-out outcome from the source dossier."],
+      summary: "A 1,200-seat university concert that sold out in under a minute. I wrote the light and sound scripts and worked the live operation.",
+      highlights: ["Designed light cues and sound engineering scripts for the live show.", "Supervised rehearsals and drove iterative adjustments.", "Handled live technical issues during the show."],
       details: [
-        "Supported technical scripting, rehearsal supervision, performance flow, and live operation for the show.",
-        "Coordinated stage, musician, backstage, and technical requirements across the preparation period.",
-        "Helped manage transitions and respond to live execution issues during the event.",
-        "Worked within a 1,200-attendee concert context that sold out in under one minute.",
-        "Combined music-production understanding with structured operations and technical discipline."
+        "Action - designed the dress code, light cues and sound engineering scripts that the technical crew ran the show from.",
+        "Action - supervised rehearsals, consolidated feedback across performers and technicians, and pushed iterative adjustments before show day.",
+        "Action - worked onsite operation and flow management, coordinating transitions and resolving live technical issues as they surfaced.",
+        "Consequence - the show ran to 1,200 attendees and sold out in under one minute.",
+        "Context - I was one member of the technical and operations team. The sell-out reflects the whole production and its audience demand; my contribution was the technical scripting and live execution that kept it running cleanly.",
+        "Timebound - Apr 2024 to Jun 2024, from planning through live delivery."
       ],
-      tools: ["Event ops", "Technical script", "Music production"],
+      tools: ["Technical scripting", "Live operations", "Rehearsal supervision"],
       access: "https://www.youtube.com/watch?v=RhGhEHwr7qI",
-      label: "Watch video"
+      label: "Watch show"
     },
     {
       category: "current",
       title: "QuickFish - Frontend & Agent OS Prompt Engineering Support",
-      role: "Supporter for Frontend & Agent OS Prompt Engineering",
+      role: "Supporter, Frontend & Agent OS Prompt Engineering",
       period: "May 2026 - Present",
-      summary: "Startup support experience connecting frontend execution with AI-agent workflow and prompt-system design.",
-      highlights: ["Supports AI-assisted product building and frontend workflows.", "Connects product implementation with structured agent behavior.", "Listed in the source dossier as current startup work."],
+      summary: "Supporting an AI career-guidance startup on the seam between frontend execution and agent prompt-system design.",
+      highlights: ["Translates product ideas into interface notes and user-flow logic.", "Structures agent role instructions, output formats and review checklists.", "Ongoing support role."],
       details: [
-        "Translated product ideas into interface notes, user-flow logic, and frontend support tasks.",
-        "Structured Agent OS prompts around role instructions, user intent, output format, review checklists, and handoff notes.",
-        "Bridged frontend and product thinking with career-guidance journeys and AI workflow design.",
-        "Kept public claims limited to the confirmed support role without inventing product milestones or results."
+        "Action - translated product ideas into interface notes, user-flow logic and frontend support tasks.",
+        "Action - structured Agent OS prompts around role instruction, user-intent flow, output format, review checklist and handoff notes.",
+        "Action - connected frontend and product thinking with career-guidance user journeys and AI workflow design.",
+        "Context - a support role rather than an ownership role, and claims here are deliberately limited to confirmed responsibilities. Shipped feature attribution is not published."
       ],
       tools: ["Frontend", "Agent OS", "Prompt engineering"],
       access: "https://quickfish.org/en",
-      label: "Visit site"
-    },
-    {
-      category: "current",
-      title: "Steersman Brewery - Marketing Campaign & Business Analysis",
-      role: "Marketing Campaign Support / Business Analysis Support",
-      period: "May 2026 - Present",
-      summary: "Supports marketing campaign and business analysis process optimization for Steersman Brewery.",
-      highlights: ["Applies business analysis to campaign workflows.", "Connects marketing activity with operational structure.", "Uses the official Instagram reference from the source registry."],
-      details: [
-        "Clarified campaign tasks, content needs, follow-up items, and execution flow for practical marketing support.",
-        "Reviewed operating gaps, documentation needs, and process-improvement opportunities through a business-analysis lens.",
-        "Mapped workflow steps into clearer task lists and follow-up checklists.",
-        "Applied program and event operations habits to a real company context while keeping outcomes limited to confirmed information."
-      ],
-      tools: ["Business analysis", "Campaign support", "Process optimization"],
-      access: "https://www.instagram.com/steersmanbrewery/",
-      label: "Open reference"
+      label: "Visit QuickFish"
     },
     {
       category: "creative",
       title: "Photography - People & Landscapes",
       role: "Photographer",
       period: "Creative practice",
-      summary: "Focuses on portraits, landscapes, nighttime compositions, low-light environments, and authentic event documentation.",
-      highlights: ["Experiments with exposure, contrast, color tone, and atmosphere.", "Documents events, street scenes, and candid portraits.", "Links to the Instagram reference provided in the content file."],
+      summary: "Portraits and landscapes with a bias toward night and low light, plus event and street documentation.",
+      highlights: ["Portrait and landscape work, weighted to low-light conditions.", "Documents events, street scenes and candid portraits.", "Ongoing personal practice."],
       details: [
-        "Specializes in portrait and landscape photography with a particular interest in nighttime and low-light environments.",
-        "Uses framing, exposure, contrast, and color tone to communicate atmosphere and mood.",
-        "Documents events, street scenes, candid portraits, and ambient cityscapes.",
-        "Combines technical control with an observational, story-led approach to visual documentation."
+        "Specialises in portrait and landscape photography with a particular interest in nighttime and low-light environments.",
+        "Uses framing, exposure, contrast and colour tone to carry atmosphere and mood.",
+        "Documents events, street scenes, candid portraits and ambient cityscapes.",
+        "Combines technical control with an observational, story-led approach."
       ],
       tools: ["Photography", "Low-light", "Visual storytelling"],
       access: "https://www.instagram.com/jayson_pham_/",
@@ -3103,6 +3219,7 @@
               <span class="tag">${project.category}</span>
               <span class="tag">${project.period}</span>
             </div>
+            ${project.metric ? `<p class="project-metric"><b>${project.metric}</b><span>${project.metricLabel}</span></p>` : ""}
             <h3>${project.title}</h3>
             <p class="project-role">${project.role}</p>
             <p class="project-summary">${project.summary}</p>
