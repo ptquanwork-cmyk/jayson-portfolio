@@ -5,3 +5,6 @@ DESIGN-HANDOFF.md
 DESIGN-MANIFEST.json
 
 screenshot-*.png
+qa-artifacts/
+desktop.ini
+Thumbs.db

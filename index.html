@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Jayson / Pham The Quan - My Portfolio</title>
 <meta name="description" content="A couture portfolio collection for Jayson / Pham The Quan across finance, venture operations, program execution, and AI automation." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000'/%3E%3Ctext x='32' y='45' fill='%23fff' font-family='Georgia,serif' font-size='42' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -86,27 +87,6 @@
   @media (max-width: 620px) {
     .modal-press a { flex-direction: column; gap: 3px; }
     .modal-press .press-src { min-width: 0; }
-  }
-
-  .project-metric {
-    margin: 0 0 10px;
-    display: flex;
-    align-items: baseline;
-    gap: 9px;
-    flex-wrap: wrap;
-  }
-  .project-metric b {
-    font-family: var(--font-serif);
-    font-size: clamp(30px, 3.4vw, 44px);
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-  }
-  .project-metric span {
-    font-size: 10px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--ink-55);
   }
 
   .preloader {
@@ -771,6 +751,619 @@
     color: var(--ink-65);
   }
 
+  /* ── Tool constellation ───────────────────────────────── */
+  .tools-showcase {
+    position: relative;
+    overflow: hidden;
+    padding: 108px 0 120px;
+    color: var(--white);
+    background: #070707;
+    scroll-margin-top: 24px;
+  }
+
+  .tools-showcase::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 56%, rgba(204, 40, 34, 0.15), transparent 31%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 23%, transparent 76%, rgba(255, 255, 255, 0.025));
+  }
+
+  .tools-heading {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.7fr);
+    gap: clamp(36px, 7vw, 112px);
+    align-items: end;
+    margin-bottom: 50px;
+  }
+
+  .tools-heading h2 {
+    max-width: 760px;
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(52px, 6.2vw, 92px);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .tools-heading h2 em {
+    color: #df3c31;
+    font-weight: 400;
+  }
+
+  .tools-heading-copy {
+    display: grid;
+    gap: 24px;
+  }
+
+  .tools-heading-copy p {
+    max-width: 620px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 15px;
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  .tool-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tool-filter {
+    min-height: 38px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  .tool-filter:hover,
+  .tool-filter[aria-pressed="true"] {
+    border-color: #fff;
+    background: #fff;
+    color: #070707;
+  }
+
+  .tool-filter:active { transform: scale(0.96); }
+
+  .tool-filter:focus-visible {
+    outline: 2px solid #df3c31;
+    outline-offset: 3px;
+  }
+
+  .tools-stage {
+    position: relative;
+    z-index: 1;
+    height: clamp(760px, 65vw, 920px);
+    min-height: 760px;
+    isolation: isolate;
+  }
+
+  .tools-stage::before,
+  .tools-stage::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    z-index: -1;
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(-7deg);
+    pointer-events: none;
+  }
+
+  .tools-stage::before { width: 72%; height: 68%; }
+  .tools-stage::after { width: 91%; height: 88%; transform: translate(-50%, -50%) rotate(8deg); }
+
+  .tools-portrait {
+    position: absolute;
+    left: 50%;
+    top: 51%;
+    z-index: 2;
+    width: min(28vw, 382px);
+    min-width: 310px;
+    height: 82%;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #151515;
+    box-shadow: 0 42px 80px rgba(0, 0, 0, 0.48);
+    transform: translate(-50%, -50%);
+  }
+
+  .tools-portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 54%, rgba(0, 0, 0, 0.86) 100%);
+  }
+
+  .tools-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 52%;
+    filter: saturate(0.92) contrast(1.04);
+  }
+
+  .tools-portrait figcaption {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 22px;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    color: #fff;
+  }
+
+  .tools-portrait figcaption strong {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .tools-portrait figcaption span {
+    max-width: 13ch;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.14em;
+    text-align: right;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.64);
+  }
+
+  .tool-group {
+    position: absolute;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 12px 8px;
+    transition: opacity 300ms ease, filter 300ms ease;
+  }
+
+  .tool-group[data-group="ai"] {
+    left: 0;
+    top: 7%;
+    width: 32%;
+    height: 86%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: 32px repeat(4, minmax(0, 1fr));
+  }
+
+  .tool-group[data-group="design"] {
+    left: 68%;
+    top: 7%;
+    width: 32%;
+    height: 40%;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: 32px repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-group[data-group="design"] .tool-satellite { grid-column: span 2; }
+  .tool-group[data-group="design"] .tool-satellite:nth-of-type(4) { grid-column: 2 / span 2; }
+  .tool-group[data-group="design"] .tool-satellite:nth-of-type(5) { grid-column: 4 / span 2; }
+
+  .tool-group[data-group="office"] {
+    left: 68%;
+    top: 53%;
+    width: 32%;
+    height: 40%;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-rows: 32px repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-group[data-group="office"] .tool-satellite { grid-column: span 2; }
+  .tool-group[data-group="office"] .tool-satellite:nth-of-type(5) { grid-column: 2 / span 2; }
+  .tool-group[data-group="office"] .tool-satellite:nth-of-type(6) { grid-column: 4 / span 2; }
+  .tool-group[data-group="office"] .tool-satellite:nth-of-type(7) { grid-column: 6 / span 2; }
+
+  .tool-group-title {
+    position: static;
+    z-index: 3;
+    grid-column: 1 / -1;
+    justify-self: start;
+    align-self: center;
+    margin: 0;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  .tool-group-title span {
+    margin-left: 7px;
+    color: #df3c31;
+  }
+
+  .tool-satellite {
+    position: static;
+    z-index: 1;
+    width: 100%;
+    transform: none;
+    text-align: center;
+  }
+
+  .tool-satellite-core {
+    display: grid;
+    grid-template-rows: 62px 30px;
+    justify-items: center;
+    align-items: center;
+    gap: 6px;
+    min-height: 98px;
+    transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), filter 260ms ease;
+  }
+
+  .tool-icon {
+    display: grid;
+    width: 62px;
+    height: 62px;
+    place-items: center;
+    padding: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 14px;
+    background: #f7f7f4;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.28);
+    transition: border-color 220ms ease, box-shadow 220ms ease;
+  }
+
+  .tool-icon img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
+
+  /* Optical normalization for source files that include generous internal whitespace. */
+  .tool-icon img[src*="Antigravity"],
+  .tool-icon img[src*="Hermes"],
+  .tool-icon img[src*="Subabase"] { transform: scale(1.35); }
+
+  .tool-icon img[src*="github"],
+  .tool-icon img[src*="Obsidian"],
+  .tool-icon img[src*="Capcut"] { transform: scale(1.2); }
+
+  .tool-icon img[src*="Open Design"],
+  .tool-icon img[src*="monday"],
+  .tool-icon img[src*="PowerPoint"],
+  .tool-icon img[src*="odoo"] { transform: scale(1.12); }
+
+  .tool-name {
+    display: grid;
+    width: 100%;
+    max-width: 104px;
+    min-height: 30px;
+    place-items: start center;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 9.5px;
+    font-weight: 500;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  .tool-satellite:hover .tool-satellite-core {
+    z-index: 4;
+    transform: translateY(-6px) scale(1.08);
+    filter: brightness(1.06);
+  }
+
+  .tool-satellite:hover .tool-icon {
+    border-color: #df3c31;
+    box-shadow: 0 22px 38px rgba(0, 0, 0, 0.42);
+  }
+
+  .tools-showcase[data-active-group="ai"] .tool-group:not([data-group="ai"]),
+  .tools-showcase[data-active-group="design"] .tool-group:not([data-group="design"]),
+  .tools-showcase[data-active-group="office"] .tool-group:not([data-group="office"]) {
+    opacity: 0.16;
+    filter: saturate(0.2);
+  }
+
+  .tools-showcase.is-active .tool-group[data-group="ai"] { animation: constellationDrift 12s ease-in-out infinite alternate; }
+  .tools-showcase.is-active .tool-group[data-group="design"] { animation: constellationDrift 10s ease-in-out -3s infinite alternate-reverse; }
+  .tools-showcase.is-active .tool-group[data-group="office"] { animation: constellationDrift 14s ease-in-out -6s infinite alternate; }
+
+  @keyframes constellationDrift {
+    from { transform: translate3d(-3px, 1px, 0); }
+    to { transform: translate3d(4px, -4px, 0); }
+  }
+
+  /* ── Tool details: hover preview + click drawer ───────── */
+  .tool-interaction-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 9px;
+    font-weight: 650;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .tool-interaction-note::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border: 1px solid #df3c31;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(223, 60, 49, 0.12);
+    animation: toolHintPulse 2.2s ease-in-out infinite;
+  }
+
+  @keyframes toolHintPulse {
+    50% { box-shadow: 0 0 0 8px rgba(223, 60, 49, 0); }
+  }
+
+  .tool-satellite[role="button"] { cursor: pointer; }
+
+  .tool-satellite[role="button"]:focus-visible { outline: none; }
+
+  .tool-satellite[role="button"]:focus-visible .tool-icon {
+    outline: 2px solid #df3c31;
+    outline-offset: 4px;
+  }
+
+  .tool-satellite.is-selected .tool-satellite-core { transform: translateY(-6px) scale(1.08); }
+
+  .tool-satellite.is-selected .tool-icon {
+    border-color: #df3c31;
+    box-shadow: 0 22px 38px rgba(0, 0, 0, 0.42);
+  }
+
+  .tool-hover-card {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 40;
+    width: min(310px, calc(100vw - 32px));
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    background: #151515;
+    color: #fff;
+    box-shadow: 0 22px 52px rgba(0, 0, 0, 0.48);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate3d(0, 10px, 0) scale(0.97);
+    transform-origin: 50% 100%;
+    transition: opacity 160ms ease, visibility 160ms ease, transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tool-hover-card.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .tool-hover-card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .tool-hover-card img {
+    width: 38px;
+    height: 38px;
+    padding: 6px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #f7f7f4;
+  }
+
+  .tool-hover-card strong {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .tool-hover-card small {
+    display: block;
+    margin-top: 4px;
+    color: #ff756b;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .tool-hover-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 12px;
+    line-height: 1.58;
+  }
+
+  .tool-hover-card span {
+    display: block;
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tool-detail-dialog {
+    width: min(520px, 100vw);
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background: #111;
+    color: #fff;
+    box-shadow: -30px 0 80px rgba(0, 0, 0, 0.46);
+  }
+
+  .tool-detail-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.68);
+    backdrop-filter: blur(5px);
+  }
+
+  .tool-detail-shell {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+  }
+
+  .tool-detail-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 76px;
+    padding: 0 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .tool-detail-topbar span {
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .tool-detail-close {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  }
+
+  .tool-detail-close:hover { background: #fff; color: #111; }
+  .tool-detail-close:active { transform: scale(0.94); }
+  .tool-detail-close:focus-visible { outline: 2px solid #df3c31; outline-offset: 3px; }
+
+  .tool-detail-close svg { width: 17px; height: 17px; }
+
+  .tool-detail-content {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: clamp(30px, 6vw, 56px) clamp(26px, 5vw, 48px) 52px;
+  }
+
+  .tool-detail-identity {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .tool-detail-logo {
+    width: 72px;
+    height: 72px;
+    padding: 12px;
+    object-fit: contain;
+    border-radius: 15px;
+    background: #f7f7f4;
+  }
+
+  .tool-detail-identity h3 {
+    margin: 0 0 7px;
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 7vw, 52px);
+    font-weight: 400;
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+  }
+
+  .tool-detail-level {
+    color: #ff756b;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .tool-detail-summary {
+    margin: 0 0 34px;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .tool-detail-content h4 {
+    margin: 0 0 14px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .tool-detail-list {
+    display: grid;
+    gap: 0;
+    margin: 0 0 34px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tool-detail-list li {
+    position: relative;
+    padding: 14px 0 14px 21px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+    line-height: 1.58;
+  }
+
+  .tool-detail-list li::before {
+    content: "";
+    position: absolute;
+    left: 1px;
+    top: 21px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #df3c31;
+  }
+
+  .tool-detail-proof {
+    margin: 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .tool-detail-proof strong { color: rgba(255, 255, 255, 0.84); }
+
   /* ── Career roadmap / mindmap ─────────────────────────── */
   .journey {
     padding: 104px 0 118px;
@@ -958,286 +1551,463 @@
     line-height: 1.65;
   }
 
+  .project-filter-shell {
+    display: grid;
+    grid-template-columns: minmax(210px, 0.34fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: end;
+    margin: 0 0 16px;
+    padding: 24px 0;
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+  }
+
+  .filter-copy small {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--ink-55);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+  }
+
+  .filter-copy strong {
+    display: block;
+    max-width: 19ch;
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.05;
+  }
+
   .filter-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 0 0 28px;
+    gap: 8px 18px;
+    margin: 0;
   }
 
   .filter-button {
-    min-height: 42px;
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    background: var(--white);
+    position: relative;
+    min-height: 36px;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    background: transparent;
     color: var(--black);
-    padding: 0 15px;
+    padding: 0 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+    white-space: nowrap;
+    transition: color 180ms ease, border-color 180ms ease, opacity 180ms ease;
   }
+
+  .filter-button::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--filter-color, var(--black));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--filter-color, var(--black)) 14%, transparent);
+  }
+
+  .filter-button[data-filter="financial"] { --filter-color: #b87500; }
+  .filter-button[data-filter="venture"] { --filter-color: #2169c9; }
+  .filter-button[data-filter="ai"] { --filter-color: #087f5b; }
+  .filter-button[data-filter="leadership"] { --filter-color: #d35616; }
+  .filter-button[data-filter="client"] { --filter-color: #00798f; }
+  .filter-button[data-filter="creative"] { --filter-color: #9b3daf; }
 
   .filter-button:hover,
   .filter-button.active {
-    background: var(--black);
-    color: var(--white);
+    background: transparent;
+    color: var(--black);
     border-color: var(--black);
   }
 
-  /* ── Project Grid ─────────────────────────────────────── */
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: minmax(240px, auto);
-    gap: 28px;
-    padding: 8px 0;
+  .filter-button:hover::before,
+  .filter-button.active::before {
+    background: var(--filter-color, var(--white));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--filter-color, var(--black)) 14%, transparent);
   }
 
-  .project-card { grid-column: span 2; }
-  .project-card[data-grid-size="featured"] { grid-column: span 4; grid-row: span 2; min-height: 560px; }
-  .project-card[data-grid-size="tall"]     { grid-column: span 2; grid-row: span 2; }
-  .project-card[data-grid-size="wide"]     { grid-column: span 3; }
+  .filter-button:hover { opacity: .64; }
+  .filter-button:active { opacity: 1; }
 
-  .project-card[data-grid-size="featured"] h3 {
-    font-size: clamp(22px, 2.4vw, 32px);
-  }
-  .project-card[data-grid-size="featured"] .project-summary {
-    font-size: 15px;
-    color: rgba(255,255,255,0.62);
-  }
-
-  /* ── Project Card ─────────────────────────────────────── */
-  .project-card {
-    position: relative;
-    min-height: 480px;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    background: #0c0c0e;
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow:
-      0 4px 24px rgba(0,0,0,0.18),
-      0 1px 0 rgba(255,255,255,0.06) inset;
-    transition:
-      transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 300ms ease;
-    will-change: transform;
-  }
-
-  .project-card:hover {
-    transform: translateY(-8px) scale(1.015);
-    box-shadow:
-      0 24px 56px rgba(0,0,0,0.32),
-      0 1px 0 rgba(255,255,255,0.12) inset;
-    border-color: rgba(255,255,255,0.16);
-  }
-
-  .project-card:focus-visible {
-    outline: 2px solid rgba(255,255,255,0.5);
-    outline-offset: 3px;
-  }
-
-  /* Animated gradient shader per-card */
-  .project-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    opacity: 0.72;
-    transition: opacity 420ms ease;
-    background: var(--card-shader);
-  }
-
-  .project-card:hover::before { opacity: 0.88; }
-
-  /* Category shaders */
-  .project-card[data-category="financial"]  { --card-shader: linear-gradient(148deg, #1a1200 0%, #2d1f00 35%, #0c0a00 100%); --card-accent: #f5b942; --card-glow: rgba(245,185,66,0.25); }
-  .project-card[data-category="venture"]    { --card-shader: linear-gradient(148deg, #040d1e 0%, #0a1535 35%, #020509 100%); --card-accent: #5b9cf6; --card-glow: rgba(91,156,246,0.25); }
-  .project-card[data-category="ai"]         { --card-shader: linear-gradient(148deg, #001a12 0%, #003322 35%, #000d09 100%); --card-accent: #34d399; --card-glow: rgba(52,211,153,0.25); }
-  .project-card[data-category="leadership"] { --card-shader: linear-gradient(148deg, #1a0600 0%, #2d0f00 35%, #0c0200 100%); --card-accent: #fb923c; --card-glow: rgba(251,146,60,0.25); }
-  .project-card[data-category="current"]    { --card-shader: linear-gradient(148deg, #00131a 0%, #002030 35%, #000709 100%); --card-accent: #22d3ee; --card-glow: rgba(34,211,238,0.25); }
-  .project-card[data-category="creative"]   { --card-shader: linear-gradient(148deg, #160012 0%, #2a0020 35%, #080006 100%); --card-accent: #e879f9; --card-glow: rgba(232,121,249,0.25); }
-
-  /* Glow blob follows cursor */
-  .project-card { --mouse-x: 50%; --mouse-y: 50%; }
-  .project-card::after {
-    content: "";
-    position: absolute;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background: radial-gradient(circle at center, var(--card-glow, rgba(255,255,255,0.12)) 0%, transparent 70%);
-    left: var(--mouse-x);
-    top: var(--mouse-y);
-    transform: translate(-50%, -50%) scale(0.8);
-    pointer-events: none;
-    z-index: 1;
-    transition: transform 420ms cubic-bezier(0.22,1,0.36,1), opacity 420ms ease;
-    opacity: 0;
-  }
-
-  .project-card:hover::after {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
-  }
-
-  /* Noise texture overlay for shader depth */
-  .card-noise {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    border-radius: inherit;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    mix-blend-mode: overlay;
-  }
-
-  /* Grid lines shader */
-  .card-grid-shader {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    border-radius: inherit;
-    background:
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 40px),
-      repeating-linear-gradient(0deg,  rgba(255,255,255,0.025) 0 1px, transparent 1px 40px);
-  }
-
-  .card-accent-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--card-accent, #fff), transparent);
-    opacity: 0.7;
-    border-radius: 20px 20px 0 0;
-    z-index: 3;
-    transition: opacity 300ms ease;
-  }
-
-  .project-card:hover .card-accent-bar { opacity: 1; }
-
-  .project-body {
-    position: relative;
-    z-index: 2;
-    flex: 1;
-    padding: 22px 24px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .project-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    min-height: 22px;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 999px;
-    padding: 0 9px;
+  .filter-count {
+    min-width: 12px;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    display: inline-grid;
+    place-items: center;
+    background: transparent;
     font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--card-accent, rgba(255,255,255,0.55));
-    background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(4px);
+    letter-spacing: 0;
+    transition: background 180ms ease, color 180ms ease;
   }
 
-  .project-card h3 {
+  .filter-button:hover .filter-count,
+  .filter-button.active .filter-count {
+    background: transparent;
+    color: var(--black);
+  }
+
+  .project-results-summary {
+    min-height: 22px;
+    margin: 0 0 22px;
+    color: var(--ink-55);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* ── Project Grid ─────────────────────────────────────── */
+  /* ── Sectioned coverflow ──────────────────────────────── */
+  .work-section { margin: 0 0 clamp(60px, 7.5vw, 116px); }
+  .work-section:last-child { margin-bottom: 0; }
+
+  .work-section-head {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(280px, 1.1fr);
+    gap: clamp(24px, 5vw, 84px);
+    align-items: end;
+    padding: 0 0 20px;
+    border-bottom: 1px solid var(--black);
+    margin: 0 0 clamp(18px, 2.6vw, 32px);
+  }
+  .work-section-index {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+  }
+  .work-section-head h3 {
     margin: 0;
     font-family: var(--font-serif);
-    font-size: clamp(18px, 1.8vw, 24px);
     font-weight: 400;
-    line-height: 1.18;
+    font-size: clamp(30px, 3.6vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.012em;
+  }
+  .work-section-note p {
+    margin: 0 0 10px;
+    max-width: 52ch;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-65);
+    text-wrap: pretty;
+  }
+  .work-section-count {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+  }
+
+  .cf { position: relative; --cf-card: clamp(240px, 31vw, 470px); }
+
+  .cf-frame {
+    position: relative;
+    overflow: hidden;
+    padding: 26px 0 40px;
+    outline: none;
+    cursor: grab;
+    touch-action: pan-y;
+    perspective: calc(var(--cf-card) * 3);
+  }
+  .cf-frame:active { cursor: grabbing; }
+  .cf-frame:focus-visible { box-shadow: inset 0 0 0 1px var(--black); }
+
+  .cf-track {
+    position: relative;
+    height: calc(var(--cf-card) * 0.75);
+    transform-style: preserve-3d;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .cf-card {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: var(--cf-card);
+    aspect-ratio: 4 / 3;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #0c0c0e;
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 20px 54px rgba(0,0,0,0.30), 0 1px 0 rgba(255,255,255,0.06) inset;
+    will-change: transform, opacity;
+    transition: box-shadow 320ms ease, border-color 320ms ease;
+  }
+  .cf-card.is-active {
+    border-color: rgba(255,255,255,0.22);
+    box-shadow: 0 30px 74px rgba(0,0,0,0.40), 0 1px 0 rgba(255,255,255,0.12) inset;
+  }
+  .cf-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .cf-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.30) 38%, rgba(0,0,0,0) 66%);
+    pointer-events: none;
+  }
+
+  .cf-plate {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    display: grid;
+    gap: 5px;
+    padding: clamp(14px, 1.7vw, 24px);
+    pointer-events: none;
+  }
+  .cf-plate-cat {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: .92;
+  }
+  .cf-plate-title {
+    font-family: var(--font-serif);
+    font-size: clamp(15px, 1.5vw, 23px);
+    line-height: 1.1;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .cf-face {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    padding: clamp(16px, 2vw, 28px);
+    color: #fff;
+  }
+  .cf-face-cat {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .cf-face-metric {
+    margin: 0 0 8px;
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 4.4vw, 66px);
+    line-height: .92;
+    letter-spacing: -0.02em;
+  }
+  .cf-face-title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(15px, 1.5vw, 23px);
+    line-height: 1.1;
     color: rgba(255,255,255,0.92);
     text-wrap: balance;
   }
 
-  .project-role {
-    margin: 0;
+  .cf-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: -14px 0 22px;
+  }
+  .cf-dot {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--black);
+    opacity: .18;
+    transition: opacity .24s ease, transform .24s ease;
+  }
+  .cf-dot.on { opacity: .82; transform: scale(1.25); }
+  .cf-dot:hover { opacity: .5; }
+
+  .cf-caption {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 0.46fr);
+    gap: clamp(22px, 3.4vw, 64px);
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    animation: cf-cap-in 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes cf-cap-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+
+  .cf-cap-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .cf-cap-tag {
+    padding: 4px 9px;
+    border: 1px solid var(--ink-15);
+    border-radius: 2px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-55);
+  }
+  .cf-cap-main h4 {
+    margin: 0 0 6px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(22px, 2.3vw, 34px);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .cf-cap-role {
+    margin: 0 0 12px;
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: var(--ink-55);
+  }
+  .cf-cap-sum {
+    margin: 0 0 16px;
+    max-width: 62ch;
+    font-size: 14.5px;
+    line-height: 1.58;
+    color: var(--ink-78);
+    text-wrap: pretty;
+  }
+  .cf-cap-tools { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+  .cf-cap-tools span {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: .12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.38);
-    line-height: 1.45;
+    color: var(--ink-40);
   }
 
-  .project-summary {
-    margin: 0;
-    color: rgba(255,255,255,0.55);
-    font-size: 13px;
-    line-height: 1.65;
-    flex: 1;
+  .cf-cap-side { display: grid; gap: 18px; align-content: start; }
+  .cf-cap-metric { margin: 0; display: grid; gap: 3px; }
+  .cf-cap-metric b {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(30px, 3.2vw, 46px);
+    line-height: .95;
+    letter-spacing: -0.02em;
+  }
+  .cf-cap-metric span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-55);
   }
 
-  .card-footer {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 24px 20px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .card-open-btn {
+  .cf-cap-actions { display: grid; gap: 8px; }
+  .cf-cta {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 999px;
-    padding: 7px 15px;
-    background: rgba(255,255,255,0.05);
-    color: rgba(255,255,255,0.72);
-    font-size: 10px;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 15px;
+    border: 1px solid var(--black);
+    border-radius: 2px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: .1em;
     text-transform: uppercase;
-    backdrop-filter: blur(6px);
-    transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+    text-align: left;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .cf-cta:hover { opacity: .74; transform: translateX(2px); }
+  .cf-cta.is-ghost { background: transparent; }
+  .cf-cta.is-off {
+    background: transparent;
+    border-color: var(--ink-15);
+    color: var(--ink-40);
+    cursor: default;
+  }
+  .cf-cta.is-off:hover { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cf-caption { animation: none; }
   }
 
-  .card-open-btn:hover {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.28);
-    color: #fff;
+  @media (max-width: 1100px) {
+    .work-section-head { grid-template-columns: 1fr; align-items: start; gap: 18px; }
+    .cf-caption { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 720px) {
+    .cf { --cf-card: clamp(196px, 62vw, 300px); }
+    .cf-frame { padding: 18px 0 28px; }
+    .work-section-head h3 { font-size: clamp(26px, 7vw, 36px); }
   }
 
-  .card-open-btn svg {
-    transition: transform 250ms ease;
+  .media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    color: rgba(255,255,255,0.62);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.035), transparent 56%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 40px);
   }
 
-  .project-card:hover .card-open-btn svg {
-    transform: translateX(3px);
+  .media-placeholder::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed rgba(255,255,255,0.14);
+    border-radius: 12px;
   }
 
-  .card-tools-preview {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
+  .media-placeholder-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    text-align: center;
   }
 
-  .tool-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--card-accent, rgba(255,255,255,0.3));
-    opacity: 0.45;
+  .media-placeholder-inner svg {
+    width: 26px;
+    height: 26px;
+    color: var(--card-accent, rgba(255,255,255,0.5));
+  }
+
+  .media-placeholder-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .media-placeholder-note {
+    max-width: 32ch;
+    color: rgba(255,255,255,0.38);
+    font-size: 10px;
+    line-height: 1.45;
   }
 
   /* ── PROJECT POPUP MODAL ──────────────────────────────── */
@@ -1254,8 +2024,10 @@
     transition: background 350ms ease;
   }
 
+  .project-modal-backdrop[hidden] { display: none; }
+
   .project-modal-backdrop.open {
-    background: rgba(0,0,0,0.82);
+    background: rgba(0,0,0,0.9);
     pointer-events: auto;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -1263,23 +2035,24 @@
 
   .project-modal {
     position: relative;
-    width: min(860px, 100%);
-    max-height: 90vh;
+    width: min(1320px, 100%);
+    max-height: 94vh;
     overflow-y: auto;
     overflow-x: hidden;
-    border-radius: 24px;
-    background: var(--modal-shader, linear-gradient(148deg, #0c0c0e, #111));
+    border-radius: 6px;
+    background: #0b0c0e;
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow:
       0 40px 100px rgba(0,0,0,0.7),
       0 1px 0 rgba(255,255,255,0.08) inset;
-    transform: translateY(40px) scale(0.96);
+    transform: translateY(28px) scale(0.975);
     opacity: 0;
     transition:
       transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
       opacity 350ms ease;
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,0.1) transparent;
+    overscroll-behavior: contain;
   }
 
   .project-modal-backdrop.open .project-modal {
@@ -1298,7 +2071,7 @@
     pointer-events: none;
     border-radius: inherit;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    opacity: 0.018;
     mix-blend-mode: overlay;
   }
 
@@ -1307,7 +2080,7 @@
     top: 0; left: 0; right: 0;
     height: 2px;
     background: linear-gradient(90deg, var(--modal-accent, #fff), transparent 70%);
-    border-radius: 24px 24px 0 0;
+    border-radius: 6px 6px 0 0;
     z-index: 2;
   }
 
@@ -1321,6 +2094,7 @@
     right: -80px;
     pointer-events: none;
     z-index: 1;
+    opacity: 0.45;
   }
 
   .modal-inner {
@@ -1344,7 +2118,7 @@
     align-items: center;
     min-height: 22px;
     border: 1px solid var(--modal-accent, rgba(255,255,255,0.2));
-    border-radius: 999px;
+    border-radius: 2px;
     padding: 0 10px;
     font-size: 9px;
     font-weight: 600;
@@ -1376,9 +2150,9 @@
 
   .modal-close {
     flex-shrink: 0;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    border-radius: 3px;
     border: 1px solid rgba(255,255,255,0.12);
     background: rgba(255,255,255,0.05);
     color: rgba(255,255,255,0.6);
@@ -1386,13 +2160,23 @@
     place-items: center;
     cursor: pointer;
     transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
-    backdrop-filter: blur(4px);
+    backdrop-filter: none;
   }
 
   .modal-close:hover {
     background: rgba(255,255,255,0.12);
     color: #fff;
     border-color: rgba(255,255,255,0.3);
+  }
+
+  .modal-close:focus-visible,
+  .modal-img-card:focus-visible,
+  .modal-gallery-stage:focus-visible,
+  .modal-gallery-nav:focus-visible,
+  .modal-cta:focus-visible,
+  .modal-cta-ghost:focus-visible {
+    outline: 2px solid var(--modal-accent, #fff);
+    outline-offset: 3px;
   }
 
   /* Image strip in modal */
@@ -1406,25 +2190,121 @@
     font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.28);
+    color: rgba(255,255,255,0.58);
     margin-bottom: 14px;
   }
 
-  .modal-image-strip {
-    display: flex;
+  .modal-gallery {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px;
+    align-items: stretch;
+  }
+
+  .modal-gallery-stage {
+    position: relative;
+    min-width: 0;
+    width: 100%;
+    height: min(40vh, 460px);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.11);
+    border-radius: 4px;
+    background: #050607;
+    cursor: zoom-in;
+    display: grid;
+    place-items: center;
+  }
+
+  .modal-gallery-stage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: gallery-image-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes gallery-image-in {
+    from { opacity: 0; transform: scale(0.985); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .gallery-stage-zoom {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 32px;
+    padding: 0 11px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 3px;
+    background: rgba(5,6,7,.76);
+    color: rgba(255,255,255,.82);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .modal-gallery-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 34px;
+    margin-top: -2px;
+  }
+
+  .modal-gallery-counter {
+    color: rgba(255,255,255,.5);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+  }
+
+  .modal-gallery-navs { display: flex; gap: 6px; }
+
+  .modal-gallery-nav {
+    width: 34px;
+    height: 30px;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.24);
+    border-radius: 0;
+    background: transparent;
+    color: rgba(255,255,255,.64);
+    cursor: pointer;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+
+  .modal-gallery-nav:hover {
+    color: #fff;
+    border-color: var(--modal-accent, #fff);
+  }
+
+  .modal-gallery-stage .media-placeholder {
+    --card-accent: var(--modal-accent);
+  }
+
+  .modal-image-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-rows: none;
+    gap: 8px;
+    min-height: 0;
     overflow-x: auto;
     scrollbar-width: none;
-    padding-bottom: 4px;
   }
 
   .modal-image-strip::-webkit-scrollbar { display: none; }
 
   .modal-img-card {
-    flex-shrink: 0;
-    width: 180px;
-    height: 120px;
-    border-radius: 12px;
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    padding: 0;
+    border-radius: 3px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.08);
     background: var(--card-shader, #111);
@@ -1435,22 +2315,48 @@
     font-size: 38px;
     color: var(--modal-accent, rgba(255,255,255,0.15));
     font-style: italic;
-    opacity: 0.55;
+    opacity: .58;
     cursor: pointer;
-    transition: opacity 200ms ease, transform 200ms ease;
+    transition: opacity 200ms ease, transform 200ms ease, border-color 200ms ease;
+    animation: modal-thumb-in 440ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(100ms + var(--thumb-index, 0) * 55ms);
+  }
+
+  @keyframes modal-thumb-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: .58; transform: translateY(0); }
   }
 
   .modal-img-card:hover {
     opacity: 1;
-    transform: scale(1.04);
+    transform: translateY(-1px);
+  }
+
+  .modal-img-card.is-active {
+    opacity: 1;
+    border-color: var(--modal-accent, rgba(255,255,255,0.55));
+    box-shadow: inset 0 -2px 0 var(--modal-accent, #fff);
   }
 
   .modal-img-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
+    object-fit: contain;
+    padding: 3px;
+    border-radius: 3px;
+    background: #07080a;
   }
+
+  .modal-img-card .media-placeholder {
+    padding: 10px;
+    --card-accent: var(--modal-accent);
+  }
+
+  .modal-img-card .media-placeholder::after { inset: 7px; border-radius: 2px; }
+  .modal-img-card .media-placeholder-inner { gap: 4px; }
+  .modal-img-card .media-placeholder-inner svg { width: 18px; height: 18px; }
+  .modal-img-card .media-placeholder-note { display: none; }
+  .modal-img-card .media-placeholder-label { font-size: 8px; }
 
   /* Body sections */
   .modal-body {
@@ -1464,7 +2370,7 @@
     font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.28);
+    color: rgba(255,255,255,0.58);
     margin-bottom: 10px;
   }
 
@@ -1472,7 +2378,7 @@
     margin: 0;
     font-size: 15px;
     line-height: 1.7;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.78);
   }
 
   .modal-highlights {
@@ -1488,7 +2394,7 @@
     gap: 12px;
     font-size: 13.5px;
     line-height: 1.6;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.74);
   }
 
   .modal-highlights li::before {
@@ -1516,7 +2422,7 @@
     min-height: 78px;
     border-top: 1px solid rgba(255,255,255,0.09);
     padding: 13px 0 13px 34px;
-    color: rgba(255,255,255,0.58);
+    color: rgba(255,255,255,0.72);
     font-size: 12.5px;
     line-height: 1.58;
     counter-increment: detail;
@@ -1540,17 +2446,46 @@
     gap: 7px;
   }
 
+  .modal-skill-table {
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .modal-skill-row {
+    display: grid;
+    grid-template-columns: minmax(130px, 0.36fr) minmax(0, 1fr);
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.09);
+  }
+
+  .modal-skill-name {
+    color: var(--modal-accent, rgba(255,255,255,0.88));
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  .modal-skill-evidence {
+    margin: 0;
+    color: rgba(255,255,255,0.72);
+    font-size: 12.5px;
+    line-height: 1.58;
+  }
+
   .modal-tool-chip {
     display: inline-flex;
     align-items: center;
     min-height: 28px;
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 999px;
+    border-radius: 3px;
     padding: 0 12px;
     font-size: 11px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.72);
     background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(4px);
+    backdrop-filter: none;
     transition: background 180ms, color 180ms, border-color 180ms;
   }
 
@@ -1564,16 +2499,24 @@
     padding: 20px 36px 32px;
     border-top: 1px solid rgba(255,255,255,0.07);
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 12px;
   }
+
+  .modal-cta.modal-cta-secondary {
+    background: transparent;
+    border: 1px solid currentColor;
+  }
+
+  .modal-footer .modal-cta-ghost { margin-left: auto; }
 
   .modal-cta {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     min-height: 44px;
-    border-radius: 999px;
+    border-radius: 3px;
     padding: 0 22px;
     background: var(--modal-accent, rgba(255,255,255,0.85));
     color: #000;
@@ -1594,7 +2537,7 @@
     align-items: center;
     gap: 8px;
     min-height: 44px;
-    border-radius: 999px;
+    border-radius: 3px;
     padding: 0 22px;
     background: transparent;
     color: rgba(255,255,255,0.5);
@@ -1613,27 +2556,132 @@
     color: rgba(255,255,255,0.8);
   }
 
+  /* Full-size, uncropped project image viewer */
+  .image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9400;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) 56px;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background: rgba(2,3,4,.97);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 260ms ease;
+  }
+
+  .image-lightbox[hidden] { display: none; }
+
+  .image-lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .image-lightbox-figure {
+    width: 100%;
+    height: calc(100vh - 48px);
+    margin: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 12px;
+    place-items: center;
+  }
+
+  .image-lightbox-image {
+    max-width: 100%;
+    max-height: calc(100vh - 92px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    image-rendering: auto;
+    opacity: 0;
+    transform: scale(.985);
+    animation: lightbox-image-in 360ms cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+
+  @keyframes lightbox-image-in {
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .image-lightbox-caption {
+    color: rgba(255,255,255,.54);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .image-lightbox-close,
+  .image-lightbox-nav {
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 3px;
+    background: rgba(255,255,255,.025);
+    color: rgba(255,255,255,.72);
+    cursor: pointer;
+    transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+  }
+
+  .image-lightbox-close:hover,
+  .image-lightbox-nav:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.06);
+  }
+
+  .image-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    width: 38px;
+    height: 38px;
+  }
+
+  .image-lightbox-nav {
+    width: 56px;
+    height: 56px;
+  }
+
   @media (max-width: 1100px) {
-    .project-grid { grid-template-columns: repeat(4, 1fr); }
-    .project-card { grid-column: span 2; }
-    .project-card[data-grid-size="featured"] { grid-column: span 4; grid-row: span 2; }
-    .project-card[data-grid-size="tall"] { grid-column: span 2; grid-row: span 2; }
-    .project-card[data-grid-size="wide"] { grid-column: span 2; }
+    .project-filter-shell { grid-template-columns: 1fr; align-items: start; }
     .modal-header, .modal-images, .modal-body, .modal-footer { padding-left: 28px; padding-right: 28px; }
   }
 
   @media (max-width: 720px) {
-    .project-grid { grid-template-columns: 1fr; gap: 18px; }
-    .project-card,
-    .project-card[data-grid-size="featured"],
-    .project-card[data-grid-size="tall"],
-    .project-card[data-grid-size="wide"] { grid-column: span 1; grid-row: span 1; min-height: 380px; }
-    .project-card[data-grid-size="featured"] h3 { font-size: clamp(18px, 1.8vw, 24px); }
-    .project-card[data-grid-size="featured"] .project-summary { font-size: 13px; }
+    .project-filter-shell { padding: 20px 0 12px; }
+    .filter-copy strong { max-width: none; }
+    .filter-bar {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      margin-right: -20px;
+      padding: 2px 20px 10px 0;
+      scrollbar-width: none;
+      scroll-snap-type: x proximity;
+    }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-button { scroll-snap-align: start; }
+    .modal-gallery { grid-template-columns: 1fr; }
+    .modal-image-strip {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: none;
+    }
+    .modal-img-card { aspect-ratio: 16 / 9; min-width: 112px; }
+    .modal-skill-row { grid-template-columns: 1fr; gap: 6px; }
     .modal-header, .modal-images, .modal-body, .modal-footer { padding-left: 20px; padding-right: 20px; }
     .modal-title { font-size: 20px; }
     .project-modal-backdrop { padding: 12px; }
-    .project-modal { border-radius: 18px; }
+    .project-modal { border-radius: 5px; }
+    .modal-glow { width: 220px; height: 220px; top: 0; right: 0; }
+    .image-lightbox {
+      grid-template-columns: 42px minmax(0, 1fr) 42px;
+      gap: 6px;
+      padding: 12px;
+    }
+    .image-lightbox-nav { width: 42px; height: 48px; }
+    .image-lightbox-close { top: 12px; right: 12px; }
   }
 
   .skills {
@@ -2059,6 +3107,10 @@
   @media (max-width: 1100px) {
     .metric-grid { grid-template-columns: repeat(3, 1fr); }
     .journey-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tool-satellite { width: 100%; }
+    .tool-icon { width: 52px; height: 52px; padding: 8px; }
+    .tool-name { max-width: 82px; font-size: 8.5px; }
+    .tools-portrait { min-width: 280px; }
     .work-head,
     .journey-head,
     .references-head,
@@ -2102,6 +3154,62 @@
     .footer-inner {
       width: min(var(--max), calc(100% - 48px));
     }
+    .tools-heading { grid-template-columns: 1fr; }
+    .tools-heading-copy { max-width: 720px; }
+    .tools-stage {
+      display: block;
+      height: auto;
+      min-height: 0;
+    }
+    .tools-stage::before {
+      top: 300px;
+      width: 90%;
+      height: 520px;
+    }
+    .tools-stage::after { display: none; }
+    .tools-portrait {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: min(430px, 68vw);
+      min-width: 0;
+      height: 650px;
+      margin: 0 auto 82px;
+      transform: none;
+    }
+    .tool-group {
+      position: relative;
+      inset: auto;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 24px 12px;
+      padding: 28px 0 44px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .tool-group[data-group="ai"],
+    .tool-group[data-group="design"],
+    .tool-group[data-group="office"] {
+      left: auto;
+      top: auto;
+      width: auto;
+      height: auto;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-rows: auto;
+    }
+    .tool-group-title {
+      position: static;
+      grid-column: 1 / -1;
+      margin-bottom: 6px;
+    }
+    .tool-satellite {
+      position: static;
+      width: auto;
+      grid-column: auto !important;
+      transform: none;
+    }
+    .tool-icon { width: 58px; height: 58px; }
+    .tool-name { max-width: 100px; font-size: 9.5px; }
+    .tools-showcase.is-active .tool-group { animation: none !important; }
   }
 
   @media (max-width: 720px) {
@@ -2152,6 +3260,40 @@
     .reference-grid,
     .footer-grid { grid-template-columns: 1fr; }
     .metric { min-height: 138px; }
+    .tools-showcase { padding: 78px 0 84px; }
+    .tools-heading { margin-bottom: 42px; }
+    .tools-heading h2 { font-size: clamp(50px, 15vw, 72px); }
+    .tools-heading-copy p { font-size: 14px; }
+    .tool-filters { gap: 6px; }
+    .tool-filter {
+      min-height: 36px;
+      padding: 0 12px;
+      font-size: 9px;
+    }
+    .tools-stage::before { top: 245px; height: 410px; }
+    .tools-portrait {
+      width: min(100%, 400px);
+      height: min(136vw, 590px);
+      margin-bottom: 64px;
+    }
+    .tools-portrait figcaption { left: 18px; right: 18px; bottom: 18px; }
+    .tools-portrait figcaption strong { font-size: 27px; }
+    .tool-group {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px 8px;
+      padding: 24px 0 38px;
+    }
+    .tool-group[data-group="ai"],
+    .tool-group[data-group="design"],
+    .tool-group[data-group="office"] {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .tool-icon { width: 56px; height: 56px; }
+    .tool-name { max-width: 96px; font-size: 9px; }
+    .tool-interaction-note { font-size: 8px; }
+    .tool-detail-dialog { width: 100vw; }
+    .tool-detail-topbar { min-height: 68px; padding-inline: 20px; }
+    .tool-detail-logo { width: 62px; height: 62px; }
     .journey { padding: 78px 0 86px; }
     .journey-head { margin-bottom: 42px; }
     .journey-map {
@@ -2240,6 +3382,12 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+    .tools-showcase.is-active .tool-group { animation: none; }
+    .tool-interaction-note::before { animation: none; }
+  }
+
+  @media (hover: none) {
+    .tool-hover-card { display: none; }
   }
 </style>
 </head>
@@ -2373,6 +3521,230 @@
       </div>
     </section>
 
+    <section class="tools-showcase" id="tool-stack" aria-labelledby="tools-showcase-title" data-active-group="all">
+      <div class="section-inner">
+        <div class="tools-heading reveal-up">
+          <h2 id="tools-showcase-title">The tools behind the <em>output.</em></h2>
+          <div class="tools-heading-copy">
+            <p>A working stack across AI systems, creative production, and team operations. Each logo below is a tool I use to turn research, ideas, and moving parts into practical deliverables.</p>
+            <div class="tool-filters" role="group" aria-label="Filter tool groups">
+              <button class="tool-filter" type="button" data-tool-filter="all" aria-pressed="true">All tools</button>
+              <button class="tool-filter" type="button" data-tool-filter="ai" aria-pressed="false">AI &amp; Tech</button>
+              <button class="tool-filter" type="button" data-tool-filter="design" aria-pressed="false">Design</button>
+              <button class="tool-filter" type="button" data-tool-filter="office" aria-pressed="false">Office &amp; Workspace</button>
+            </div>
+            <p class="tool-interaction-note">Hover to preview · Click to explore capabilities</p>
+          </div>
+        </div>
+
+        <div class="tools-stage" aria-label="Jayson surrounded by the tools in his working stack">
+          <figure class="tools-portrait">
+            <img src="Source Photo/Used App Icon/MEITU_20260320_085528896-portfolio.webp" alt="Jayson Pham The Quan in graduation attire" width="933" height="1400" decoding="async" />
+            <figcaption><strong>Jayson</strong><span>Finance · Venture · AI systems</span></figcaption>
+          </figure>
+
+          <div class="tool-group" data-group="ai" style="--label-x:3%;--label-y:5%">
+            <h3 class="tool-group-title">AI &amp; Tech <span>16 tools</span></h3>
+            <div class="tool-satellite" style="--x:5%;--y:21%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Antigravity Logo.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Antigravity</span></div></div>
+            <div class="tool-satellite" style="--x:5%;--y:38%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Bitbucket Icon.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Bitbucket</span></div></div>
+            <div class="tool-satellite" style="--x:5%;--y:55%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Claude-ai-icon.svg.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Claude</span></div></div>
+            <div class="tool-satellite" style="--x:5%;--y:72%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/codex-ICON.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Codex</span></div></div>
+            <div class="tool-satellite" style="--x:5%;--y:88%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/cursor-app-icon.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Cursor</span></div></div>
+            <div class="tool-satellite" style="--x:13%;--y:15%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Docker Logo.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Docker</span></div></div>
+            <div class="tool-satellite" style="--x:13%;--y:32%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/github-logo-icon-free-vector.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">GitHub</span></div></div>
+            <div class="tool-satellite" style="--x:13%;--y:49%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Hermes Agent.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Hermes Agent</span></div></div>
+            <div class="tool-satellite" style="--x:13%;--y:66%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/N8N Icon.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">n8n</span></div></div>
+            <div class="tool-satellite" style="--x:13%;--y:83%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Obsidian.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Obsidian</span></div></div>
+            <div class="tool-satellite" style="--x:21%;--y:21%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Ollama Icon.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Ollama</span></div></div>
+            <div class="tool-satellite" style="--x:21%;--y:38%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Open AI Chat GPT.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">ChatGPT</span></div></div>
+            <div class="tool-satellite" style="--x:21%;--y:55%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Open Design.svg" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">OpenDesign</span></div></div>
+            <div class="tool-satellite" style="--x:21%;--y:72%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Subabase.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Supabase</span></div></div>
+            <div class="tool-satellite" style="--x:29%;--y:15%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Vercel-Logo.jpg" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Vercel</span></div></div>
+            <div class="tool-satellite" style="--x:29%;--y:32%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/VS Code I con.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">VS Code</span></div></div>
+          </div>
+
+          <div class="tool-group" data-group="design" style="--label-x:70%;--label-y:5%">
+            <h3 class="tool-group-title">Design <span>5 tools</span></h3>
+            <div class="tool-satellite" style="--x:70%;--y:18%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Design/1656734305canva-app-icon.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Canva</span></div></div>
+            <div class="tool-satellite" style="--x:78%;--y:28%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Design/blender-icon.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Blender</span></div></div>
+            <div class="tool-satellite" style="--x:87%;--y:18%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Design/Capcut-PNG-File.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">CapCut</span></div></div>
+            <div class="tool-satellite" style="--x:95%;--y:30%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Design/Figma Icon.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Figma</span></div></div>
+            <div class="tool-satellite" style="--x:86%;--y:43%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Design/Rive Icon.jpg" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Rive</span></div></div>
+          </div>
+
+          <div class="tool-group" data-group="office" style="--label-x:70%;--label-y:52%">
+            <h3 class="tool-group-title">Office &amp; Workspace <span>7 tools</span></h3>
+            <div class="tool-satellite" style="--x:70%;--y:66%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/Word.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Word</span></div></div>
+            <div class="tool-satellite" style="--x:78%;--y:60%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/Slack.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Slack</span></div></div>
+            <div class="tool-satellite" style="--x:87%;--y:68%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/odoo logo.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Odoo</span></div></div>
+            <div class="tool-satellite" style="--x:95%;--y:60%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/Notion-Logo.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Notion</span></div></div>
+            <div class="tool-satellite" style="--x:72%;--y:84%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/monday logo.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">monday.com</span></div></div>
+            <div class="tool-satellite" style="--x:83%;--y:87%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/Microsoft-PowerPoint-Logo-New.png" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">PowerPoint</span></div></div>
+            <div class="tool-satellite" style="--x:94%;--y:84%"><div class="tool-satellite-core"><span class="tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/Excel.webp" alt="" loading="lazy" decoding="async" /></span><span class="tool-name">Excel</span></div></div>
+          </div>
+        </div>
+
+        <div class="capability-ledger" aria-labelledby="capability-ledger-title" hidden inert>
+          <div class="capability-intro capability-reveal">
+            <h3 id="capability-ledger-title">What I can actually build with this stack.</h3>
+            <div>
+              <p>Capability levels reflect completed coursework, portfolio projects, client delivery, and repeated operating use documented in this portfolio. They are deliberately expressed as evidence-based bands rather than invented percentages.</p>
+              <ul class="level-key" aria-label="Proficiency scale">
+                <li>Advanced — delivered repeatedly</li>
+                <li>Working — hands-on project use</li>
+                <li>Familiar — active learning stack</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="office-suite" aria-label="Microsoft Office capability profiles">
+            <article class="office-profile office-profile--excel capability-reveal">
+              <header class="profile-head">
+                <span class="profile-icon"><img src="Source Photo/Used App Icon/Office and workspace/Excel.webp" alt="Microsoft Excel logo" loading="lazy" decoding="async" /></span>
+                <div class="profile-title"><h4>Microsoft Excel</h4><p>Primary finance and analysis tool</p></div>
+                <div class="proficiency" aria-label="Advanced proficiency"><strong>Advanced</strong><span class="proficiency-meter" aria-hidden="true"><span class="is-on"></span><span class="is-on"></span><span class="is-on"></span></span></div>
+              </header>
+              <div class="profile-body">
+                <div>
+                  <p class="profile-summary">My strongest Office tool: I use Excel to move from raw assumptions and operating data to auditable financial models, scenario decisions, executive dashboards, and trackers that teams can run from.</p>
+                  <p class="profile-proof"><strong>Portfolio evidence</strong>REE capital-budgeting model; MWG DCF valuation; VBA analysis of 30 listed companies; Modern Portfolio Theory and efficient-frontier work; AI-integrated reporting dashboards; BLOCK71 operating trackers.</p>
+                </div>
+                <div class="skill-clusters">
+                  <div class="skill-cluster"><h5>Financial modelling &amp; valuation</h5><p>Build linked forecast logic, DCF valuation, cash-flow schedules, revenue and cost assumptions, WACC, CAPM, cost of equity and debt, tax effects, target-price analysis, and clear model outputs.</p></div>
+                  <div class="skill-cluster"><h5>Capital budgeting</h5><p>Evaluate investment cases with NPV, IRR, Profitability Index, project cash flows, hurdle rates, terminal assumptions, and recommendation-ready decision summaries.</p></div>
+                  <div class="skill-cluster"><h5>Risk, sensitivity &amp; scenarios</h5><p>Run base, upside, and downside cases; data tables and sensitivity matrices; Solver optimisation; Crystal Ball and Monte Carlo simulation; identify the assumptions that move value most.</p></div>
+                  <div class="skill-cluster"><h5>Quantitative portfolio analysis</h5><p>Use VBA, financial functions, Solver, return and risk calculations, Modern Portfolio Theory, efficient-frontier construction, Capital Market Line logic, and simulation to compare portfolios.</p></div>
+                  <div class="skill-cluster"><h5>Dashboards &amp; reporting</h5><p>Clean and structure data, design PivotTables and PivotCharts, organise KPI views, apply reusable formulas and checks, plan visual hierarchy, and turn analytical output into a concise narrative.</p></div>
+                  <div class="skill-cluster"><h5>Automation &amp; operations</h5><p>Use VBA and AI-assisted formula design to reduce repetitive work; build master sheets for owners, deadlines, statuses, volunteers, vendors, performers, guests, program tasks, and delivery follow-up.</p></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="office-profile capability-reveal">
+              <header class="profile-head">
+                <span class="profile-icon"><img src="Source Photo/Used App Icon/Office and workspace/Word.png" alt="Microsoft Word logo" loading="lazy" decoding="async" /></span>
+                <div class="profile-title"><h4>Microsoft Word</h4><p>Research, reporting and handover</p></div>
+                <div class="proficiency" aria-label="Advanced proficiency"><strong>Advanced</strong><span class="proficiency-meter" aria-hidden="true"><span class="is-on"></span><span class="is-on"></span><span class="is-on"></span></span></div>
+              </header>
+              <div class="profile-body">
+                <p class="profile-summary">I use Word to turn research and analysis into structured documents that can be reviewed, approved, handed over, and used by another person without extra explanation.</p>
+                <div class="skill-clusters">
+                  <div class="skill-cluster"><h5>Finance &amp; investment reports</h5><p>Valuation write-ups, investment screening, market theses, methodology, assumptions, exhibits, recommendations, and executive summaries.</p></div>
+                  <div class="skill-cluster"><h5>Academic research</h5><p>Literature review, econometric methodology, findings, citations, references, tables, figures, academic formatting, and long-form solo paper production.</p></div>
+                  <div class="skill-cluster"><h5>Business documentation</h5><p>Commercial proposals, scope and milestones, acceptance criteria, role definitions, operating manuals, briefing notes, runsheets, meeting records, and source-code handover notes.</p></div>
+                  <div class="skill-cluster"><h5>Document systems</h5><p>Reusable styles and templates, heading hierarchy, page structure, tables of contents, tables, captions, consistent numbering, review comments, version cleanup, and print-ready formatting.</p></div>
+                </div>
+                <p class="profile-proof"><strong>Portfolio evidence</strong>Sole-authored GARCH research paper; finance and valuation reports; Expara investment and market work; Steersman proposal, scope, acceptance, and handover documentation; BLOCK71 operating documents.</p>
+              </div>
+            </article>
+
+            <article class="office-profile capability-reveal">
+              <header class="profile-head">
+                <span class="profile-icon"><img src="Source Photo/Used App Icon/Office and workspace/Microsoft-PowerPoint-Logo-New.png" alt="Microsoft PowerPoint logo" loading="lazy" decoding="async" /></span>
+                <div class="profile-title"><h4>Microsoft PowerPoint</h4><p>Decision decks and live briefings</p></div>
+                <div class="proficiency" aria-label="Advanced proficiency"><strong>Advanced</strong><span class="proficiency-meter" aria-hidden="true"><span class="is-on"></span><span class="is-on"></span><span class="is-on"></span></span></div>
+              </header>
+              <div class="profile-body">
+                <p class="profile-summary">I build decks around the decision or live moment they need to support: financial recommendations, stakeholder pitches, event execution, workshop teaching, and team alignment.</p>
+                <div class="skill-clusters">
+                  <div class="skill-cluster"><h5>Finance storytelling</h5><p>Translate models into thesis, assumptions, drivers, charts, scenarios, risks, valuation outputs, and recommendation slides for a non-model audience.</p></div>
+                  <div class="skill-cluster"><h5>Pitch &amp; stakeholder decks</h5><p>Vendor and partner proposals, executive summaries, programme concepts, solution framing, concise proof points, and presentation-ready narrative flow.</p></div>
+                  <div class="skill-cluster"><h5>Operations &amp; training</h5><p>Guest-flow guides, team briefings, event cue logic, LED scripts, workshop modules, process walkthroughs, and slides designed to be used live.</p></div>
+                  <div class="skill-cluster"><h5>Visual production</h5><p>Slide masters, hierarchy, grids, typography, diagrams, image treatment, chart cleanup, progressive reveal, speaker-ready pacing, and export quality control.</p></div>
+                </div>
+                <p class="profile-proof"><strong>Portfolio evidence</strong>Financial project presentations; UniVentures briefing, guest-flow, Gala and programme materials; vendor pitching; BLOCK71 AI workshop content; event and training assets created with PowerPoint, Canva, and Figma.</p>
+              </div>
+            </article>
+          </div>
+
+          <section class="capability-chapter capability-reveal" aria-labelledby="ai-capabilities-title">
+            <div class="chapter-head">
+              <h3 id="ai-capabilities-title">AI and product-building stack</h3>
+              <p>My practical edge is orchestration: defining roles and reusable instructions, connecting models to files and tools, prototyping interfaces, and packaging the result as a workflow another person can operate.</p>
+            </div>
+            <div class="tech-domains">
+              <div class="tech-domain">
+                <h4>AI agents &amp; assistants</h4>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Antigravity Logo.webp" alt="Antigravity logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Antigravity</h5><p>Agentic IDE workflow for planning, researching, editing files, and coordinating multi-step builds with persistent project context and verification.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/codex-ICON.png" alt="Codex logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Codex</h5><p>Primary coding agent for repository inspection, implementation, structured task execution, UI QA, automation, and repeatable skill-based workflows.</p></div><span class="tool-level">Advanced</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Claude-ai-icon.svg.webp" alt="Claude logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Claude</h5><p>Research, document reasoning, long-context synthesis, planning, and Claude Code/Cowork workflows for content, operations, and technical builds.</p></div><span class="tool-level">Advanced</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Open AI Chat GPT.webp" alt="ChatGPT logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>ChatGPT</h5><p>Analytical copilot for formula logic, financial research, structured writing, ideation, data interpretation, and turning rough requirements into usable outputs.</p></div><span class="tool-level">Advanced</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Hermes Agent.webp" alt="Hermes Agent logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Hermes Agent</h5><p>Open-source personal-agent framework used in a running local Agentic OS with model routing, MCP tools, task loops, boards, memory, and multi-agent experiments.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/cursor-app-icon.png" alt="Cursor logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Cursor</h5><p>AI-assisted code exploration and implementation for rapid web changes, prompt-led refactors, debugging, and contextual edits inside a live codebase.</p></div><span class="tool-level">Working</span></article>
+              </div>
+
+              <div class="tech-domain">
+                <h4>Frontend, versioning &amp; deployment</h4>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/VS Code I con.png" alt="Visual Studio Code logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>VS Code</h5><p>Core build environment for HTML, CSS, JavaScript, Markdown, agent instructions, local previews, terminal workflows, and project file management.</p></div><span class="tool-level">Advanced</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Open Design.svg" alt="OpenDesign logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>OpenDesign</h5><p>AI-assisted interface exploration used to move from a visual direction toward editable web concepts and faster frontend prototyping.</p></div><span class="tool-level">Familiar</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/github-logo-icon-free-vector.webp" alt="GitHub logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>GitHub</h5><p>Repository organisation, version history, branches, README and handover hygiene, and deployment-connected workflows for websites and prototypes.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Vercel-Logo.jpg" alt="Vercel logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Vercel</h5><p>Deploy responsive HTML/CSS/JavaScript experiences, manage production previews, validate live routes and assets, and iterate after browser QA.</p></div><span class="tool-level">Advanced</span></article>
+              </div>
+
+              <div class="tech-domain">
+                <h4>Backend, data &amp; delivery infrastructure</h4>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Subabase.webp" alt="Supabase logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Supabase</h5><p>Open-source backend platform for Postgres data, authentication, storage, realtime features, APIs, and connecting a lightweight product UI to a managed backend.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Docker Logo.webp" alt="Docker logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Docker</h5><p>Container-based setup for portable local services, dependency isolation, repeatable environments, and self-hosted AI or automation experiments.</p></div><span class="tool-level">Familiar</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Bitbucket Icon.webp" alt="Bitbucket logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Bitbucket</h5><p>Git repository and team code workflow familiarity: source control, branches, collaboration, and maintaining a traceable delivery history.</p></div><span class="tool-level">Working</span></article>
+              </div>
+
+              <div class="tech-domain">
+                <h4>Automation, local AI &amp; knowledge systems</h4>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/N8N Icon.webp" alt="n8n logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>n8n</h5><p>Visual workflow automation with triggers, webhooks, APIs, scheduled jobs, branching logic, data transformation, and handoffs between AI and business tools.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Ollama Icon.png" alt="Ollama logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Ollama</h5><p>Local model runtime for testing private or offline inference, launching supported coding assistants, and exposing a local API to experiments.</p></div><span class="tool-level">Familiar</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/AI AND TECH/Obsidian.png" alt="Obsidian logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Obsidian</h5><p>Daily local-first knowledge workspace: structured vaults, Markdown ingestion, linked notes, summaries, research capture, and automated trend-report workflows.</p></div><span class="tool-level">Advanced</span></article>
+              </div>
+            </div>
+          </section>
+
+          <section class="capability-chapter capability-reveal" aria-labelledby="creative-operations-title">
+            <div class="chapter-head">
+              <h3 id="creative-operations-title">Creative production and workspaces</h3>
+              <p>These tools support the last mile: making an idea legible, making a programme executable, and giving a team a shared operating surface rather than another disconnected file.</p>
+            </div>
+            <div class="practice-columns">
+              <div class="practice-column">
+                <h4>Design &amp; media</h4>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Design/1656734305canva-app-icon.png" alt="Canva logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Canva</h5><p>Fast visual production for presentation assets, event materials, social graphics, briefings, and branded documents with reusable layouts and export-ready sizing.</p></div><span class="tool-level">Advanced</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Design/blender-icon.webp" alt="Blender logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Blender</h5><p>3D modelling and spatial visualisation for venue layouts, site maps, staging concepts, guest flow, and communicating real-world setups before execution.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Design/Capcut-PNG-File.png" alt="CapCut logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>CapCut</h5><p>Video editing from brief to delivery: selecting footage, sequencing, pacing, captions, audio, transitions, visual cleanup, review rounds, and platform-ready export.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Design/Figma Icon.webp" alt="Figma logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Figma</h5><p>Interface flows, wireframes, high-fidelity prototypes, component-based mini-web concepts, collaborative review, responsive intent, and cleaner developer handoff.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Design/Rive Icon.jpg" alt="Rive logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Rive</h5><p>Interactive motion and state-based animation for UI moments, animated assets, transitions, and lightweight experiences that react to user input.</p></div><span class="tool-level">Familiar</span></article>
+              </div>
+
+              <div class="practice-column">
+                <h4>Workspace &amp; business systems</h4>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/Slack.webp" alt="Slack logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Slack</h5><p>Set up and operate team communication spaces with clear channels, access logic, pinned resources, async updates, searchable decisions, and workflow integrations.</p></div><span class="tool-level">Working</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/odoo logo.png" alt="Odoo logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Odoo</h5><p>End-to-end client implementation across Sales, Purchase, Inventory, and Finance/Accounting dashboards: payment and order tracking, roles and permissions, approvals, automation, management reporting, and a connected responsive website UI.</p></div><span class="tool-level">Advanced</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/Notion-Logo.png" alt="Notion logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>Notion</h5><p>Build structured workspaces with linked databases, dashboards, templates, project pages, knowledge bases, meeting notes, ownership fields, and lightweight operating systems.</p></div><span class="tool-level">Advanced</span></article>
+                <article class="stack-tool"><span class="stack-tool-icon"><img src="Source Photo/Used App Icon/Office and workspace/monday logo.png" alt="monday.com logo" loading="lazy" /></span><div class="stack-tool-copy"><h5>monday.com</h5><p>Configure project and programme boards with owners, status logic, timelines, dependencies, forms, automations, filtered views, handoffs, and reporting dashboards.</p></div><span class="tool-level">Working</span></article>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <div class="tool-hover-card" id="tool-hover-card" role="tooltip" aria-hidden="true">
+      <div class="tool-hover-card-head"><img id="tool-hover-logo" src="Source Photo/Used App Icon/Office and workspace/Excel.webp" alt="" /><div><strong id="tool-hover-name"></strong><small id="tool-hover-level"></small></div></div>
+      <p id="tool-hover-summary"></p>
+      <span>Click for detailed capabilities</span>
+    </div>
+
+    <dialog class="tool-detail-dialog" id="tool-detail-dialog" aria-labelledby="tool-detail-name">
+      <div class="tool-detail-shell">
+        <div class="tool-detail-topbar"><span>Tool capability profile</span><button class="tool-detail-close" type="button" aria-label="Close tool details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" /></svg></button></div>
+        <div class="tool-detail-content">
+          <div class="tool-detail-identity"><img class="tool-detail-logo" id="tool-detail-logo" src="Source Photo/Used App Icon/Office and workspace/Excel.webp" alt="Selected tool logo" /><div><h3 id="tool-detail-name"></h3><span class="tool-detail-level" id="tool-detail-level"></span></div></div>
+          <p class="tool-detail-summary" id="tool-detail-summary"></p>
+          <h4>What I can do</h4>
+          <ul class="tool-detail-list" id="tool-detail-list"></ul>
+          <h4>Portfolio evidence</h4>
+          <p class="tool-detail-proof" id="tool-detail-proof"></p>
+        </div>
+      </div>
+    </dialog>
+
     <section class="journey" id="journey" aria-labelledby="journey-title">
       <div class="section-inner">
         <div class="journey-head reveal-up">
@@ -2447,20 +3819,27 @@
             <p class="section-kicker">Selected dossier</p>
             <h2 class="section-title" id="work-title">The portfolio collection</h2>
           </div>
-          <p>Filtered project cards pull from the content dossier and keep images as couture placeholders until real assets are supplied. Access links are enabled only where the source file provides them.</p>
+          <p>Five sections, each a coverflow rail you can drag, key through or click into. Real source images now document the finance work, Steersman operating system, client design surfaces and professional email campaigns; the detail view carries the full evidence trail and live links.</p>
         </div>
 
-        <div class="filter-bar reveal-up" role="list" aria-label="Project filters" style="--delay: 120ms">
-          <button class="filter-button active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="financial">Financial</button>
-          <button class="filter-button" type="button" data-filter="venture">Venture</button>
-          <button class="filter-button" type="button" data-filter="ai">AI systems</button>
-          <button class="filter-button" type="button" data-filter="leadership">Leadership</button>
-          <button class="filter-button" type="button" data-filter="current">Current</button>
-          <button class="filter-button" type="button" data-filter="creative">Creative</button>
+        <div class="project-filter-shell reveal-up" style="--delay: 120ms">
+          <div class="filter-copy">
+            <small>Filter the evidence</small>
+            <strong>Role, output, tools — visible before the click.</strong>
+          </div>
+          <div class="filter-bar" role="group" aria-label="Project filters">
+            <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All work</button>
+            <button class="filter-button" type="button" data-filter="financial" aria-pressed="false">Finance</button>
+            <button class="filter-button" type="button" data-filter="venture" aria-pressed="false">Venture ops</button>
+            <button class="filter-button" type="button" data-filter="ai" aria-pressed="false">AI systems</button>
+            <button class="filter-button" type="button" data-filter="leadership" aria-pressed="false">Leadership</button>
+            <button class="filter-button" type="button" data-filter="client" aria-pressed="false">Client work</button>
+            <button class="filter-button" type="button" data-filter="creative" aria-pressed="false">Creative</button>
+          </div>
         </div>
 
-        <div class="project-grid reveal-up" id="project-grid" style="--delay: 180ms" aria-live="polite"></div>
+        <p class="project-results-summary" id="project-results-summary" aria-live="polite"></p>
+        <div id="project-sections"></div>
       </div>
     </section>
 
@@ -2468,11 +3847,11 @@
       <div class="section-inner capability-board">
         <div class="capability-copy reveal-up">
           <p class="section-kicker">Capability layer</p>
-          <h2 class="section-title" id="skills-title">Analysis, operations, automation.</h2>
-          <p>Professional strengths combine financial modeling, data analysis, venture screening, program operations, stakeholder coordination, event documentation, dashboarding, and AI-assisted system building.</p>
+          <h2 class="section-title" id="skills-title">Analysis, systems, experience.</h2>
+          <p>Professional strengths combine financial modeling, client operating systems, break-even and cash-flow advisory, venture and program operations, brand and 3D experience design, professional HTML email systems, dashboarding, and AI-assisted product building.</p>
         </div>
         <div class="skill-cloud" aria-label="Skill tags">
-          <span>DCF valuation</span><span>WACC</span><span>Monte Carlo simulation</span><span>Portfolio optimization</span><span>ESG data processing</span><span>Power BI</span><span>Stata</span><span>Excel Solver</span><span>Venture screening</span><span>Program operations</span><span>Event boards</span><span>Stakeholder coordination</span><span>AI workspace design</span><span>Obsidian vaults</span><span>MCP workflows</span><span>Make / n8n</span><span>Frontend prototyping</span><span>Markdown reporting</span>
+          <span>DCF valuation</span><span>WACC</span><span>Monte Carlo simulation</span><span>Break-even modeling</span><span>Cash-flow visualization</span><span>Financial-health diagnostics</span><span>Portfolio optimization</span><span>ESG data processing</span><span>Odoo ERP</span><span>Live operations dashboards</span><span>Power BI</span><span>Stata</span><span>Excel Solver</span><span>Venture screening</span><span>Program operations</span><span>Event boards</span><span>Stakeholder coordination</span><span>Brand systems</span><span>Interactive 3D booths</span><span>HTML email development</span><span>Campaign journey design</span><span>AI workspace design</span><span>Obsidian vaults</span><span>MCP workflows</span><span>Make / n8n</span><span>Frontend prototyping</span><span>Vercel deployment</span><span>Markdown reporting</span>
         </div>
       </div>
     </section>
@@ -2541,7 +3920,7 @@
   </main>
 
   <!-- PROJECT MODAL -->
-  <div class="project-modal-backdrop" id="project-modal-backdrop" role="dialog" aria-modal="true" aria-label="Project details" aria-hidden="true">
+  <div class="project-modal-backdrop" id="project-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-hidden="true" hidden>
     <div class="project-modal" id="project-modal">
       <div class="modal-shader" id="modal-shader"></div>
       <div class="modal-noise"></div>
@@ -2551,6 +3930,22 @@
         <!-- filled by JS -->
       </div>
     </div>
+  </div>
+
+  <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Full-size project image" aria-hidden="true" hidden>
+    <button class="image-lightbox-close" id="image-lightbox-close" type="button" aria-label="Close full-size image">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="image-lightbox-nav" id="image-lightbox-prev" type="button" aria-label="Previous image">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <figure class="image-lightbox-figure">
+      <img class="image-lightbox-image" id="image-lightbox-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" />
+      <figcaption class="image-lightbox-caption" id="image-lightbox-caption"></figcaption>
+    </figure>
+    <button class="image-lightbox-nav" id="image-lightbox-next" type="button" aria-label="Next image">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
   </div>
 
   <footer class="footer" aria-label="Footer">
@@ -2805,6 +4200,311 @@
     setTimeout(lift, 10000);
   })();
 
+  // The tool stack arrives from the portrait: one focal sequence that makes the
+  // relationship between person, tool groups, and output spatially legible.
+  (() => {
+    const section = document.querySelector(".tools-showcase");
+    if (!section) return;
+
+    const portrait = section.querySelector(".tools-portrait");
+    const satellites = Array.from(section.querySelectorAll(".tool-satellite"));
+    const groups = Array.from(section.querySelectorAll(".tool-group"));
+    const filters = Array.from(section.querySelectorAll("[data-tool-filter]"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const compactLayout = window.matchMedia("(max-width: 900px)");
+    let desktopEntrancePlayed = false;
+
+    const pulseGroup = (groupName) => {
+      if (reduceMotion.matches) return;
+      const targets = groupName === "all"
+        ? satellites
+        : satellites.filter((item) => item.closest(".tool-group")?.dataset.group === groupName);
+      targets.forEach((item, index) => {
+        const core = item.querySelector(".tool-satellite-core");
+        core?.animate([
+          { transform: "scale(0.88)", filter: "brightness(0.8)" },
+          { transform: "scale(1)", filter: "brightness(1)" }
+        ], {
+          duration: 420,
+          delay: Math.min(index * 20, 260),
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+        });
+      });
+    };
+
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        const groupName = button.dataset.toolFilter || "all";
+        section.dataset.activeGroup = groupName;
+        filters.forEach((candidate) => {
+          candidate.setAttribute("aria-pressed", String(candidate === button));
+        });
+        pulseGroup(groupName);
+      });
+    });
+
+    const playDesktopEntrance = () => {
+      if (desktopEntrancePlayed || reduceMotion.matches || compactLayout.matches || !portrait) return;
+      desktopEntrancePlayed = true;
+      const portraitRect = portrait.getBoundingClientRect();
+      const originX = portraitRect.left + portraitRect.width / 2;
+      const originY = portraitRect.top + portraitRect.height * 0.5;
+
+      portrait.animate([
+        { clipPath: "inset(12% 9% 12% 9% round 16px)", filter: "blur(12px)", opacity: 0.35, transform: "translate(-50%, -50%) scale(0.94)" },
+        { clipPath: "inset(0 0 0 0 round 16px)", filter: "blur(0)", opacity: 1, transform: "translate(-50%, -50%) scale(1)" }
+      ], {
+        duration: 760,
+        easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+      });
+
+      satellites.forEach((item, index) => {
+        const rect = item.getBoundingClientRect();
+        const dx = originX - (rect.left + rect.width / 2);
+        const dy = originY - (rect.top + rect.height / 2);
+        const core = item.querySelector(".tool-satellite-core");
+        core?.animate([
+          { opacity: 0, transform: `translate3d(${dx}px, ${dy}px, 0) scale(0.18)`, filter: "blur(12px)" },
+          { opacity: 0.82, offset: 0.72 },
+          { opacity: 1, transform: "translate3d(0, 0, 0) scale(1)", filter: "blur(0)" }
+        ], {
+          duration: 660,
+          delay: 90 + Math.min(index * 24, 520),
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+          fill: "backwards"
+        });
+      });
+    };
+
+    if (!reduceMotion.matches && compactLayout.matches) {
+      const mobileGroupObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.querySelectorAll(".tool-satellite-core").forEach((core, index) => {
+            core.animate([
+              { opacity: 0, transform: "translateY(24px) scale(0.84)", filter: "blur(8px)" },
+              { opacity: 1, transform: "translateY(0) scale(1)", filter: "blur(0)" }
+            ], {
+              duration: 480,
+              delay: Math.min(index * 34, 380),
+              easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+              fill: "backwards"
+            });
+          });
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.16 });
+      groups.forEach((group) => mobileGroupObserver.observe(group));
+    }
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        section.classList.toggle("is-active", entry.isIntersecting);
+        if (entry.isIntersecting) requestAnimationFrame(playDesktopEntrance);
+      });
+    }, { threshold: 0.08 });
+    sectionObserver.observe(section);
+
+    const capabilityAdditions = {
+      "Antigravity": ["Plan and execute multi-step builds inside an agentic IDE.", "Research, edit project files, and verify output against the brief."],
+      "Bitbucket": ["Organise Git repositories, branches, and delivery history.", "Support traceable collaboration and source-control handoffs."],
+      "Claude": ["Synthesize long documents, research, and structured business content.", "Use Claude Code and Cowork workflows for planning and technical execution."],
+      "Codex": ["Inspect repositories and implement scoped frontend or automation changes.", "Run UI QA, file workflows, and reusable skill-based task execution."],
+      "Cursor": ["Explore code with project context and make targeted edits.", "Prototype, refactor, and debug web interfaces with AI assistance."],
+      "Docker": ["Run portable local services in isolated containers.", "Support repeatable self-hosted AI, backend, and automation experiments."],
+      "GitHub": ["Manage repositories, branches, version history, and README handoffs.", "Connect projects to preview and production deployment workflows."],
+      "Hermes Agent": ["Operate a local Agentic OS with tools, memory, task loops, and boards.", "Connect model routing, OpenRouter, MCP, and multi-agent experiments."],
+      "n8n": ["Build triggered workflows with webhooks, APIs, schedules, and branching logic.", "Transform data and hand work between AI and business systems."],
+      "Obsidian": ["Design local-first Markdown vaults and linked knowledge structures.", "Ingest articles, videos, and PDFs into summaries and recurring trend reports."],
+      "Ollama": ["Run and test language models locally for private or offline inference.", "Expose local model APIs to coding assistants and prototypes."],
+      "ChatGPT": ["Support formula logic, financial research, and data interpretation.", "Turn rough requirements into structured writing and actionable outputs."],
+      "OpenDesign": ["Explore AI-assisted visual directions and editable interface concepts.", "Move early design intent into faster web prototyping."],
+      "Supabase": ["Connect a product UI to Postgres data, authentication, and storage.", "Prototype realtime features, APIs, and lightweight managed backends."],
+      "Vercel": ["Ship preview and production versions of responsive websites.", "Validate routes, assets, live behaviour, and post-deploy browser QA."],
+      "VS Code": ["Build HTML, CSS, JavaScript, and Markdown projects.", "Manage terminal workflows, agent instructions, previews, and project files."],
+      "Canva": ["Create presentation, event, social, and briefing assets quickly.", "Maintain reusable branded layouts and export-ready dimensions."],
+      "Blender": ["Model 3D venue layouts, site maps, and staging concepts.", "Visualise guest flow and physical setups before live execution."],
+      "CapCut": ["Edit footage, sequencing, pacing, captions, audio, and transitions.", "Handle review rounds and export platform-ready recap videos."],
+      "Figma": ["Create wireframes, interface flows, and high-fidelity prototypes.", "Use components, responsive intent, collaboration, and developer handoff."],
+      "Rive": ["Create state-based interactive animation for UI moments.", "Prototype lightweight motion assets that respond to user input."],
+      "Slack": ["Set up channels, access logic, pinned resources, and async updates.", "Keep team decisions searchable and connect workflow integrations."],
+      "Odoo": ["Configure Sales, Purchase, Inventory, and Finance/Accounting modules.", "Build roles, approvals, payment and order tracking, automations, dashboards, and a connected website UI."],
+      "Notion": ["Build linked databases, dashboards, templates, and knowledge bases.", "Create lightweight operating systems for projects, notes, and ownership."],
+      "monday.com": ["Configure boards, owners, statuses, timelines, and dependencies.", "Add forms, automations, filtered views, handoffs, and dashboards."]
+    };
+
+    const evidenceByGroup = {
+      ai: "Applied across AI Agent Office, JayVault, Local Agentic OS, AI-assisted websites, dashboards, research, and reporting workflows.",
+      design: "Applied across BLOCK71 event assets, 3D venue layouts, recap-video delivery, presentation materials, and interface prototypes.",
+      office: "Applied across finance coursework, venture operations, client delivery, programme workspaces, and management reporting."
+    };
+
+    const detailsByName = new Map();
+    section.querySelectorAll(".office-profile").forEach((profile) => {
+      const name = profile.querySelector(".profile-title h4")?.textContent.replace("Microsoft ", "").trim();
+      if (!name) return;
+      detailsByName.set(name, {
+        level: profile.querySelector(".proficiency strong")?.textContent.trim() || "Working",
+        summary: profile.querySelector(".profile-summary")?.textContent.trim() || "",
+        capabilities: Array.from(profile.querySelectorAll(".skill-cluster")).map((skill) => `${skill.querySelector("h5")?.textContent.trim()}: ${skill.querySelector("p")?.textContent.trim()}`),
+        proof: profile.querySelector(".profile-proof")?.textContent.replace("Portfolio evidence", "").trim() || evidenceByGroup.office
+      });
+    });
+
+    section.querySelectorAll(".stack-tool").forEach((row) => {
+      const name = row.querySelector("h5")?.textContent.trim();
+      if (!name) return;
+      const column = row.closest(".tech-domain, .practice-column");
+      const groupName = column?.closest(".practice-columns")
+        ? (column.querySelector("h4")?.textContent.includes("Design") ? "design" : "office")
+        : "ai";
+      detailsByName.set(name, {
+        level: row.querySelector(".tool-level")?.textContent.trim() || "Working",
+        summary: row.querySelector(".stack-tool-copy p")?.textContent.trim() || "",
+        capabilities: capabilityAdditions[name] || [row.querySelector(".stack-tool-copy p")?.textContent.trim()].filter(Boolean),
+        proof: name === "Odoo"
+          ? "Completed end-to-end client engagement covering Odoo configuration, management reporting, workflow automation, website deployment, and handover."
+          : evidenceByGroup[groupName]
+      });
+    });
+
+    const hoverCard = document.getElementById("tool-hover-card");
+    const hoverLogo = document.getElementById("tool-hover-logo");
+    const hoverName = document.getElementById("tool-hover-name");
+    const hoverLevel = document.getElementById("tool-hover-level");
+    const hoverSummary = document.getElementById("tool-hover-summary");
+    const detailDialog = document.getElementById("tool-detail-dialog");
+    const detailShell = detailDialog?.querySelector(".tool-detail-shell");
+    const detailClose = detailDialog?.querySelector(".tool-detail-close");
+    const detailLogo = document.getElementById("tool-detail-logo");
+    const detailName = document.getElementById("tool-detail-name");
+    const detailLevel = document.getElementById("tool-detail-level");
+    const detailSummary = document.getElementById("tool-detail-summary");
+    const detailList = document.getElementById("tool-detail-list");
+    const detailProof = document.getElementById("tool-detail-proof");
+    let selectedSatellite = null;
+    let returnFocus = null;
+    let closeAnimation = null;
+
+    const hidePreview = () => {
+      hoverCard?.classList.remove("is-visible");
+      hoverCard?.setAttribute("aria-hidden", "true");
+    };
+
+    const showPreview = (satellite) => {
+      if (!hoverCard || !window.matchMedia("(hover: hover)").matches) return;
+      const name = satellite.querySelector(".tool-name")?.textContent.trim();
+      const detail = detailsByName.get(name);
+      const image = satellite.querySelector("img");
+      if (!name || !detail || !image) return;
+      hoverLogo.src = image.currentSrc || image.src;
+      hoverName.textContent = name;
+      hoverLevel.textContent = `${detail.level} proficiency`;
+      hoverSummary.textContent = detail.summary;
+      hoverCard.classList.add("is-visible");
+      hoverCard.setAttribute("aria-hidden", "false");
+      const rect = satellite.getBoundingClientRect();
+      const cardRect = hoverCard.getBoundingClientRect();
+      const gap = 14;
+      const left = Math.min(window.innerWidth - cardRect.width - 16, Math.max(16, rect.left + rect.width / 2 - cardRect.width / 2));
+      const top = rect.top > cardRect.height + gap + 16 ? rect.top - cardRect.height - gap : rect.bottom + gap;
+      hoverCard.style.transformOrigin = rect.top > cardRect.height + gap + 16 ? "50% 100%" : "50% 0%";
+      hoverCard.style.left = `${left}px`;
+      hoverCard.style.top = `${Math.min(window.innerHeight - cardRect.height - 16, top)}px`;
+    };
+
+    const animateDialogClose = () => {
+      if (!detailDialog?.open || closeAnimation) return;
+      hidePreview();
+      if (reduceMotion.matches || !detailShell) {
+        detailDialog.close();
+        return;
+      }
+      closeAnimation = detailShell.animate([
+        { transform: "translateX(0)", opacity: 1, filter: "blur(0)" },
+        { transform: "translateX(100%)", opacity: 0.55, filter: "blur(8px)" }
+      ], { duration: 260, easing: "cubic-bezier(0.4, 0, 1, 1)" });
+      closeAnimation.finished.finally(() => {
+        closeAnimation = null;
+        if (detailDialog.open) detailDialog.close();
+      });
+    };
+
+    const openDetails = (satellite) => {
+      const name = satellite.querySelector(".tool-name")?.textContent.trim();
+      const detail = detailsByName.get(name);
+      const image = satellite.querySelector("img");
+      if (!detailDialog || !detail || !name || !image) return;
+      returnFocus = satellite;
+      selectedSatellite?.classList.remove("is-selected");
+      selectedSatellite = satellite;
+      selectedSatellite.classList.add("is-selected");
+      detailLogo.src = image.currentSrc || image.src;
+      detailLogo.alt = `${name} logo`;
+      detailName.textContent = name;
+      detailLevel.textContent = `${detail.level} proficiency`;
+      detailSummary.textContent = detail.summary;
+      detailList.replaceChildren(...detail.capabilities.map((capability) => {
+        const item = document.createElement("li");
+        item.textContent = capability;
+        return item;
+      }));
+      detailProof.textContent = detail.proof;
+      hidePreview();
+      detailDialog.showModal();
+      detailClose?.focus();
+      if (!reduceMotion.matches && detailShell) {
+        detailShell.animate([
+          { transform: "translateX(100%)", opacity: 0.45, filter: "blur(10px)" },
+          { transform: "translateX(0)", opacity: 1, filter: "blur(0)" }
+        ], { duration: 460, easing: "cubic-bezier(0.16, 1, 0.3, 1)" });
+      }
+    };
+
+    satellites.forEach((satellite) => {
+      const name = satellite.querySelector(".tool-name")?.textContent.trim();
+      satellite.setAttribute("role", "button");
+      satellite.setAttribute("tabindex", "0");
+      satellite.setAttribute("aria-label", `View ${name} capabilities`);
+      satellite.addEventListener("mouseenter", () => showPreview(satellite));
+      satellite.addEventListener("mouseleave", hidePreview);
+      satellite.addEventListener("focus", () => showPreview(satellite));
+      satellite.addEventListener("blur", hidePreview);
+      satellite.addEventListener("click", () => openDetails(satellite));
+      satellite.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openDetails(satellite);
+        }
+      });
+    });
+
+    detailClose?.addEventListener("click", animateDialogClose);
+    detailDialog?.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      animateDialogClose();
+    });
+    detailDialog?.addEventListener("click", (event) => {
+      if (event.target === detailDialog) animateDialogClose();
+    });
+    detailDialog?.addEventListener("close", () => {
+      selectedSatellite?.classList.remove("is-selected");
+      selectedSatellite = null;
+      returnFocus?.focus({ preventScroll: true });
+      returnFocus = null;
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && detailDialog?.open) {
+        event.preventDefault();
+        animateDialogClose();
+      }
+    });
+    window.addEventListener("scroll", hidePreview, { passive: true });
+    window.addEventListener("resize", hidePreview, { passive: true });
+  })();
+
+  // Add images: ["path/to/cover.jpg", "path/to/detail-02.jpg", "path/to/detail-03.jpg"]
+  // to any project below. The first image becomes the card cover; every image appears in its popup gallery.
   const projects = [
     {
       category: "venture",
@@ -2868,9 +4568,16 @@
     },
     {
       category: "financial",
+      featured: true,
+      output: "Model + recommendation",
       metric: "₫102bn",
       metricLabel: "NPV - recommendation: proceed",
       title: "Capital Budgeting & Risk Analysis - REE Corporation",
+      images: [
+        "Source Photo/Finance/Capital Budgeting & Risk Analysis/Presentations.png",
+        "Source Photo/Finance/Capital Budgeting & Risk Analysis/Excel (1).png",
+        "Source Photo/Finance/Capital Budgeting & Risk Analysis/Excel (2).png"
+      ],
       role: "Team Leader, 6-member team",
       period: "Semester 1, 2025",
       summary: "Appraised REE's Non Nuoc coastal resort-apartment project in Da Nang and returned a go: NPV VND 102.2bn, IRR 17.74% against a 13.78% WACC.",
@@ -2889,9 +4596,15 @@
     },
     {
       category: "financial",
+      output: "Equity research",
       metric: "+26.8%",
       metricLabel: "upside - BUY call",
       title: "Corporate Valuation - Mobile World Group (MWG)",
+      images: [
+        "Source Photo/Finance/Corporate Valuation/Excel (2).png",
+        "Source Photo/Finance/Corporate Valuation/Report.png",
+        "Source Photo/Finance/Corporate Valuation/Excel (1).png"
+      ],
       role: "Team Leader, 5-member team",
       period: "Mar 2025",
       summary: "Valued MWG at a VND 77,038 target price with a BUY recommendation and 26.8% upside, on a DCF built from segment-level revenue forecasts.",
@@ -2909,31 +4622,111 @@
       label: "Open report"
     },
     {
-      category: "current",
+      category: "client",
+      featured: true,
+      output: "ERP + advisory",
       metric: "Solo",
       metricLabel: "signed client engagement",
-      title: "Steersman Brewery - Odoo Workspace, Website & Business Analysis",
-      role: "Freelance Business Systems & Analysis Consultant",
+      title: "Steersman Brewery - Odoo Operating System & Financial Health",
+      role: "Freelance Business Systems & Financial Analysis Consultant",
       period: "Jul 2026 - Jan 2027",
-      summary: "A signed, fixed-price consulting engagement delivered solo: an Odoo business-management workspace, a company website, full source-code handover, and business analysis running to January 2027.",
-      highlights: ["Sole service provider on a signed commercial agreement.", "Odoo across Sales, Purchase, Inventory and Finance with role-based approvals.", "12-month support term; business analysis through 30 Jan 2027."],
+      summary: "A completed Odoo operating workspace and live management layer, paired with a financial-health model that turns company data into break-even, cash-flow, valuation and business-strategy decisions.",
+      highlights: ["Built, connected and launched the full Odoo workspace and live operations layer.", "Designed break-even, cash-runway, 36-month forecast and valuation outputs.", "Sole service provider with support continuing under the signed engagement."],
+      images: [
+        "Source Photo/AI - Building Projects/Steersman Website , Odoo Workspace/Workspace (1).png",
+        "Source Photo/AI - Building Projects/Steersman Website , Odoo Workspace/Workspace (2).png",
+        "Source Photo/AI - Building Projects/Steersman Website , Odoo Workspace/Workspace (3).png"
+      ],
       details: [
         "Action - authored the service agreement and quotation myself - scope, deliverables, milestones, acceptance criteria, IP and handover terms - then managed the client relationship as sole service provider.",
-        "Action - configured an Odoo business-management workspace across Sales, Purchase, Inventory and Finance dashboards, with payment tracking, order processing, user roles and permissions, approval stages and workflow automations.",
-        "Action - built and deployed a responsive company website with SEO-friendly structure, mobile optimisation and domain connection, then handed over full source code, configuration notes and documentation.",
-        "Consequence - management got faster and leaner: order and approval steps run inside one system instead of scattered records, and the operating data comes out clean enough to actually analyse.",
-        "Consequence - that clean data feeds an ongoing business-health review covering sales trends, gross margin, expenses, cash flow, receivables and payables, inventory movement, order fulfilment and operating bottlenecks, delivered as management reporting with workflow recommendations.",
+        "Action - configured and connected Odoo across Sales, Purchase, Inventory and Finance dashboards, including payment tracking, order processing, roles, permissions, approvals and workflow automations.",
+        "Action - built a live management layer that surfaces priority actions, confirmed sales, late deliveries, inventory value, VAT estimates, customer-payment status and new Odoo records in one operational view.",
+        "Action - created a 13-sheet data-input system and plain-English guide for collecting 24 months of operating history without breaking the financial model.",
+        "Action - built the financial-health diagnostic: roughly 40 ratios, break-even by company, channel and product, ranked cost-saving options, 36-month profit, cash-flow and balance-sheet forecasts, cash runway, valuation range and a named quarterly action plan.",
+        "Consequence - management now has one connected operating surface plus visual cash-flow and scenario outputs that support practical business strategy, not just reporting.",
         "Timebound - service agreement dated 19 Jul 2026, staged 50/30/20 against signing, UAT delivery and final acceptance, with a 12-month support term from acceptance and business analysis contracted through 30 Jan 2027. Commercial terms withheld by agreement."
       ],
-      tools: ["Odoo / ERP", "Web development", "Business analysis", "Client delivery"],
-      access: "https://www.steersmanbrewery.com/",
-      label: "Visit client site"
+      tools: ["Odoo / ERP", "Financial modeling", "Live dashboards", "Business advisory"],
+      links: [
+        { label: "Open live dashboard", url: "https://steersman-ops-dashboard.vercel.app/" },
+        { label: "Open financial model folder", url: "https://drive.google.com/drive/folders/1JCwhBTbFfiTJLApkuc6fJxxhKLPz_HZH?usp=drive_link" }
+      ],
+      label: "Open live dashboard"
+    },
+    {
+      category: "client",
+      featured: true,
+      output: "Brand + 3D experience",
+      metric: "6",
+      metricLabel: "event touchpoints designed",
+      title: "Steersman Brewery - Brand, Web & Event Experience Design",
+      role: "Brand, Web & Experience Designer / Marketing Support",
+      period: "2026",
+      summary: "Steersman's client-facing visual layer: a bilingual sales brochure, product and taproom web concepts, plus an interactive 3D festival-booth system from guest flow to production handoff.",
+      highlights: ["Bilingual, filterable product brochure built for sales conversations.", "Interactive 3D booth with three customer-flow options.", "Artwork, minigame, merchandise and production-spec handoff in one system."],
+      images: [
+        "Source Photo/AI - Building Projects/Steersman Website , Odoo Workspace/Brochure SG.png",
+        "Source Photo/AI - Building Projects/Steersman Website , Odoo Workspace/Lets Nhau Booth.png"
+      ],
+      details: [
+        "Action - designed and deployed a bilingual sales brochure covering eight products, product specifications, pricing, formats, filters and downloadable PDF access for client sales.",
+        "Action - built web concepts spanning brand story, taproom, menu, product catalogue, events, wholesale and partner journeys.",
+        "Action - designed the Steersman x Let's Nhau booth world and six production touchpoints: header, backdrop, product standee, check-in standee, Captain cutout and tasting tablecloth.",
+        "Action - created the interactive 3D booth review and three customer-flow options so the client could test placement and experience before physical production.",
+        "Action - connected artwork, minigame, prize hierarchy, merchandise direction, final dimensions, material suggestions and handoff status into one event-production system.",
+        "Consequence - converted product truth and operational needs into sales-ready, event-ready and production-ready marketing assets."
+      ],
+      tools: ["Brand systems", "HTML / CSS / JS", "Interactive 3D", "Event design"],
+      links: [
+        { label: "Open sales brochure", url: "https://steersman-brochure-sg.vercel.app/" },
+        { label: "Open booth experience", url: "https://steersman-lets-nhau-booth.vercel.app/" },
+        { label: "Open brand website", url: "https://steersman-site.vercel.app/en" },
+        { label: "Open design dashboard", url: "https://steersman-brewery-design-dashboard.vercel.app/" }
+      ],
+      label: "Open sales brochure"
+    },
+    {
+      category: "client",
+      featured: true,
+      output: "Email system",
+      metric: "7",
+      metricLabel: "bilingual campaign templates",
+      title: "Professional HTML Email & Invitation Systems",
+      role: "Email Experience Designer / HTML Email Developer",
+      period: "TRF'26 + TTC 2026",
+      summary: "Professional business and event outreach systems: responsive bilingual invitations, audience-based journeys, reply-triggered confirmations, QR and calendar flows, review pages and Gmail-ready delivery files.",
+      highlights: ["Seven-email TRF'26 journey mapped by guest state.", "Responsive invitation templates in Vietnamese and English.", "Downloadable HTML, QR/calendar logic and stakeholder review surfaces."],
+      images: [
+        "Source Photo/AI - Building Projects/TRF26 Email Campaign.png",
+        "Source Photo/AI - Building Projects/TRF26 Email Review.png"
+      ],
+      details: [
+        "Action - designed the seven-email TRF'26 APAC campaign around guest state: not opened, opened without reply, awaiting approval, confirmed and not attending.",
+        "Action - mapped scheduled and reply-triggered communication across invitation, reminder, confirmation with QR, regret, speaker spotlight, day-before logistics and post-event thank-you.",
+        "Action - built a review surface where stakeholders inspect the same templates generated by the sending system and download individual HTML files, calendar files or the full campaign set.",
+        "Action - created responsive, table-based long-form invitations with personalisation placeholders, programme hierarchy, CTA paths, partner blocks and email-client-safe styling.",
+        "Action - delivered the TTC 2026 Vietnamese invitation package with editable HTML, Gmail-paste preview and downloadable source bundle.",
+        "Consequence - turned one-off invitations into reusable professional outreach infrastructure for business introductions, partnerships and organised programmes."
+      ],
+      tools: ["HTML email", "Bilingual copy", "Campaign journeys", "Gmail QA"],
+      links: [
+        { label: "Open campaign roadmap", url: "https://trf26-mau-email.vercel.app/" },
+        { label: "Open template review", url: "https://trf26-email-review.vercel.app/" },
+        { label: "Open TTC source folder", url: "https://drive.google.com/drive/folders/1Un2B5GGb-vBh8Y4maCGH6BYIZJOYpOYR?usp=drive_link" }
+      ],
+      label: "Open campaign roadmap"
     },
     {
       category: "financial",
+      output: "Internship evidence",
       metric: "4.23%",
       metricLabel: "two-week mock portfolio return",
       title: "Vietcap Securities - Investment Consultant Intern",
+      images: [
+        "Source Photo/Finance/Vietcap Securities/Company Photo Group.jpg",
+        "Source Photo/Finance/Vietcap Securities/Report.png",
+        "Source Photo/Finance/Vietcap Securities/Port Manage.png"
+      ],
       role: "Investment Consultant Intern, Talented Student Program",
       period: "Mar 2025 - Jul 2025",
       summary: "Five months on Vietcap's Talented Student Program doing equity research, client simulation and portfolio tracking, returning 4.23% over two weeks on a VND 1B mock portfolio.",
@@ -2952,9 +4745,12 @@
     },
     {
       category: "financial",
+      output: "Solo research",
       metric: "85 mo.",
       metricLabel: "of data - solo research",
       title: "Tariffs & Financial Shocks - Advanced Financial Econometrics",
+      mediaFit: "contain",
+      images: ["Source Photo/Finance/Advanced Financial Econometrics/Cover.png"],
       role: "Independent Researcher",
       period: "Submitted 28 Apr 2025",
       summary: "Solo GARCH study of US tariff shocks on Vietnamese exporters. The finding: tariffs did not move mean returns, but volatility persistence ran near unity - the risk shows up as instability, not price level.",
@@ -2974,9 +4770,17 @@
     },
     {
       category: "financial",
+      output: "Automation + portfolio",
       metric: "30",
       metricLabel: "companies automated in VBA",
       title: "Quantitative Finance & Portfolio Management",
+      images: [
+        "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (3).png",
+        "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (1).png",
+        "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (2).png",
+        "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (4).png",
+        "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (5).png"
+      ],
       role: "Team Leader, 10-member team",
       period: "2024 - 2025",
       summary: "Led the largest team in this portfolio through portfolio construction under Modern Portfolio Theory, and automated the analysis of 30 listed companies in Excel VBA.",
@@ -2995,9 +4799,16 @@
     },
     {
       category: "financial",
+      output: "Research + award",
       metric: "3,168",
       metricLabel: "listed companies - 20 countries",
       title: "ESG & Financial Performance Study",
+      mediaFit: "contain",
+      images: [
+        "Source Photo/Finance/ESG & Financial Performance Study/Award.png",
+        "Source Photo/Finance/ESG & Financial Performance Study/Data.png",
+        "Source Photo/Finance/ESG & Financial Performance Study/Trang Bìa Cover.png"
+      ],
       role: "Research Contributor",
       period: "UEH Young Researchers Award - Prize C",
       summary: "Cross-country study of ESG practice against firm performance, built on a dataset of 3,168 listed companies across 20 Asian countries. Awarded Prize C.",
@@ -3243,7 +5054,8 @@
       label: "Watch show"
     },
     {
-      category: "current",
+      category: "client",
+      output: "Product support",
       title: "QuickFish - Frontend & Agent OS Prompt Engineering Support",
       role: "Supporter, Frontend & Agent OS Prompt Engineering",
       period: "May 2026 - Present",
@@ -3278,7 +5090,7 @@
     }
   ];
 
-  const projectGrid = document.getElementById("project-grid");
+  const projectSections = document.getElementById("project-sections");
   const filters = Array.from(document.querySelectorAll(".filter-button"));
 
   // Category accent colors mapped for modal
@@ -3287,88 +5099,370 @@
     venture:    { accent: "#5b9cf6", glow: "rgba(91,156,246,0.22)",  shader: "linear-gradient(148deg, #040d1e, #0a1535 40%, #020509)" },
     ai:         { accent: "#34d399", glow: "rgba(52,211,153,0.22)",  shader: "linear-gradient(148deg, #001a12, #003322 40%, #000d09)" },
     leadership: { accent: "#fb923c", glow: "rgba(251,146,60,0.22)",  shader: "linear-gradient(148deg, #1a0600, #2d0f00 40%, #0c0200)" },
-    current:    { accent: "#22d3ee", glow: "rgba(34,211,238,0.22)",  shader: "linear-gradient(148deg, #00131a, #002030 40%, #000709)" },
+    client:     { accent: "#22d3ee", glow: "rgba(34,211,238,0.22)",  shader: "linear-gradient(148deg, #00131a, #002c36 40%, #000709)" },
     creative:   { accent: "#e879f9", glow: "rgba(232,121,249,0.22)", shader: "linear-gradient(148deg, #160012, #2a0020 40%, #080006)" }
   };
 
-  // Pull orbit images to use in modal gallery
-  const categoryImages = {
-    financial:  [orbitImages[0].src],
-    venture:    [orbitImages[1].src],
-    ai:         [orbitImages[2].src],
-    leadership: [orbitImages[3].src],
-    current:    [orbitImages[4].src],
-    creative:   [orbitImages[5].src]
+  const categoryNames = {
+    financial: "Finance",
+    venture: "Venture ops",
+    ai: "AI systems",
+    leadership: "Leadership",
+    client: "Client work",
+    creative: "Creative"
   };
 
   let currentFilter = "all";
+  const projectResultsSummary = document.getElementById("project-results-summary");
 
-  function renderProjects(filter = "all") {
-    currentFilter = filter;
-    const visible = filter === "all" ? projects : projects.filter((p) => p.category === filter);
-    projectGrid.innerHTML = visible.map((project, index) => {
-      const toolDots = project.tools.slice(0, 3).map(() => `<span class="tool-dot"></span>`).join("");
-      let gridSize = "";
-      if (index === 0) gridSize = 'data-grid-size="featured"';
-      else if (index === 1) gridSize = 'data-grid-size="tall"';
-      else if (index > 1 && (index - 2) % 6 === 3) gridSize = 'data-grid-size="wide"';
-      else if (index > 1 && (index - 2) % 6 === 4) gridSize = 'data-grid-size="wide"';
-      return `
-        <article class="project-card" data-category="${project.category}" data-index="${index}" ${gridSize} tabindex="0" role="button" aria-label="Open ${project.title} details">
-          <div class="card-accent-bar"></div>
-          <div class="card-noise"></div>
-          <div class="card-grid-shader"></div>
-          <div class="project-body" style="padding-top:32px">
-            <div class="project-meta">
-              <span class="tag">${project.category}</span>
-              <span class="tag">${project.period}</span>
-            </div>
-            ${project.metric ? `<p class="project-metric"><b>${project.metric}</b><span>${project.metricLabel}</span></p>` : ""}
-            <h3>${project.title}</h3>
-            <p class="project-role">${project.role}</p>
-            <p class="project-summary">${project.summary}</p>
-          </div>
-          <div class="card-footer">
-            <button class="card-open-btn" type="button">
-              Details
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-            <div class="card-tools-preview" aria-hidden="true">${toolDots}</div>
-          </div>
-        </article>
-      `;
-    }).join("");
+  const imageSlotIcon = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+      <path d="m21 15-5-5L5 21"></path>
+    </svg>`;
 
-    // Re-bind stagger animation for cards
-    projectGrid.querySelectorAll(".project-card").forEach((card, i) => {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(30px)";
-      card.style.transition = `opacity 500ms ease ${i * 60}ms, transform 500ms cubic-bezier(0.22,1,0.36,1) ${i * 60}ms`;
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        card.style.opacity = "1";
-        card.style.transform = "translateY(0)";
-      }));
+  function getProjectImages(project) {
+    return Array.isArray(project.images) ? project.images.filter(Boolean) : [];
+  }
+
+  function mediaPlaceholder(label = "Project image", note = "Image slot ready — add your visual later") {
+    return `
+      <div class="media-placeholder">
+        <div class="media-placeholder-inner">
+          ${imageSlotIcon}
+          <span class="media-placeholder-label">${label}</span>
+          <span class="media-placeholder-note">${note}</span>
+        </div>
+      </div>`;
+  }
+
+  function bindImageFallbacks(scope) {
+    scope.querySelectorAll("img[data-project-image]").forEach((img) => {
+      img.addEventListener("error", () => {
+        const label = img.dataset.fallbackLabel || "Project image";
+        img.parentElement.innerHTML = mediaPlaceholder(label, "Image file unavailable — this slot remains ready");
+      }, { once: true });
     });
   }
 
-  renderProjects();
+  function getSkillEvidence(project, index) {
+    if (Array.isArray(project.skillDetails) && project.skillDetails[index]) return project.skillDetails[index];
+    const actions = (project.details || []).filter((detail) => /^Action\s*-/i.test(detail));
+    const source = actions[index] || project.highlights?.[index] || project.summary;
+    return String(source || "Applied within this project.").replace(/^Action\s*-\s*/i, "");
+  }
+
+  function renderSkillRows(project) {
+    return project.tools.map((tool, index) => `
+      <div class="modal-skill-row">
+        <div class="modal-skill-name">${tool}</div>
+        <p class="modal-skill-evidence">${getSkillEvidence(project, index)}</p>
+      </div>
+    `).join("");
+  }
+
+  filters.forEach((button) => {
+    const count = button.dataset.filter === "all"
+      ? projects.length
+      : projects.filter((project) => project.category === button.dataset.filter).length;
+    const label = button.textContent.trim();
+    button.dataset.label = label;
+    button.innerHTML = `<span>${label}</span><span class="filter-count" aria-hidden="true">${count}</span>`;
+  });
+
+  // ── Sectioned coverflow ────────────────────────────────
+  // Five bands, each a coverflow rail. Sections are pure groupings of the
+  // existing `category` field, so no project data had to change.
+  const SECTIONS = [
+    { id: "finance",  cats: ["financial"], title: "Finance &amp; capital",
+      blurb: "Valuation, capital budgeting, econometrics and portfolio work — each model built end to end and closed with a stated recommendation." },
+    { id: "systems",  cats: ["ai"], title: "AI, systems &amp; web builds",
+      blurb: "Agent workspaces, research vaults, assessment hubs and internal tooling — designed, built and shipped, not specified and handed off." },
+    { id: "programs", cats: ["venture", "leadership"], title: "Programs &amp; events",
+      blurb: "Venture programmes, galas, campaigns and shows — run sheets, tracking layers and the logistics that hold a room together." },
+    { id: "clients",  cats: ["client"], title: "Client &amp; freelance work",
+      blurb: "Paid engagements: operating systems, brand and web surfaces, email campaign systems and front-end support." },
+    { id: "craft",    cats: ["creative"], title: "Craft &amp; other",
+      blurb: "The work outside the brief — photography, image-making and personal practice." }
+  ];
+
+  // Rake geometry. Tilt and recession both ease off with distance (falloff < 1)
+  // so the second card stays readable instead of folding shut.
+  const CF = { rotate: 44, depth: 0.6, falloff: 0.56, fade: 0.1, gap: 0.06 };
+  const CF_REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const cfLinkIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+  const cfArrowIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+
+  function accessLinksOf(project) {
+    return Array.isArray(project.links) && project.links.length
+      ? project.links
+      : (project.access ? [{ label: project.label, url: project.access }] : []);
+  }
+
+  // Typographic card face, used when a project has no photo yet and as the
+  // fallback if an image 404s. Reads well tilted, unlike a grey box.
+  function cfTypoFace(project) {
+    const cat = categoryAccent[project.category] || {};
+    return `<div class="cf-face" style="background:${cat.shader || "linear-gradient(148deg,#0c0c0e,#141418)"}">
+        <span class="cf-face-cat" style="color:${cat.accent || "#fff"}">${categoryNames[project.category] || project.category}</span>
+        <div>
+          ${project.metric ? `<p class="cf-face-metric" style="color:${cat.accent || "#fff"}">${project.metric}</p>` : ""}
+          <p class="cf-face-title">${project.title}</p>
+        </div>
+      </div>`;
+  }
+
+  function cfCardFace(project) {
+    const images = getProjectImages(project);
+    if (!images[0]) return cfTypoFace(project);
+    const cat = categoryAccent[project.category] || {};
+    return `<img src="${images[0]}" alt="${project.title} cover" loading="lazy" decoding="async" draggable="false" />
+      <div class="cf-veil"></div>
+      <div class="cf-plate">
+        <span class="cf-plate-cat" style="color:${cat.accent || "#fff"}">${categoryNames[project.category] || project.category} &middot; ${project.period}</span>
+        <span class="cf-plate-title">${project.title}</span>
+      </div>`;
+  }
+
+  function cfCaptionHTML(project) {
+    const cat = categoryAccent[project.category] || {};
+    const links = accessLinksOf(project);
+    const accessBtns = links.length
+      ? links.map((link, i) => `<a class="cf-cta is-ghost" href="${link.url}" target="_blank" rel="noreferrer" style="border-color:${cat.accent}77;color:${cat.accent}">${link.label}${cfLinkIcon}</a>`).join("")
+      : `<span class="cf-cta is-off">Evidence coming soon</span>`;
+    return `
+      <div class="cf-cap-main">
+        <div class="cf-cap-tags">
+          <span class="cf-cap-tag" style="color:${cat.accent};border-color:${cat.accent}55">${categoryNames[project.category] || project.category}</span>
+          ${project.output ? `<span class="cf-cap-tag">${project.output}</span>` : ""}
+          <span class="cf-cap-tag">${project.period}</span>
+        </div>
+        <h4>${project.title}</h4>
+        <p class="cf-cap-role">${project.role}</p>
+        <p class="cf-cap-sum">${project.summary}</p>
+        <div class="cf-cap-tools">${project.tools.map((tool) => `<span>${tool}</span>`).join("")}</div>
+      </div>
+      <div class="cf-cap-side">
+        ${project.metric ? `<p class="cf-cap-metric"><b>${project.metric}</b><span>${project.metricLabel}</span></p>` : ""}
+        <div class="cf-cap-actions">
+          <button class="cf-cta" type="button" data-open-case>View full case${cfArrowIcon}</button>
+          ${accessBtns}
+        </div>
+      </div>`;
+  }
+
+  // Returns the ResizeObserver so the caller can disconnect it on re-render.
+  function mountCoverflow(root, list) {
+    const frame = root.querySelector(".cf-frame");
+    const track = root.querySelector(".cf-track");
+    const caption = root.querySelector(".cf-caption");
+    const dots = root.querySelector(".cf-dots");
+    const cards = Array.from(track.children);
+    const count = cards.length;
+    if (!count) return null;
+
+    // Below five cards the ring folds badly (a card would be teleported while
+    // still visible), so short rails run clamped instead of looping.
+    const loop = count >= 5;
+    let pos = 0, target = 0, width = 0, raf = null, drag = null, selected = -1;
+
+    const indexAt = (p) => ((Math.round(p) % count) + count) % count;
+    const clamp = (p) => (loop ? p : Math.max(0, Math.min(count - 1, p)));
+
+    // Paint straight to the DOM — sixty re-renders a second is not React's job.
+    function paint() {
+      if (!width) return;
+      const pitch = width * (1 + CF.gap);
+      for (let i = 0; i < count; i++) {
+        const card = cards[i];
+        // Fold the distance into the shorter way round the ring. This is the
+        // whole looping mechanism: no cloned nodes, no DOM shuffling.
+        let offset = i - pos;
+        if (loop) {
+          offset = ((offset % count) + count) % count;
+          if (offset > count / 2) offset -= count;
+        }
+        const distance = Math.abs(offset);
+        const ramp = Math.pow(distance, CF.falloff);
+        const tilt = Math.min(CF.rotate * ramp, 82) * Math.sign(offset);
+        card.style.transform =
+          `translateX(calc(-50% + ${offset * pitch}px)) translateZ(${-CF.depth * width * ramp}px) rotateY(${-tilt}deg)`;
+        // A card is teleported across the ring at exactly half a turn out, so
+        // it has to have faded by then or the jump is visible.
+        const edge = loop ? Math.min(1, Math.max(0, count / 2 - distance)) : 1;
+        card.style.opacity = String(Math.max(0, 1 - CF.fade * distance) * edge);
+        card.style.zIndex = String(100 - Math.round(distance));
+        card.classList.toggle("is-active", Math.round(distance) === 0);
+      }
+    }
+
+    function select(i) {
+      if (i === selected) return;
+      selected = i;
+      if (caption) caption.innerHTML = cfCaptionHTML(list[i]);
+      if (dots) Array.from(dots.children).forEach((dot, n) => {
+        dot.classList.toggle("on", n === i);
+        dot.setAttribute("aria-current", n === i ? "true" : "false");
+      });
+    }
+
+    function settle(to) {
+      if (raf !== null) cancelAnimationFrame(raf);
+      target = to;
+      select(indexAt(to));
+      if (CF_REDUCE) { pos = to; paint(); raf = null; return; }
+      const step = () => {
+        const remaining = target - pos;
+        if (Math.abs(remaining) < 0.0004) { pos = target; paint(); raf = null; return; }
+        pos += remaining * 0.16;   // exponential ease-out, no overshoot
+        paint();
+        raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+    }
+
+    // Take the shorter way round rather than unwinding the whole ring.
+    const goTo = (i) => settle(clamp(loop ? i + Math.round((target - i) / count) * count : i));
+    const nudge = (by) => settle(clamp(Math.round(target) + by));
+
+    frame.addEventListener("pointerdown", (event) => {
+      if (event.target.closest("a, button")) return;
+      if (raf !== null) { cancelAnimationFrame(raf); raf = null; }
+      frame.setPointerCapture(event.pointerId);
+      target = pos;
+      // Capture the card here: pointer capture retargets pointerup to the
+      // frame, so by then event.target no longer knows which card was hit.
+      drag = { id: event.pointerId, x: event.clientX, from: event.clientX, pos, v: 0,
+               t: performance.now(), moved: 0, card: event.target.closest(".cf-card") };
+    });
+
+    frame.addEventListener("pointermove", (event) => {
+      if (!drag || drag.id !== event.pointerId) return;
+      const pitch = width * (1 + CF.gap);
+      if (!pitch) return;
+      const now = performance.now();
+      const previous = pos;
+      pos = clamp(drag.pos - (event.clientX - drag.x) / pitch);
+      drag.v = ((pos - previous) / Math.max(now - drag.t, 1)) * 1000;  // cards/sec
+      drag.t = now;
+      drag.moved = Math.max(drag.moved, Math.abs(event.clientX - drag.from));
+      select(indexAt(pos));
+      paint();
+    });
+
+    function endDrag(event) {
+      if (!drag || drag.id !== event.pointerId) return;
+      const d = drag;
+      drag = null;
+      // Under 6px of travel this was a click, not a throw.
+      if (d.moved < 6) {
+        const i = d.card ? cards.indexOf(d.card) : -1;
+        if (i >= 0) {
+          if (i === indexAt(pos)) { settle(clamp(Math.round(pos))); openCase(list[i]); }
+          else goTo(i);
+          return;
+        }
+      }
+      // Let a flick carry, but never more than two cards.
+      const carried = Math.max(-2, Math.min(2, d.v * 0.18));
+      settle(clamp(Math.round(pos + carried)));
+    }
+    frame.addEventListener("pointerup", endDrag);
+    frame.addEventListener("pointercancel", endDrag);
+
+    frame.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") { event.preventDefault(); nudge(-1); }
+      else if (event.key === "ArrowRight") { event.preventDefault(); nudge(1); }
+      else if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openCase(list[indexAt(target)]); }
+    });
+
+    if (dots) Array.from(dots.children).forEach((dot, i) => dot.addEventListener("click", () => goTo(i)));
+
+    if (caption) caption.addEventListener("click", (event) => {
+      if (event.target.closest("[data-open-case]")) openCase(list[selected]);
+    });
+
+    // Any image that fails falls back to the same typographic face.
+    cards.forEach((card, i) => {
+      const img = card.querySelector("img");
+      if (img) img.addEventListener("error", () => { card.innerHTML = cfTypoFace(list[i]); }, { once: true });
+    });
+
+    function openCase(project) {
+      if (project) openModal(project, projects.indexOf(project));
+    }
+
+    // Card width drives pitch, depth and perspective, so it is the only thing
+    // worth measuring — and only when the box actually changes.
+    const measure = () => { width = cards[0].offsetWidth; paint(); };
+    select(0);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(frame);
+    return observer;
+  }
+
+  let cfObservers = [];
+
+  function renderProjects(filter = "all", firstPaint = false) {
+    currentFilter = filter;
+    cfObservers.forEach((observer) => observer.disconnect());
+    cfObservers = [];
+
+    const visible = filter === "all" ? projects : projects.filter((p) => p.category === filter);
+    const filterLabel = filters.find((button) => button.dataset.filter === filter)?.dataset.label || "All";
+    projectResultsSummary.textContent = `Showing ${visible.length} ${visible.length === 1 ? "project" : "projects"} · ${filterLabel}`;
+
+    const groups = SECTIONS
+      .map((section) => ({ ...section, list: visible.filter((p) => section.cats.includes(p.category)) }))
+      .filter((section) => section.list.length);
+
+    projectSections.innerHTML = groups.map((section, n) => `
+      <section class="work-section" id="work-${section.id}" aria-labelledby="work-${section.id}-title">
+        <div class="work-section-head reveal-up${firstPaint ? "" : " in"}">
+          <div>
+            <span class="work-section-index">Section ${String(n + 1).padStart(2, "0")}</span>
+            <h3 id="work-${section.id}-title">${section.title}</h3>
+          </div>
+          <div class="work-section-note">
+            <p>${section.blurb}</p>
+            <span class="work-section-count">${section.list.length} ${section.list.length === 1 ? "project" : "projects"} &middot; drag, arrow keys, or click a card</span>
+          </div>
+        </div>
+        <div class="cf" data-section="${section.id}">
+          <div class="cf-frame" tabindex="0" role="region" aria-roledescription="carousel" aria-label="${section.title} projects">
+            <div class="cf-track">
+              ${section.list.map((project, i) => `
+                <article class="cf-card" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${section.list.length}: ${project.title}" data-project-index="${projects.indexOf(project)}">
+                  ${cfCardFace(project)}
+                </article>`).join("")}
+            </div>
+          </div>
+          ${section.list.length > 1 ? `<div class="cf-dots" role="group" aria-label="${section.title} pagination">${section.list.map((_, i) => `<button type="button" class="cf-dot" aria-label="Go to project ${i + 1}"></button>`).join("")}</div>` : ""}
+          <div class="cf-caption"></div>
+        </div>
+      </section>`).join("");
+
+    groups.forEach((section) => {
+      const observer = mountCoverflow(projectSections.querySelector(`.cf[data-section="${section.id}"]`), section.list);
+      if (observer) cfObservers.push(observer);
+    });
+  }
+
+  renderProjects("all", true);
 
   filters.forEach((button) => {
     button.addEventListener("click", () => {
-      filters.forEach((node) => node.classList.remove("active"));
+      filters.forEach((node) => {
+        node.classList.remove("active");
+        node.setAttribute("aria-pressed", "false");
+      });
       button.classList.add("active");
+      button.setAttribute("aria-pressed", "true");
       renderProjects(button.dataset.filter);
     });
-  });
-
-  projectGrid.addEventListener("mousemove", (e) => {
-    const card = e.target.closest(".project-card");
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
-    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
-    card.style.setProperty("--mouse-x", x + "%");
-    card.style.setProperty("--mouse-y", y + "%");
   });
 
   // ── Modal logic ──────────────────────────────────────────
@@ -3377,39 +5471,104 @@
   const modalAccentBar = document.getElementById("modal-accent-bar");
   const modalGlow      = document.getElementById("modal-glow");
   const modalInner     = document.getElementById("modal-inner");
+  const projectModal   = document.getElementById("project-modal");
+  const imageLightbox  = document.getElementById("image-lightbox");
+  const lightboxImage  = document.getElementById("image-lightbox-image");
+  const lightboxCaption = document.getElementById("image-lightbox-caption");
   let modalOpen = false;
+  let lightboxOpen = false;
+  let lastFocusedElement = null;
+  let currentGalleryImages = [];
+  let currentGalleryIndex = 0;
+  let currentGalleryTitle = "";
+
+  function updateLightbox(index) {
+    if (!currentGalleryImages.length) return;
+    currentGalleryIndex = (index + currentGalleryImages.length) % currentGalleryImages.length;
+    const src = currentGalleryImages[currentGalleryIndex];
+    lightboxImage.style.animation = "none";
+    lightboxImage.src = src;
+    lightboxImage.alt = `${currentGalleryTitle} project visual ${currentGalleryIndex + 1}`;
+    lightboxCaption.textContent = `${String(currentGalleryIndex + 1).padStart(2, "0")} / ${String(currentGalleryImages.length).padStart(2, "0")} · ${currentGalleryTitle}`;
+    requestAnimationFrame(() => {
+      lightboxImage.style.animation = "";
+    });
+  }
+
+  function openImageLightbox(images, index, title) {
+    const usableImages = images.filter(Boolean);
+    if (!usableImages.length) return;
+    currentGalleryImages = usableImages;
+    currentGalleryTitle = title;
+    updateLightbox(Math.max(0, usableImages.indexOf(images[index])));
+    imageLightbox.hidden = false;
+    imageLightbox.setAttribute("aria-hidden", "false");
+    requestAnimationFrame(() => {
+      imageLightbox.classList.add("open");
+      lightboxOpen = true;
+      document.getElementById("image-lightbox-close").focus({ preventScroll: true });
+    });
+  }
+
+  function closeImageLightbox() {
+    if (!lightboxOpen) return;
+    imageLightbox.classList.remove("open");
+    imageLightbox.setAttribute("aria-hidden", "true");
+    lightboxOpen = false;
+    setTimeout(() => {
+      imageLightbox.hidden = true;
+      lightboxImage.removeAttribute("src");
+    }, 260);
+  }
+
+  document.getElementById("image-lightbox-close").addEventListener("click", closeImageLightbox);
+  document.getElementById("image-lightbox-prev").addEventListener("click", () => updateLightbox(currentGalleryIndex - 1));
+  document.getElementById("image-lightbox-next").addEventListener("click", () => updateLightbox(currentGalleryIndex + 1));
+  imageLightbox.addEventListener("click", (event) => {
+    if (event.target === imageLightbox) closeImageLightbox();
+  });
 
   function openModal(project, indexInList) {
     const cat = categoryAccent[project.category] || { accent: "#fff", glow: "rgba(255,255,255,0.1)", shader: "linear-gradient(148deg,#0c0c0e,#111)" };
-    const imgs = categoryImages[project.category] || [];
+    const imgs = getProjectImages(project);
+    const gallerySlots = Array.from({ length: Math.max(3, imgs.length) }, (_, index) => imgs[index] || "");
+    let activeGalleryIndex = 0;
+
+    const stageMarkup = (src, index) => src
+      ? `<img src="${src}" alt="${project.title} project visual ${index + 1}" decoding="async" data-project-image data-fallback-label="Project visual ${String(index + 1).padStart(2, "0")}" /><span class="gallery-stage-zoom" aria-hidden="true">View full size <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>`
+      : mediaPlaceholder(`Project visual ${String(index + 1).padStart(2, "0")}`, "Image slot ready — add your visual later");
 
     // Apply shader / glow
     modalShader.style.background = cat.shader;
     modalAccentBar.style.background = `linear-gradient(90deg, ${cat.accent}, transparent 70%)`;
     modalGlow.style.background = `radial-gradient(circle, ${cat.glow} 0%, transparent 65%)`;
 
-    // Build image strip
-    const imageHtml = imgs.length
-      ? imgs.map((src, i) => `
-          <div class="modal-img-card" style="--card-shader:${cat.shader}">
-            <img src="${src}" alt="${project.category} project visual ${i+1}" loading="lazy" />
-          </div>
-        `).join("")
-      : `<div class="modal-img-card" style="--card-shader:${cat.shader};--modal-accent:${cat.accent}">${String(indexInList+1).padStart(2,"0")}</div>`;
+    const initialStage = stageMarkup(gallerySlots[0], 0);
 
-    // Access button
-    const accessBtn = project.access
-      ? `<a class="modal-cta" href="${project.access}" target="_blank" rel="noreferrer" style="background:${cat.accent};color:#000">
-           ${project.label}
-           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-         </a>`
-      : `<button class="modal-cta disabled" disabled>${project.label}</button>`;
+    const imageHtml = gallerySlots.map((src, index) => `
+      <button class="modal-img-card${index === 0 ? " is-active" : ""}" type="button" data-gallery-index="${index}" data-gallery-src="${src}" aria-label="Show project visual ${index + 1}" aria-pressed="${index === 0 ? "true" : "false"}" style="--card-shader:${cat.shader};--modal-accent:${cat.accent};--thumb-index:${index}">
+        ${src
+          ? `<img src="${src}" alt="" loading="lazy" decoding="async" data-project-image data-fallback-label="Project visual ${String(index + 1).padStart(2, "0")}" />`
+          : mediaPlaceholder(`Image ${String(index + 1).padStart(2, "0")}`, "")}
+      </button>
+    `).join("");
+
+    // Access buttons: one primary link for most projects, a compact proof set for multi-surface client work.
+    const projectLinks = Array.isArray(project.links) && project.links.length
+      ? project.links
+      : (project.access ? [{ label: project.label, url: project.access }] : []);
+    const accessBtn = projectLinks.length
+      ? projectLinks.map((link, index) => `<a class="modal-cta${index ? " modal-cta-secondary" : ""}" href="${link.url}" target="_blank" rel="noreferrer" style="${index ? `border-color:${cat.accent}66;color:${cat.accent}` : `background:${cat.accent};color:#000`}">
+           ${link.label}
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 012-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+         </a>`).join("")
+      : `<button class="modal-cta disabled" disabled>${project.label || "Evidence coming soon"}</button>`;
 
     modalInner.innerHTML = `
       <div class="modal-header">
         <div class="modal-header-text">
-          <div class="modal-category-tag" style="color:${cat.accent};border-color:${cat.accent}40">${project.category}</div>
-          <h2 class="modal-title">${project.title}</h2>
+          <div class="modal-category-tag" style="color:${cat.accent};border-color:${cat.accent}40">${categoryNames[project.category] || project.category}${project.output ? ` · ${project.output}` : ""}</div>
+          <h2 class="modal-title" id="project-modal-title">${project.title}</h2>
           <p class="modal-role-period">${project.role} · ${project.period}</p>
         </div>
         <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
@@ -3418,8 +5577,22 @@
       </div>
 
       <div class="modal-images">
-        <div class="modal-images-label">Project visuals</div>
-        <div class="modal-image-strip">${imageHtml}</div>
+        <div class="modal-images-label">Project visuals · ${imgs.length ? `${imgs.length} image${imgs.length === 1 ? "" : "s"}` : "3 slots ready"}</div>
+        <div class="modal-gallery">
+          <div class="modal-gallery-stage" id="modal-gallery-stage" tabindex="0" role="button" aria-label="Open current project visual full size">${initialStage}</div>
+          <div class="modal-gallery-controls">
+            <span class="modal-gallery-counter" id="modal-gallery-counter">01 / ${String(gallerySlots.length).padStart(2, "0")}</span>
+            <div class="modal-gallery-navs">
+              <button class="modal-gallery-nav" id="modal-gallery-prev" type="button" aria-label="Previous project visual">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              </button>
+              <button class="modal-gallery-nav" id="modal-gallery-next" type="button" aria-label="Next project visual">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="modal-image-strip">${imageHtml}</div>
+        </div>
       </div>
 
       <div class="modal-body">
@@ -3440,10 +5613,8 @@
           </ol>
         </div>
         <div>
-          <div class="modal-section-label">Tools & methods</div>
-          <div class="modal-tools">
-            ${project.tools.map((t) => `<span class="modal-tool-chip">${t}</span>`).join("")}
-          </div>
+          <div class="modal-section-label">Skills &amp; application</div>
+          <div class="modal-skill-table">${renderSkillRows(project)}</div>
         </div>
         ${(project.press || []).length ? `
         <div>
@@ -3461,17 +5632,53 @@
     `;
 
     // Set CSS vars on modal for nested styling
-    const modal = document.getElementById("project-modal");
-    modal.style.setProperty("--modal-accent", cat.accent);
-    modal.style.setProperty("--modal-glow", cat.glow);
-    modal.style.setProperty("--modal-shader", cat.shader);
+    projectModal.style.setProperty("--modal-accent", cat.accent);
+    projectModal.style.setProperty("--modal-glow", cat.glow);
+    projectModal.style.setProperty("--modal-shader", cat.shader);
+    projectModal.scrollTop = 0;
 
+    lastFocusedElement = document.activeElement;
+    modalBackdrop.hidden = false;
+    modalBackdrop.inert = false;
     modalBackdrop.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     requestAnimationFrame(() => {
       modalBackdrop.classList.add("open");
       modalOpen = true;
+      document.getElementById("modal-close-btn").focus({ preventScroll: true });
     });
+
+    const galleryStage = document.getElementById("modal-gallery-stage");
+    const galleryCounter = document.getElementById("modal-gallery-counter");
+    const galleryButtons = Array.from(modalInner.querySelectorAll(".modal-img-card"));
+
+    function showGalleryImage(index) {
+      activeGalleryIndex = (index + gallerySlots.length) % gallerySlots.length;
+      const src = gallerySlots[activeGalleryIndex];
+      galleryButtons.forEach((item, buttonIndex) => {
+        const active = buttonIndex === activeGalleryIndex;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+      galleryCounter.textContent = `${String(activeGalleryIndex + 1).padStart(2, "0")} / ${String(gallerySlots.length).padStart(2, "0")}`;
+      galleryStage.innerHTML = stageMarkup(src, activeGalleryIndex);
+      bindImageFallbacks(galleryStage);
+    }
+
+    galleryButtons.forEach((button) => {
+      button.addEventListener("click", () => showGalleryImage(Number(button.dataset.galleryIndex)));
+    });
+    document.getElementById("modal-gallery-prev").addEventListener("click", () => showGalleryImage(activeGalleryIndex - 1));
+    document.getElementById("modal-gallery-next").addEventListener("click", () => showGalleryImage(activeGalleryIndex + 1));
+    galleryStage.addEventListener("click", () => openImageLightbox(gallerySlots, activeGalleryIndex, project.title));
+    galleryStage.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openImageLightbox(gallerySlots, activeGalleryIndex, project.title);
+      }
+    });
+
+    bindImageFallbacks(modalInner);
 
     // Close buttons
     document.getElementById("modal-close-btn").addEventListener("click", closeModal);
@@ -3479,11 +5686,18 @@
   }
 
   function closeModal() {
+    if (!modalOpen) return;
+    if (lightboxOpen) closeImageLightbox();
     modalBackdrop.classList.remove("open");
     modalOpen = false;
+    modalBackdrop.inert = true;
+    modalBackdrop.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (lastFocusedElement && document.contains(lastFocusedElement)) {
+      lastFocusedElement.focus({ preventScroll: true });
+    }
     setTimeout(() => {
-      modalBackdrop.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
+      modalBackdrop.hidden = true;
     }, 420);
   }
 
@@ -3492,24 +5706,36 @@
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalOpen) closeModal();
-  });
-
-  // Open modal on card click
-  projectGrid.addEventListener("click", (e) => {
-    const card = e.target.closest(".project-card");
-    if (!card) return;
-    const dataIndex = parseInt(card.dataset.index);
-    const filter = currentFilter;
-    const visible = filter === "all" ? projects : projects.filter((p) => p.category === filter);
-    const project = visible[dataIndex];
-    if (project) openModal(project, dataIndex);
-  });
-
-  projectGrid.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      const card = e.target.closest(".project-card");
-      if (card) { e.preventDefault(); card.click(); }
+    if (lightboxOpen && e.key === "ArrowLeft") {
+      e.preventDefault();
+      updateLightbox(currentGalleryIndex - 1);
+      return;
+    }
+    if (lightboxOpen && e.key === "ArrowRight") {
+      e.preventDefault();
+      updateLightbox(currentGalleryIndex + 1);
+      return;
+    }
+    if (e.key === "Escape" && lightboxOpen) {
+      closeImageLightbox();
+      return;
+    }
+    if (e.key === "Escape" && modalOpen) {
+      closeModal();
+      return;
+    }
+    if (e.key === "Tab" && modalOpen) {
+      const focusable = Array.from(modalBackdrop.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 
