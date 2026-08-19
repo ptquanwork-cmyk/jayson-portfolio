@@ -1960,6 +1960,242 @@
     .work-section-head h3 { font-size: clamp(26px, 7vw, 36px); }
   }
 
+  /* ── Editorial project index ──────────────────────────── */
+  .project-list {
+    border-top: 1px solid var(--black);
+  }
+
+  .project-entry {
+    --entry-accent: #111;
+    --entry-accent-soft: rgba(17,17,17,.12);
+    display: grid;
+    grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr);
+    gap: clamp(28px, 5vw, 76px);
+    padding: clamp(26px, 4vw, 54px) 0;
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 110px;
+  }
+
+  .project-entry-cover {
+    position: relative;
+    min-height: 250px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(22px, 3vw, 40px);
+    border: 1px solid var(--rule);
+    background: var(--white);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 180ms ease, background 180ms ease;
+  }
+
+  .project-entry-cover::before {
+    content: none;
+  }
+
+  .project-entry-cover:hover,
+  .project-entry-cover:focus-visible {
+    border-color: var(--black);
+    background: var(--white);
+  }
+
+  .project-entry-cover:focus-visible,
+  .project-entry-action:focus-visible,
+  .project-proof-button:focus-visible {
+    outline: 2px solid var(--black);
+    outline-offset: 3px;
+  }
+
+  .project-entry-title {
+    position: relative;
+    z-index: 1;
+    max-width: 15ch;
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(27px, 3vw, 44px);
+    font-weight: 400;
+    line-height: 1.01;
+    letter-spacing: -.018em;
+    color: var(--black);
+    text-wrap: balance;
+  }
+
+  .project-entry-title span {
+    background: linear-gradient(transparent 68%, var(--entry-accent-soft) 68%);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .project-entry-content {
+    min-width: 0;
+    display: grid;
+    align-content: start;
+  }
+
+  .project-entry-eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-bottom: 14px;
+    color: var(--ink-55);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  .project-entry-role {
+    margin: 0 0 13px;
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .project-entry-summary {
+    max-width: 68ch;
+    margin: 0;
+    color: var(--ink-78);
+    font-size: 15px;
+    line-height: 1.68;
+    text-wrap: pretty;
+  }
+
+  .project-entry-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+  }
+
+  .project-entry-tools span {
+    color: var(--ink-40);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .project-entry-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 22px;
+    margin-top: 22px;
+  }
+
+  .project-entry-action {
+    min-height: 34px;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid var(--black);
+    border-radius: 0;
+    background: transparent;
+    color: var(--black);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    transition: opacity 180ms ease;
+  }
+
+  .project-entry-action:hover { opacity: .55; }
+
+  .project-proof-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+    gap: 8px;
+    max-width: 680px;
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .project-proof-label {
+    grid-column: 1 / -1;
+    margin-bottom: 2px;
+    color: var(--ink-40);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  .project-proof-button {
+    position: relative;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: #efefec;
+    cursor: zoom-in;
+  }
+
+  .project-proof-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 260ms cubic-bezier(.22,1,.36,1), opacity 180ms ease;
+  }
+
+  .project-proof-button:hover img { transform: scale(1.035); opacity: .84; }
+
+  .modal-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 9px;
+    margin-top: 15px;
+  }
+
+  .modal-proof-grid.is-single { max-width: 420px; }
+
+  .modal-proof-item {
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 3px;
+    background: #050607;
+    cursor: zoom-in;
+  }
+
+  .modal-proof-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 260ms cubic-bezier(.22,1,.36,1), opacity 180ms ease;
+  }
+
+  .modal-proof-item:hover img { transform: scale(1.025); opacity: .78; }
+
+  .modal-proof-item:focus-visible {
+    outline: 2px solid var(--modal-accent, #fff);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 900px) {
+    .project-entry { grid-template-columns: minmax(210px, .82fr) minmax(0, 1.18fr); gap: 28px; }
+    .project-entry-cover { min-height: 220px; }
+  }
+
+  @media (max-width: 680px) {
+    .project-entry { grid-template-columns: 1fr; gap: 20px; }
+    .project-entry-cover { min-height: 0; aspect-ratio: 16 / 10; }
+    .project-entry-title { max-width: 17ch; font-size: clamp(28px, 8.5vw, 40px); }
+    .project-proof-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .modal-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
   .media-placeholder {
     position: absolute;
     inset: 0;
@@ -3819,13 +4055,13 @@
             <p class="section-kicker">Selected dossier</p>
             <h2 class="section-title" id="work-title">The portfolio collection</h2>
           </div>
-          <p>Five sections, each a coverflow rail you can drag, key through or click into. Real source images now document the finance work, Steersman operating system, client design surfaces and professional email campaigns; the detail view carries the full evidence trail and live links.</p>
+          <p>Five quiet editorial sections, organised for fast review. Each project opens with a clear typographic title, followed by its role, description, access links and any source visuals currently available; select an image to inspect it full size.</p>
         </div>
 
         <div class="project-filter-shell reveal-up" style="--delay: 120ms">
           <div class="filter-copy">
-            <small>Filter the evidence</small>
-            <strong>Role, output, tools — visible before the click.</strong>
+            <small>Browse the evidence</small>
+            <strong>Select a discipline or scan the complete collection.</strong>
           </div>
           <div class="filter-bar" role="group" aria-label="Project filters">
             <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All work</button>
@@ -4724,6 +4960,7 @@
       title: "Vietcap Securities - Investment Consultant Intern",
       images: [
         "Source Photo/Finance/Vietcap Securities/Company Photo Group.jpg",
+        "Source Photo/Finance/Vietcap Securities/Cert.webp",
         "Source Photo/Finance/Vietcap Securities/Report.png",
         "Source Photo/Finance/Vietcap Securities/Port Manage.png"
       ],
@@ -4776,7 +5013,6 @@
       title: "Quantitative Finance & Portfolio Management",
       images: [
         "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (3).png",
-        "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (1).png",
         "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (2).png",
         "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (4).png",
         "Source Photo/Finance/Quantitative Finance & Portfolio Management/Excel (5).png"
@@ -5406,6 +5642,51 @@
 
   let cfObservers = [];
 
+  function projectProofGalleryHTML(project, projectIndex) {
+    const images = getProjectImages(project);
+    if (!images.length) return "";
+    return `
+      <div class="project-proof-gallery" aria-label="${project.title} project visuals">
+        <span class="project-proof-label">Project visuals · select to view full size</span>
+        ${images.map((src, imageIndex) => `
+          <button class="project-proof-button" type="button" data-proof-project="${projectIndex}" data-proof-index="${imageIndex}" aria-label="Open ${project.title} visual ${imageIndex + 1} full size">
+            <img src="${src}" alt="${project.title} project visual ${imageIndex + 1}" loading="lazy" decoding="async" data-project-image />
+          </button>`).join("")}
+      </div>`;
+  }
+
+  function projectEntryHTML(project) {
+    const projectIndex = projects.indexOf(project);
+    const cat = categoryAccent[project.category] || { accent: "#111", glow: "rgba(17,17,17,.12)" };
+    const links = accessLinksOf(project);
+    const accessLinks = links.map((link) => `
+      <a class="project-entry-action" href="${link.url}" target="_blank" rel="noreferrer">
+        ${link.label}${cfLinkIcon}
+      </a>`).join("");
+
+    return `
+      <article class="project-entry" data-project-index="${projectIndex}" style="--entry-accent:${cat.accent};--entry-accent-soft:${cat.glow}">
+        <button class="project-entry-cover" type="button" data-open-case="${projectIndex}" aria-label="View full case: ${project.title}">
+          <span class="project-entry-title" role="heading" aria-level="4"><span>${project.title}</span></span>
+        </button>
+        <div class="project-entry-content">
+          <div class="project-entry-eyebrow">
+            <span>${categoryNames[project.category] || project.category}</span>
+            <span>${project.period}</span>
+            ${project.output ? `<span>${project.output}</span>` : ""}
+          </div>
+          <p class="project-entry-role">${project.role}</p>
+          <p class="project-entry-summary">${project.summary}</p>
+          <div class="project-entry-tools">${project.tools.map((tool) => `<span>${tool}</span>`).join("")}</div>
+          <div class="project-entry-actions">
+            <button class="project-entry-action" type="button" data-open-case="${projectIndex}">View full case${cfArrowIcon}</button>
+            ${accessLinks}
+          </div>
+          ${projectProofGalleryHTML(project, projectIndex)}
+        </div>
+      </article>`;
+  }
+
   function renderProjects(filter = "all", firstPaint = false) {
     currentFilter = filter;
     cfObservers.forEach((observer) => observer.disconnect());
@@ -5428,30 +5709,32 @@
           </div>
           <div class="work-section-note">
             <p>${section.blurb}</p>
-            <span class="work-section-count">${section.list.length} ${section.list.length === 1 ? "project" : "projects"} &middot; drag, arrow keys, or click a card</span>
+            <span class="work-section-count">${section.list.length} ${section.list.length === 1 ? "project" : "projects"}</span>
           </div>
         </div>
-        <div class="cf" data-section="${section.id}">
-          <div class="cf-frame" tabindex="0" role="region" aria-roledescription="carousel" aria-label="${section.title} projects">
-            <div class="cf-track">
-              ${section.list.map((project, i) => `
-                <article class="cf-card" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${section.list.length}: ${project.title}" data-project-index="${projects.indexOf(project)}">
-                  ${cfCardFace(project)}
-                </article>`).join("")}
-            </div>
-          </div>
-          ${section.list.length > 1 ? `<div class="cf-dots" role="group" aria-label="${section.title} pagination">${section.list.map((_, i) => `<button type="button" class="cf-dot" aria-label="Go to project ${i + 1}"></button>`).join("")}</div>` : ""}
-          <div class="cf-caption"></div>
-        </div>
+        <div class="project-list">${section.list.map(projectEntryHTML).join("")}</div>
       </section>`).join("");
 
-    groups.forEach((section) => {
-      const observer = mountCoverflow(projectSections.querySelector(`.cf[data-section="${section.id}"]`), section.list);
-      if (observer) cfObservers.push(observer);
+    projectSections.querySelectorAll("img[data-project-image]").forEach((img) => {
+      img.addEventListener("error", () => img.closest(".project-proof-button")?.remove(), { once: true });
     });
   }
 
   renderProjects("all", true);
+
+  projectSections.addEventListener("click", (event) => {
+    const caseButton = event.target.closest("[data-open-case]");
+    if (caseButton) {
+      openModal(projects[Number(caseButton.dataset.openCase)], Number(caseButton.dataset.openCase));
+      return;
+    }
+
+    const proofButton = event.target.closest("[data-proof-project]");
+    if (proofButton) {
+      const project = projects[Number(proofButton.dataset.proofProject)];
+      if (project) openImageLightbox(getProjectImages(project), Number(proofButton.dataset.proofIndex), project.title);
+    }
+  });
 
   filters.forEach((button) => {
     button.addEventListener("click", () => {
@@ -5531,27 +5814,22 @@
   function openModal(project, indexInList) {
     const cat = categoryAccent[project.category] || { accent: "#fff", glow: "rgba(255,255,255,0.1)", shader: "linear-gradient(148deg,#0c0c0e,#111)" };
     const imgs = getProjectImages(project);
-    const gallerySlots = Array.from({ length: Math.max(3, imgs.length) }, (_, index) => imgs[index] || "");
-    let activeGalleryIndex = 0;
-
-    const stageMarkup = (src, index) => src
-      ? `<img src="${src}" alt="${project.title} project visual ${index + 1}" decoding="async" data-project-image data-fallback-label="Project visual ${String(index + 1).padStart(2, "0")}" /><span class="gallery-stage-zoom" aria-hidden="true">View full size <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>`
-      : mediaPlaceholder(`Project visual ${String(index + 1).padStart(2, "0")}`, "Image slot ready — add your visual later");
 
     // Apply shader / glow
     modalShader.style.background = cat.shader;
     modalAccentBar.style.background = `linear-gradient(90deg, ${cat.accent}, transparent 70%)`;
     modalGlow.style.background = `radial-gradient(circle, ${cat.glow} 0%, transparent 65%)`;
 
-    const initialStage = stageMarkup(gallerySlots[0], 0);
-
-    const imageHtml = gallerySlots.map((src, index) => `
-      <button class="modal-img-card${index === 0 ? " is-active" : ""}" type="button" data-gallery-index="${index}" data-gallery-src="${src}" aria-label="Show project visual ${index + 1}" aria-pressed="${index === 0 ? "true" : "false"}" style="--card-shader:${cat.shader};--modal-accent:${cat.accent};--thumb-index:${index}">
-        ${src
-          ? `<img src="${src}" alt="" loading="lazy" decoding="async" data-project-image data-fallback-label="Project visual ${String(index + 1).padStart(2, "0")}" />`
-          : mediaPlaceholder(`Image ${String(index + 1).padStart(2, "0")}`, "")}
-      </button>
-    `).join("");
+    const proofHtml = imgs.length ? `
+      <div>
+        <div class="modal-section-label">Project visuals · ${imgs.length} image${imgs.length === 1 ? "" : "s"}</div>
+        <div class="modal-proof-grid${imgs.length === 1 ? " is-single" : ""}">
+          ${imgs.map((src, imageIndex) => `
+            <button class="modal-proof-item" type="button" data-modal-proof-index="${imageIndex}" aria-label="Open project visual ${imageIndex + 1} full size">
+              <img src="${src}" alt="${project.title} project visual ${imageIndex + 1}" loading="lazy" decoding="async" />
+            </button>`).join("")}
+        </div>
+      </div>` : "";
 
     // Access buttons: one primary link for most projects, a compact proof set for multi-surface client work.
     const projectLinks = Array.isArray(project.links) && project.links.length
@@ -5576,30 +5854,12 @@
         </button>
       </div>
 
-      <div class="modal-images">
-        <div class="modal-images-label">Project visuals · ${imgs.length ? `${imgs.length} image${imgs.length === 1 ? "" : "s"}` : "3 slots ready"}</div>
-        <div class="modal-gallery">
-          <div class="modal-gallery-stage" id="modal-gallery-stage" tabindex="0" role="button" aria-label="Open current project visual full size">${initialStage}</div>
-          <div class="modal-gallery-controls">
-            <span class="modal-gallery-counter" id="modal-gallery-counter">01 / ${String(gallerySlots.length).padStart(2, "0")}</span>
-            <div class="modal-gallery-navs">
-              <button class="modal-gallery-nav" id="modal-gallery-prev" type="button" aria-label="Previous project visual">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-              </button>
-              <button class="modal-gallery-nav" id="modal-gallery-next" type="button" aria-label="Next project visual">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-          <div class="modal-image-strip">${imageHtml}</div>
-        </div>
-      </div>
-
       <div class="modal-body">
         <div>
           <div class="modal-section-label">Summary</div>
           <p class="modal-summary">${project.summary}</p>
         </div>
+        ${proofHtml}
         <div>
           <div class="modal-section-label">Key highlights</div>
           <ul class="modal-highlights" style="--modal-accent:${cat.accent}">
@@ -5648,37 +5908,10 @@
       document.getElementById("modal-close-btn").focus({ preventScroll: true });
     });
 
-    const galleryStage = document.getElementById("modal-gallery-stage");
-    const galleryCounter = document.getElementById("modal-gallery-counter");
-    const galleryButtons = Array.from(modalInner.querySelectorAll(".modal-img-card"));
-
-    function showGalleryImage(index) {
-      activeGalleryIndex = (index + gallerySlots.length) % gallerySlots.length;
-      const src = gallerySlots[activeGalleryIndex];
-      galleryButtons.forEach((item, buttonIndex) => {
-        const active = buttonIndex === activeGalleryIndex;
-        item.classList.toggle("is-active", active);
-        item.setAttribute("aria-pressed", String(active));
-      });
-      galleryCounter.textContent = `${String(activeGalleryIndex + 1).padStart(2, "0")} / ${String(gallerySlots.length).padStart(2, "0")}`;
-      galleryStage.innerHTML = stageMarkup(src, activeGalleryIndex);
-      bindImageFallbacks(galleryStage);
-    }
-
-    galleryButtons.forEach((button) => {
-      button.addEventListener("click", () => showGalleryImage(Number(button.dataset.galleryIndex)));
+    modalInner.querySelectorAll("[data-modal-proof-index]").forEach((button) => {
+      button.addEventListener("click", () => openImageLightbox(imgs, Number(button.dataset.modalProofIndex), project.title));
+      button.querySelector("img")?.addEventListener("error", () => button.remove(), { once: true });
     });
-    document.getElementById("modal-gallery-prev").addEventListener("click", () => showGalleryImage(activeGalleryIndex - 1));
-    document.getElementById("modal-gallery-next").addEventListener("click", () => showGalleryImage(activeGalleryIndex + 1));
-    galleryStage.addEventListener("click", () => openImageLightbox(gallerySlots, activeGalleryIndex, project.title));
-    galleryStage.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openImageLightbox(gallerySlots, activeGalleryIndex, project.title);
-      }
-    });
-
-    bindImageFallbacks(modalInner);
 
     // Close buttons
     document.getElementById("modal-close-btn").addEventListener("click", closeModal);
