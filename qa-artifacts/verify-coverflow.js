@@ -43,6 +43,25 @@ const EXPECTED = [
   assert.strictEqual(rake.find((c) => c.active).op, 1, "centre card must be fully opaque");
   assert.ok(Math.max(...rake.map((c) => c.z)) === 100, "centre card must sit on top");
 
+  // Cards are typographic only — photos live in the description, not on the rail.
+  assert.strictEqual(await page.$$eval(".cf-card img", (n) => n.length), 0,
+    "cards must not carry cover photos");
+  assert.strictEqual(await page.$$eval(".cf-card .cf-face", (n) => n.length), 23,
+    "every card should render a typographic face");
+
+  // The active project's photos appear as thumbnails and open the lightbox.
+  await page.locator("#work-finance").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1500);
+  const shots = await page.$$eval("#work-finance .cf-cap-shot img", (n) => n.map((i) => i.naturalWidth > 0));
+  assert.ok(shots.length >= 3, "finance description should list its images");
+  assert.ok(shots.every(Boolean), "a description thumbnail failed to load");
+  await page.locator("#work-finance .cf-cap-shot").first().click();
+  await page.waitForTimeout(900);
+  assert.ok(await page.evaluate(() => !document.getElementById("image-lightbox").hidden),
+    "thumbnail did not open the lightbox");
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(600);
+
   // Arrow key advances the rail and repaints the caption.
   await page.locator("#work-finance .cf-frame").focus();
   const before = await page.locator("#work-finance .cf-cap-main h4").textContent();
