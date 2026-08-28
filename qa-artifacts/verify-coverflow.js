@@ -26,7 +26,7 @@ const EXPECTED = [
   page.on("pageerror", (e) => errors.push("pageerror: " + e.message));
   page.on("console", (m) => { if (m.type() === "error") errors.push("console: " + m.text()); });
 
-  await page.goto(FILE, { waitUntil: "load" });
+  await page.goto(FILE, { waitUntil: "domcontentloaded", timeout: 60000 });
   await page.waitForTimeout(2500);
 
   const sections = await page.$$eval(".work-section", (nodes) =>
@@ -88,6 +88,23 @@ const EXPECTED = [
   await page.waitForTimeout(900);
   const filtered = await page.$$eval(".work-section", (n) => n.map((s) => s.id));
   assert.deepStrictEqual(filtered, ["work-systems"], "filter did not collapse to one section");
+
+  // Voice regression: the STAR-template prefixes must never come back.
+  // Checked against the source, because `details` only enter the DOM on modal open.
+  const src = require("fs").readFileSync(path.resolve(__dirname, "..", "index.html"), "utf8");
+  const pStart = src.indexOf("const projects = [");
+  const projectsBlock = src.slice(pStart, src.indexOf("\n  ];", pStart));
+  const banned = projectsBlock.match(/"(Action|Consequence|Context|Timebound|Public record|Scope note|Note on figures) - /g);
+  assert.ok(!banned, "template-voice prefixes reappeared: " + banned);
+
+  // The AI systems rail now carries real product screenshots.
+  await page.locator('.filter-button[data-filter="all"]').click();
+  await page.waitForTimeout(700);
+  await page.locator("#work-systems").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1500);
+  const aiShots = await page.$$eval("#work-systems .cf-cap-shot img", (n) => n.map((i) => i.naturalWidth > 0));
+  assert.ok(aiShots.length >= 2, "AI systems description should list its new screenshots");
+  assert.ok(aiShots.every(Boolean), "an AI systems thumbnail failed to load");
 
   assert.deepStrictEqual(errors, [], "page logged errors");
 

@@ -6,3 +6,16 @@ DESIGN-MANIFEST.json
 screenshot-*.png
 desktop.ini
 Thumbs.db
+
+# Screenshot originals superseded by the .webp the site actually loads.
+# Kept on disk as source; only the webp ships.
+Source Photo/AI - Building Projects/AI Agent Office/*.png
+Source Photo/AI - Building Projects/AI Workshop - Training/*.png
+Source Photo/AI - Building Projects/Block71 event board/*.png
+Source Photo/AI - Building Projects/Expara Program & Investment Analyst Assessment Hub/*.png
+Source Photo/AI - Building Projects/JayVault - Obsidian Research & Trend Intelligence/*.png
+Source Photo/AI - Building Projects/Project Alpha/*.png
+Source Photo/AI - Building Projects/Quickfish/*.png
+Source Photo/Finance/Steersman Finance Health/*.png
+Source Photo/MEITU_20260320_085528896.jpg
+Source Photo/23059bf519f795a9cce6.jpg
