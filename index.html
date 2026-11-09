@@ -361,7 +361,7 @@
     width: 80px;
     height: 80px;
     transform-origin: center center;
-    will-change: transform, width, height;
+    will-change: transform;
     pointer-events: auto;
     user-select: none;
   }
@@ -387,6 +387,7 @@
     left: 115%;
     top: 50%;
     transform: translateY(-50%);
+    transform-origin: left center;
     width: min(360px, 38vw);
     color: var(--black);
     opacity: 0;
@@ -3394,6 +3395,110 @@
 
   @media (hover: none) {
     .tool-hover-card { display: none; }
+    /* A tap must not leave a hover state stuck on. */
+    .orbit-item:hover img { transform: none; }
+    .cf-cta:hover { opacity: 1; transform: none; }
+    .cf-cap-shot:hover { border-color: var(--ink-15); box-shadow: none; }
+    .cf-cap-shot:hover img { transform: none; }
+  }
+
+  /* A tall viewport's corners sit outside the 150vw rotated layer. */
+  @media (orientation: portrait) {
+    .reveal-layer { width: 200vw; left: -50vw; }
+    .reveal-inner { left: 50vw; }
+  }
+
+  /* Touch and small screens: animate only opacity and transform. */
+  @media (max-width: 900px), (pointer: coarse) {
+    body { text-rendering: auto; }
+    a, button, [role="button"] {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .overlay-copy { will-change: transform, opacity; }
+    .reveal-up,
+    .reveal-up.in,
+    .metric,
+    .metric.in,
+    .journey-node,
+    .journey-node.in,
+    .reference-item,
+    .reference-item.in { filter: none; }
+    .metric {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: none;
+    }
+    .project-modal-backdrop.open,
+    .tool-detail-dialog::backdrop {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .reveal-up {
+      transform: translateY(22px);
+      transition: opacity .7s cubic-bezier(0.22, 1, 0.36, 1), transform .7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    /* In one column each row reveals as it arrives; a list-wide stagger only reads as lag. */
+    .metric,
+    .journey-node,
+    .reference-item {
+      transition-delay: 0ms;
+      transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .cf-card { box-shadow: 0 12px 28px rgba(0,0,0,0.24); }
+    .cf-card.is-active { box-shadow: 0 16px 36px rgba(0,0,0,0.30); }
+    .project-modal-backdrop,
+    .tool-detail-dialog { overscroll-behavior: contain; }
+  }
+
+  @media (max-width: 720px) {
+    .portfolio-logo .name {
+      font-size: clamp(28px, 8.6vw, 42px);
+      white-space: nowrap;
+    }
+    .portfolio-logo .sub { font-size: clamp(22px, 7vw, 31px); }
+    .orbit-label {
+      left: 103%;
+      width: min(180px, 46vw);
+    }
+
+    /* Keep bottom-anchored hero copy above a visible URL bar (100vh is the large viewport). */
+    .bottom-right-cta { bottom: calc(32px + 100vh - 100svh); }
+    .top-right-info { bottom: calc(188px + 100vh - 100svh); }
+    .scroll-hint { bottom: calc(40px + 100vh - 100svh); }
+
+    .filter-button,
+    .tool-filter,
+    .text-button { min-height: 44px; }
+
+    .footer ul { gap: 0; }
+    .footer li a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    /* The dots stay small; only their touch area grows. */
+    .cf-dots { gap: 9px; }
+    .cf-dot { position: relative; }
+    .cf-dot::after {
+      content: "";
+      position: absolute;
+      inset: -18px -5px;
+    }
+
+    .tool-filter { font-size: 10.5px; }
+    .tool-name,
+    .tool-interaction-note,
+    .filter-count,
+    .work-section-count,
+    .work-section-index,
+    .reference-type,
+    .cf-cap-tag,
+    .cf-cap-shots-label,
+    .cf-face-cat { font-size: 10px; }
+    .tool-group-title,
+    .reference-request,
+    .project-results-summary { font-size: 11px; }
   }
 </style>
 </head>
@@ -3407,6 +3512,7 @@
   <section class="stage" id="top" aria-label="Cinematic portfolio introduction">
     <div class="hero">
       <video class="hero-video" autoplay loop muted playsinline preload="auto">
+        <source media="(max-width: 900px)" src="hero-mobile-1080.mp4" type="video/mp4" />
         <source src="mqj8q8gq-Elements_moving_naturally__grass__202606181454.mp4.mp4" type="video/mp4" />
       </video>
 
@@ -3483,7 +3589,7 @@
     <section class="stay" id="about" aria-labelledby="about-title">
       <img
         class="stay-bg"
-        src="mqj82vf1-ChatGPT-Image-Jun-18_-2026_-03_12_00-PM.png"
+        src="mqj82vf1-ChatGPT-Image-Jun-18_-2026_-03_12_00-PM.webp"
         alt=""
         aria-hidden="true"
       />
@@ -4024,32 +4130,32 @@
 
   const orbitImages = [
     {
-      src: "mqj39u3l-Financial-Analysis.png",
+      src: "mqj39u3l-Financial-Analysis.webp",
       title: "Financial Analysis",
       desc: "Capital budgeting, DCF valuation, WACC, Monte Carlo simulation, portfolio optimization, and investment advisory work."
     },
     {
-      src: "mqj3a8xp-Venture-Operation.png",
+      src: "mqj3a8xp-Venture-Operation.webp",
       title: "Venture Operations",
       desc: "BLOCK71 Vietnam / NUS Enterprise program operations, UniVentures, Demo Day support, and ecosystem coordination."
     },
     {
-      src: "mqj3alli-AI-workspace.png",
+      src: "mqj3alli-AI-workspace.webp",
       title: "AI Workspace",
       desc: "Agent workspaces, Obsidian intelligence systems, markdown reporting, automation workflows, and local agentic OS prototypes."
     },
     {
-      src: "mqj3b5wx-Program-Execution.png",
+      src: "mqj3b5wx-Program-Execution.webp",
       title: "Program Execution",
       desc: "Event boards, volunteer deployment plans, protocol support, technical scripts, and recruiter-readable operations documentation."
     },
     {
-      src: "mqj3997s-Research-Signal.png",
+      src: "mqj3997s-Research-Signal.webp",
       title: "Research Signals",
       desc: "ESG datasets, econometrics, startup screening, market thesis writing, and decision-support summaries."
     },
     {
-      src: "mqj3iktf-Creative-System.png",
+      src: "mqj3iktf-Creative-System.webp",
       title: "Creative Systems",
       desc: "Sound operation, photography, portfolio building, event storytelling, and disciplined visual presentation."
     }
@@ -4077,9 +4183,50 @@
   let lastTime = performance.now();
   let latestP = 0;
 
+  const hero = document.querySelector(".hero");
+  const heroVideo = document.querySelector(".hero-video");
+  const liteMotion = window.matchMedia("(max-width: 900px), (pointer: coarse)");
+  const ORBIT_MAX_SIZE = 360;
+  let heroOnScreen = true;
+  let heroRunning = true;
+  let heroVideoOn = true;
+  let orbitWidth = orbitWrap.offsetWidth;
+
+  // Skip DOM writes whose value did not change since the last frame.
+  const paintedStyles = new WeakMap();
+  const paintStyle = (node, prop, value) => {
+    let seen = paintedStyles.get(node);
+    if (!seen) paintedStyles.set(node, (seen = {}));
+    if (seen[prop] === value) return;
+    seen[prop] = value;
+    node.style[prop] = value;
+  };
+
+  // Orbit items keep one layout size and grow by transform only, so the hero
+  // never forces a layout pass while scrolling.
+  function sizeOrbitItems() {
+    const size = `${ORBIT_MAX_SIZE * (orbitWidth / 800)}px`;
+    orbitItems.forEach((item) => { item.style.width = size; item.style.height = size; });
+  }
+  sizeOrbitItems();
+  new ResizeObserver(([entry]) => {
+    orbitWidth = entry.contentRect.width;
+    sizeOrbitItems();
+  }).observe(orbitWrap);
+
+  new IntersectionObserver(([entry]) => {
+    heroOnScreen = entry.isIntersecting;
+    if (heroOnScreen && !heroRunning) {
+      heroRunning = true;
+      lastTime = performance.now();
+      requestAnimationFrame(paintHero);
+    }
+  }).observe(stage);
+
   function getScrollProgress() {
     const rect = stage.getBoundingClientRect();
-    const denom = Math.max(1, rect.height - window.innerHeight);
+    // hero height, not innerHeight: a phone's URL bar changes innerHeight mid-scroll.
+    const denom = Math.max(1, rect.height - hero.offsetHeight);
     return clamp(-rect.top / denom, 0, 1);
   }
 
@@ -4100,19 +4247,31 @@
     const dt = Math.max(0, time - lastTime);
     lastTime = time;
 
-    const chromeOpacity = track(p, [0, 0.03, 0.08], [1, 1, 0]);
-    heroChrome.forEach((node) => { node.style.opacity = chromeOpacity.toFixed(3); });
+    // The reveal layer fully covers the video past p = 0.08: stop decoding it.
+    const videoWanted = heroOnScreen && p < 0.09;
+    if (videoWanted !== heroVideoOn) {
+      heroVideoOn = videoWanted;
+      if (videoWanted) heroVideo.play().catch(() => {});
+      else heroVideo.pause();
+    }
 
-    const radius = track(p, [0, 0.08, 1], [0, 55, 55]);
-    revealLayer.style.clipPath = `ellipse(${radius}% ${radius}% at 50% 50%)`;
+    const chromeOpacity = track(p, [0, 0.03, 0.08], [1, 1, 0]).toFixed(3);
+    heroChrome.forEach((node) => paintStyle(node, "opacity", chromeOpacity));
+
+    const radius = track(p, [0, 0.08, 1], [0, 55, 55]).toFixed(2);
+    paintStyle(revealLayer, "clipPath", `ellipse(${radius}% ${radius}% at 50% 50%)`);
 
     const textOpacity = track(p, [0.03, 0.08, 0.15, 0.22, 0.90, 0.98, 1], [0, 1, 1, 0, 0, 1, 1]);
     const blur = track(p, [0.03, 0.08, 0.15, 0.22, 0.90, 0.98, 1], [15, 0, 0, 15, 15, 0, 0]);
     const y = track(p, [0.03, 0.08, 0.15, 0.22, 0.90, 0.98, 1], [20, 0, 0, 20, 20, 0, 0]);
+    const copyOpacity = textOpacity.toFixed(3);
+    // A moving blur is the costliest paint in the hero; phones fade and slide only.
+    const copyFilter = liteMotion.matches || blur < 0.05 ? "none" : `blur(${blur.toFixed(1)}px)`;
+    const copyTransform = `translateY(${y.toFixed(2)}px)`;
     overlayCopies.forEach((node) => {
-      node.style.opacity = textOpacity.toFixed(3);
-      node.style.filter = `blur(${blur}px)`;
-      if (node !== centerBrand) node.style.transform = `translateY(${y}px)`;
+      paintStyle(node, "opacity", copyOpacity);
+      paintStyle(node, "filter", copyFilter);
+      if (node !== centerBrand) paintStyle(node, "transform", copyTransform);
     });
 
     const itemSize = track(p, [0.15, 0.25, 0.85, 0.95, 1], [80, 360, 360, 80, 80]);
@@ -4127,10 +4286,9 @@
     if (p > 0.15 && p < 0.85) progress += scrollDelta * 200;
     else progress += (dt / 1000) * 2.5;
 
-    const rect = orbitWrap.getBoundingClientRect();
-    const scale = rect.width / 800;
-    const center = rect.width / 2;
-    const size = itemSize * scale;
+    const scale = orbitWidth / 800;
+    const center = orbitWidth / 2;
+    const sizeRatio = itemSize / ORBIT_MAX_SIZE;
     const scaledRx = rx * scale;
     const scaledRy = ry * scale;
     const tx = translateX * scale;
@@ -4149,15 +4307,19 @@
       const finalScale = 1 - focusStrength * (1 - focusScale);
       const x = center + rotatedX + tx;
       const yPos = center + rotatedY;
-      item.style.width = `${size}px`;
-      item.style.height = `${size}px`;
-      item.style.zIndex = String(Math.round(finalScale * 100));
-      item.style.transform = `translate(${x}px, ${yPos}px) translate(-50%, -50%) scale(${finalScale})`;
+      paintStyle(item, "zIndex", String(Math.round(finalScale * 100)));
+      paintStyle(item, "transform", `translate3d(${x.toFixed(2)}px, ${yPos.toFixed(2)}px, 0) translate(-50%, -50%) scale(${(finalScale * sizeRatio).toFixed(4)})`);
       const label = item.querySelector(".orbit-label");
-      if (label) label.style.opacity = String(focusStrength * clamp((focusScale - 0.74) / 0.26, 0, 1));
+      if (label) {
+        const labelOpacity = focusStrength * clamp((focusScale - 0.74) / 0.26, 0, 1);
+        paintStyle(label, "opacity", labelOpacity.toFixed(3));
+        // Cancel the item's size scale so the caption keeps its type size.
+        if (labelOpacity > 0) paintStyle(label, "transform", `translateY(-50%) scale(${(1 / sizeRatio).toFixed(4)})`);
+      }
     });
 
-    requestAnimationFrame(paintHero);
+    if (heroOnScreen) requestAnimationFrame(paintHero);
+    else heroRunning = false;
   }
 
   requestAnimationFrame(paintHero);
@@ -4428,7 +4590,7 @@
       }
       closeAnimation = detailShell.animate([
         { transform: "translateX(0)", opacity: 1, filter: "blur(0)" },
-        { transform: "translateX(100%)", opacity: 0.55, filter: "blur(8px)" }
+        { transform: "translateX(100%)", opacity: 0.55, filter: compactLayout.matches ? "blur(0)" : "blur(8px)" }
       ], { duration: 260, easing: "cubic-bezier(0.4, 0, 1, 1)" });
       closeAnimation.finished.finally(() => {
         closeAnimation = null;
@@ -4461,7 +4623,7 @@
       detailClose?.focus();
       if (!reduceMotion.matches && detailShell) {
         detailShell.animate([
-          { transform: "translateX(100%)", opacity: 0.45, filter: "blur(10px)" },
+          { transform: "translateX(100%)", opacity: 0.45, filter: compactLayout.matches ? "blur(0)" : "blur(10px)" },
           { transform: "translateX(0)", opacity: 1, filter: "blur(0)" }
         ], { duration: 460, easing: "cubic-bezier(0.16, 1, 0.3, 1)" });
       }
@@ -5250,6 +5412,7 @@
   // so the second card stays readable instead of folding shut.
   const CF = { rotate: 44, depth: 0.6, falloff: 0.56, fade: 0.1, gap: 0.06 };
   const CF_REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const CF_PHONE = window.matchMedia("(max-width: 720px)");
 
   const cfLinkIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
   const cfArrowIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
@@ -5359,7 +5522,10 @@
         // A card is teleported across the ring at exactly half a turn out, so
         // it has to have faded by then or the jump is visible.
         const edge = loop ? Math.min(1, Math.max(0, count / 2 - distance)) : 1;
-        card.style.opacity = String(Math.max(0, 1 - CF.fade * distance) * edge);
+        const cardOpacity = Math.max(0, 1 - CF.fade * distance) * edge;
+        card.style.opacity = String(cardOpacity);
+        // Off-screen cards are dropped from raster: a phone holds only the nearby ones.
+        card.style.visibility = cardOpacity < 0.01 || (CF_PHONE.matches && distance > 2.6) ? "hidden" : "visible";
         card.style.zIndex = String(100 - Math.round(distance));
         card.classList.toggle("is-active", Math.round(distance) === 0);
       }
@@ -5380,10 +5546,14 @@
       target = to;
       select(indexAt(to));
       if (CF_REDUCE) { pos = to; paint(); raf = null; return; }
-      const step = () => {
+      let last = performance.now();
+      const step = (now) => {
         const remaining = target - pos;
         if (Math.abs(remaining) < 0.0004) { pos = target; paint(); raf = null; return; }
-        pos += remaining * 0.16;   // exponential ease-out, no overshoot
+        // Exponential ease-out, no overshoot. Time-based so 60 and 120 Hz phones match.
+        const dt = Math.min(Math.max(now - last, 0), 64);
+        last = now;
+        pos += remaining * (1 - Math.pow(0.84, dt / 16.667));
         paint();
         raf = requestAnimationFrame(step);
       };
